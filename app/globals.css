@@ -10,3 +10,15 @@
 body {
 	background: #f8f8f8;
 }
+
+aside::-webkit-scrollbar {
+	width: 5px;
+}
+
+aside::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+aside::-webkit-scrollbar-thumb {
+	background: transparent;
+}

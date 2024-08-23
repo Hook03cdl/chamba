@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 interface CardProps {
 	src: string;
-	title: string;
+	name: string;
 	description: string;
 	price: string;
 	rating: number;
@@ -13,7 +13,7 @@ interface CardProps {
 
 export default function Card({
 	src,
-	title,
+	name,
 	description,
 	price,
 	rating,
@@ -27,21 +27,16 @@ export default function Card({
 			<div className="w-full h-full">
 				<img
 					src={src || '/images/notFound.png'}
-					alt=""
+					alt={name}
 					className="h-full w-full object-cover"
 				/>
 			</div>
 			<div className="flex flex-col justify-between s p-3">
-				<h6 className="text-lg font-semibold">Titulo</h6>
-				<p className="text-balance line-clamp-3">
-					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates
-					incidunt laborum aspernatur quo nam beatae. Illum, mollitia eligendi
-					sit iusto laborum dolor, in atque quo neque, saepe ab numquam
-					possimus.
-				</p>
+				<h6 className="text-lg font-semibold">{name}</h6>
+				<p className="text-balance line-clamp-3">{description}</p>
 				<div className="flex justify-between *:text-sm">
-					<span>$000</span>
-					<span className="bg-niagara/60 px-2 rounded-full">{rating}</span>
+					<span>${price}</span>
+					<span className="bg-niagara-500/60 px-2 rounded-full">{rating}</span>
 				</div>
 			</div>
 		</Link>
