@@ -4,7 +4,7 @@ interface HabilityCardProps {
 
 export default function HabilityCard({ title }: HabilityCardProps) {
 	return (
-		<div className="shadow-md max-w-max p-1 px-3 rounded-full bg-gray-200">
+		<div className="shadow-md max-w-max p-1 px-3 rounded-full bg-gray-200 cursor-default">
 			<h3>{title}</h3>
 		</div>
 	);
