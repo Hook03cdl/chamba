@@ -2,6 +2,7 @@ import Dropdown from '@/components/ui/Dropdown';
 import Link from 'next/link';
 import NavLink from './NavLink';
 import Logo from '../ui/Logo';
+import { Checkbox } from '../ui/Inputs';
 
 export default function AsideBar() {
 	return (
@@ -21,12 +22,17 @@ export default function AsideBar() {
 					<NavLink href={'/opcion'}>Opcion</NavLink>
 				</Dropdown>
 				<Dropdown text="Menu">
-					<NavLink href={'/opcion'}>Opcion</NavLink>
-					<NavLink href={'/opcion'}>Opcion</NavLink>
-					<NavLink href={'/opcion'}>Opcion</NavLink>
+					<div className="flex gap-3 flex-wrap p-2">
+						<Checkbox label="Plomeria" />
+						<Checkbox label="Albañileria" />
+						<Checkbox label="Limpieza" />
+						<Checkbox label="Transporte" />
+						<Checkbox label="Marmoleria" />
+						<Checkbox label="Soldador" />
+					</div>
 				</Dropdown>
-				<NavLink href="/" className="text-white bg-niagara-400">
-					Opcion
+				<NavLink href="/pruebas" className="text-white bg-niagara-400">
+					Pruebas
 				</NavLink>
 			</div>
 		</aside>

@@ -9,8 +9,8 @@ const buttonVariants = cva(
 	{
 		variants: {
 			variant: {
-				default: 'bg-niagara hover:bg-niagara/80',
-				destructive: 'bg-red-600 hover:bg-red-600/80',
+				default: 'bg-niagara-600 hover:bg-niagara-500 text-white',
+				destructive: 'bg-red-600 hover:bg-red-600/80 text-white',
 				outline:
 					'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
 				secondary:
@@ -19,7 +19,7 @@ const buttonVariants = cva(
 				link: 'text-primary underline-offset-4 hover:underline',
 			},
 			size: {
-				default: 'px-4 py-2',
+				default: 'px-4 py-2 h-fit',
 				sm: 'h-9 rounded-md px-3',
 				lg: 'h-11 rounded-md px-8',
 				icon: 'h-10 w-10',

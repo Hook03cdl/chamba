@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import AsideBar from '@/components/nav/AsideBar';
+import Footer from '@/components/footer/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,10 +18,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={(inter.className, 'grid grid-cols-[auto_1fr]')}>
-				<AsideBar />
-				<main className="p-5">{children}</main>
-			</body>
+			<body className={inter.className}>{children}</body>
 		</html>
 	);
 }

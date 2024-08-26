@@ -43,7 +43,7 @@ export default function Home() {
 	];
 
 	return (
-		<section>
+		<section className="p-5 min-h-svh">
 			<div className="w-full grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] place-items-center gap-10">
 				<Each
 					of={servicios}

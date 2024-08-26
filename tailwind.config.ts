@@ -8,6 +8,9 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
+			boxShadow: {
+				'5xl': '-15px 10px 0 rgba(0, 0, 0, 1)',
+			},
 			colors: {
 				niagara: {
 					'50': '#effaf6',
