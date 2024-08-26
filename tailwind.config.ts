@@ -25,7 +25,7 @@ const config: Config = {
 					'900': '#134139',
 					'950': '#0a2420',
 				},
-
+				shark: '#232122',
 				humo: '#f8f8f8',
 				tuatara: '#3d3c3b',
 			},

@@ -4,9 +4,12 @@ import { Toast } from '@/components/ui/Toast';
 
 export default function page() {
 	return (
-		<section className="flex items-center gap-5 p-5 min-h-svh">
+		<section className="flex items-center gap-5 p-5 min-h-svh bg-[#ccc]">
 			<Checkbox id="Input" label="Label" required />
-			<Input label={'Label'} id="prueba" required />
+			<div className="space-y-5">
+				<Input label={'Label'} id="prueba" required variant="dark" />
+				<Input label={'Label'} id="prueba" required />
+			</div>
 			<Button>Label</Button>
 			<Toast
 				variant={'success'}

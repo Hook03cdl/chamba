@@ -12,9 +12,8 @@ export default function AsideBar() {
 			</div>
 			<div className="h-full w-full flex flex-col gap-3">
 				<Dropdown text="Menu">
-					<NavLink href={'/opcion'}>Opcion</NavLink>
-					<NavLink href={'/opcion'}>Opcion</NavLink>
-					<NavLink href={'/opcion'}>Opcion</NavLink>
+					<NavLink href={'/login'}>Login</NavLink>
+					<NavLink href={'/singup'}>Singup</NavLink>
 				</Dropdown>
 				<Dropdown text="Menu">
 					<NavLink href={'/opcion'}>Opcion</NavLink>
