@@ -26,7 +26,7 @@ export default function Login() {
 
 					<Button className="w-full">Iniciar sesión</Button>
 				</div>
-				<Link href={'/pruebas'} className=" text-humo hover:underline">
+				<Link href={'/signup/account'} className=" text-humo hover:underline">
 					¿No tienes una cuenta?
 				</Link>
 			</article>
