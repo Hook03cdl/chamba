@@ -25,11 +25,11 @@ export default function Login() {
 	}
 
 	return (
-		<section className="flex">
-			<section className="bg-humo w-3/6 h-[100vh] flex justify-center items-center">
+		<section className="flex *:flex-1 *:h-svh">
+			<section className="bg-humo flex justify-center items-center">
 				<Logo variant="dark" />
 			</section>
-			<section className="bg-shark w-3/6 flex justify-center items-center flex-col">
+			<section className="bg-shark flex justify-center items-center flex-col gap-5">
 				<div className="space-y-10">
 					<Input
 						label={'Correo electrónico'}
@@ -46,7 +46,7 @@ export default function Login() {
 
 					<Button className="w-full">Iniciar sesión</Button>
 				</div>
-				<Link href={'/pruebas'} className="mt-14 text-white hover:underline">
+				<Link href={'/pruebas'} className=" text-humo hover:underline">
 					¿No tienes una cuenta?
 				</Link>
 			</section>
