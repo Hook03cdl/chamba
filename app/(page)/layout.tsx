@@ -1,5 +1,6 @@
 import Footer from '@/components/footer/Footer';
 import AsideBar from '@/components/nav/AsideBar';
+import Modal from '@/components/ui/Modal';
 import React from 'react';
 
 export default function LayoutPage({
@@ -8,12 +9,15 @@ export default function LayoutPage({
 	children: React.ReactNode;
 }>) {
 	return (
-		<div className="grid grid-cols-[auto_1fr]">
-			<AsideBar />
-			<main>
-				{children}
-				<Footer />
+		<>
+			<main className="grid grid-cols-[auto_1fr]">
+				<AsideBar />
+				<div>
+					{children}
+					<Footer />
+				</div>
 			</main>
-		</div>
+			<Modal />
+		</>
 	);
 }

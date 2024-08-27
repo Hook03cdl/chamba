@@ -1,8 +1,12 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import { Checkbox, Input } from '@/components/ui/Inputs';
 import { Toast } from '@/components/ui/Toast';
+import { openModal } from '@/hooks/useModal';
 
-export default function page() {
+export default function Pruebas() {
+	// const { openModal } = useModal();
 	return (
 		<section className="flex items-center gap-5 p-5 min-h-svh bg-[#ccc]">
 			<Checkbox id="Input" label="Label" required />
@@ -18,6 +22,7 @@ export default function page() {
 					'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi neque magnam fugiat deserunt eum pariatur.'
 				}
 			/>
+			<Button onClick={openModal}>Abrir Modal</Button>
 		</section>
 	);
 }
