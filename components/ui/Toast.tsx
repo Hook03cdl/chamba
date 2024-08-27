@@ -30,7 +30,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
 		return (
 			<div className={cn(toastVariant({ className, variant }))}>
 				<div>
-					<h3>{title}</h3>
+					<h3 className="font-semibold">{title}</h3>
 					<p>{description}</p>
 					{fallback}
 				</div>

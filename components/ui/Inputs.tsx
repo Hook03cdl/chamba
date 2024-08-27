@@ -1,6 +1,7 @@
 'use client';
 
-import { Check } from 'lucide-react';
+import { Check, Eye, EyeOff } from 'lucide-react';
+import { text } from 'node:stream/consumers';
 import { useRef, useState } from 'react';
 
 const variants = {
@@ -20,6 +21,7 @@ const variants = {
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 	label: string;
 	variant?: 'light' | 'dark';
+	type?: 'email' | 'text' | 'password';
 }
 
 export function Input({
@@ -27,16 +29,28 @@ export function Input({
 	variant = 'light',
 	className,
 	id,
+	type = 'text',
 	...props
 }: InputProps) {
+	const [show, setShow] = useState(false);
+
+	const getType = (type: string) => {
+		if (type == 'password') {
+			return show ? 'text' : 'password';
+		} else {
+			return type;
+		}
+	};
+
 	return (
 		<div className="flex flex-col max-w-max">
 			<div className="relative">
 				<input
 					id={id}
 					name={id}
-					{...props}
+					type={getType(type)}
 					className={` bg-inherit outline-none border-b-2 peer/input ${variants[variant].input}  ${className}`}
+					{...props}
 				/>
 				<label
 					htmlFor={id}
@@ -47,6 +61,16 @@ export function Input({
 				>
 					{label}
 				</label>
+				{type === 'password' && (
+					<button
+						className={`absolute right-0 top-1/2 -translate-y-1/2 ${
+							variant == 'light' ? 'text-humo/65' : 'text-base/65'
+						}`}
+						onClick={() => setShow(!show)}
+					>
+						{show ? <Eye size={20} /> : <EyeOff size={20} />}
+					</button>
+				)}
 			</div>
 		</div>
 	);

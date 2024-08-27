@@ -6,7 +6,7 @@ import * as React from 'react';
 import { useState } from 'react';
 
 const tooltipVariants = cva(
-	'absolute bg-black rounded-lg p-2 px-4 z-50 text-white',
+	'absolute bg-black rounded-lg p-2 px-4 z-50 text-white text-xs',
 	{
 		variants: {
 			variant: {

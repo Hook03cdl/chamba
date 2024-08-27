@@ -1,11 +1,5 @@
 import { create } from 'zustand';
 
-interface UseModalProps {
-	isOpen: boolean;
-	openModal: () => void;
-	closeModal: () => void;
-}
-
 export const useModal = create(() => ({
 	isOpen: false,
 }));
