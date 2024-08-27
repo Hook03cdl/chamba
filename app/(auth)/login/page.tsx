@@ -11,25 +11,25 @@ export default function Login() {
 				<Logo variant="dark" />
 			</article>
 			<article className="bg-shark flex justify-center items-center flex-col gap-5">
-				<Timeline />
-
-				<div className="space-y-10">
+				<form className="space-y-5 w-72">
 					<Input
 						label={'Correo electrónico'}
 						type="email"
 						id="email"
+						className="w-full"
 						required
 					/>
 					<Input
-						label={'Correo electrónico'}
+						label={'Contraseña'}
 						type="password"
 						id="password"
+						className="w-full"
 						required
 					/>
 
 					<Button className="w-full">Iniciar sesión</Button>
-				</div>
-				<Link href={'/pruebas'} className=" text-humo hover:underline">
+				</form>
+				<Link href={'/singup'} className=" text-humo hover:underline">
 					¿No tienes una cuenta?
 				</Link>
 			</article>

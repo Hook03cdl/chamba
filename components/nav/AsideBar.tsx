@@ -1,5 +1,4 @@
 import Dropdown from '@/components/ui/Dropdown';
-import Link from 'next/link';
 import NavLink from './NavLink';
 import Logo from '../ui/Logo';
 import { Checkbox } from '../ui/Inputs';

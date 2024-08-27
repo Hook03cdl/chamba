@@ -43,7 +43,7 @@ export function Input({
 	};
 
 	return (
-		<div className="flex flex-col max-w-max">
+		<div className="flex flex-col w-auto">
 			<div className="relative">
 				<input
 					id={id}
