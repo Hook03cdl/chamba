@@ -2,6 +2,7 @@ import Logo from '@/components/ui/Logo';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/Inputs';
 import Link from 'next/link';
+import Timeline from '@/components/ui/Timeline';
 
 export default function Login() {
 	return (
@@ -10,6 +11,8 @@ export default function Login() {
 				<Logo variant="dark" />
 			</article>
 			<article className="bg-shark flex justify-center items-center flex-col gap-5">
+				<Timeline />
+
 				<div className="space-y-10">
 					<Input
 						label={'Correo electrónico'}
@@ -26,7 +29,7 @@ export default function Login() {
 
 					<Button className="w-full">Iniciar sesión</Button>
 				</div>
-				<Link href={'/pruebas'} className=" text-humo hover:underline">
+				<Link href={'/singup'} className=" text-humo hover:underline">
 					¿No tienes una cuenta?
 				</Link>
 			</article>
