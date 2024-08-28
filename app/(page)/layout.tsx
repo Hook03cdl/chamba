@@ -1,7 +1,8 @@
 import Footer from '@/components/footer/Footer';
-import AsideBar from '@/components/nav/AsideBar';
+import AsideBar from '@/components/aside/AsideBar';
 import Modal from '@/components/ui/Modal';
 import React from 'react';
+import Navbar from '@/components/header/Navbar';
 
 export default function LayoutPage({
 	children,
@@ -13,6 +14,7 @@ export default function LayoutPage({
 			<main className="grid grid-cols-[auto_1fr]">
 				<AsideBar />
 				<div>
+					<Navbar />
 					{children}
 					<Footer />
 				</div>

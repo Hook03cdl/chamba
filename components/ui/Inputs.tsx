@@ -1,6 +1,6 @@
 'use client';
 
-import { Check, Eye, EyeOff } from 'lucide-react';
+import { Check, Eye, EyeOff, Search } from 'lucide-react';
 import { text } from 'node:stream/consumers';
 import { useRef, useState } from 'react';
 
@@ -112,5 +112,20 @@ export function Checkbox({ label, className, id, ...props }: InputProps) {
 			</div>
 			<span>{label}</span>
 		</label>
+	);
+}
+
+export default function InputSearch() {
+	return (
+		<div className="flex w-fit">
+			<input
+				type="text"
+				className="rounded-l-full border-2 border-niagara-500 p-1 px-2 w-96"
+				placeholder="Buscar"
+			/>
+			<button className="rounded-r-full bg-gray-100 hover:bg-gray-300 px-4 border-2 border-niagara-500 border-l-0 transition-colors">
+				<Search />
+			</button>
+		</div>
 	);
 }

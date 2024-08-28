@@ -11,7 +11,6 @@ export default function Personal() {
 				<Input label="Postal" id="postal" required className="w-full" />
 			</div>
 			<Input label="Domicilio" id="domicilio" required className="w-full" />
-			<Button className="w-full">Registrar cuenta</Button>
 		</div>
 	);
 }

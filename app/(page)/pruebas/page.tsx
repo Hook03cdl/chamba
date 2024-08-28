@@ -1,5 +1,6 @@
 'use client';
 
+import Navbar from '@/components/header/Navbar';
 import { Button } from '@/components/ui/button';
 import { Checkbox, Input } from '@/components/ui/Inputs';
 import Timeline from '@/components/ui/Timeline';
@@ -9,6 +10,10 @@ import { openModal } from '@/hooks/useModal';
 export default function Pruebas() {
 	return (
 		<section className="p-5 min-h-svh space-y-10">
+			<div>
+				<h3 className="text-4xl mb-3">Header</h3>
+				<Navbar />
+			</div>
 			<div>
 				<h3 className="text-4xl mb-3">CheckBox</h3>
 				<Checkbox id="Input" label="Label" required />
