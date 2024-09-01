@@ -18,7 +18,7 @@ export default function Popover({ fallback, children }: PopoverProps) {
 				{fallback}
 			</button>
 			{isOpen && (
-				<div className="absolute top-full right-0 mt-2 w-72 h-96 bg-humo border-2 border-gray-300 z-[+1] rounded-lg overflow-y-auto p-3">
+				<div className="absolute top-full right-0 mt-2 bg-humo border-2 border-gray-300 z-[+1] rounded-lg overflow-y-auto p-3">
 					{children}
 				</div>
 			)}
