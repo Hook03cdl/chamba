@@ -38,7 +38,7 @@ export default function Modal() {
 				{modal.image && (
 					<img
 						src={modal.image || '/images/notFound.png'}
-						alt=""
+						alt="Imagen"
 						className="w-auto h-full object-cover object-center aspect-video"
 					/>
 				)}
