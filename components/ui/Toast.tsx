@@ -4,7 +4,7 @@ import { X } from 'lucide-react';
 import * as React from 'react';
 
 const toastVariant = cva(
-	'relative flex gap-4  max-w-96 w-full bg-gray-200 p-3 overflow-hidden shadow-5xl',
+	'relative flex gap-4  max-w-xl w-full bg-gray-200 p-3 overflow-hidden shadow-5xl',
 	{
 		variants: {
 			variant: {

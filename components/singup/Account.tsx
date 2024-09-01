@@ -17,6 +17,13 @@ export default function Account() {
 				required
 				className="w-full"
 			/>
+			<Input
+				label="Confirmar contraseña"
+				id="password_confirm"
+				type="password"
+				required
+				className="w-full"
+			/>
 		</div>
 	);
 }

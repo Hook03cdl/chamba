@@ -12,14 +12,11 @@ export default function Page() {
 				<Logo variant="dark" />
 			</div>
 			<article className="bg-shark flex justify-center items-center flex-col gap-5">
-				<form action="" className="w-72" id="form" noValidate>
-					<Timeline
-						sections={[
-							<Account key={Math.random()} />,
-							<Personal key={Math.random()} />,
-						]}
-						buttonSubmit={<Button type="submit">Registrar</Button>}
-					/>
+				<form action="" className="w-72 space-y-10" id="form" noValidate>
+					<Account />
+					<Button type="submit" className="w-full">
+						Registrarme
+					</Button>
 				</form>
 				<Link href={'/login'} className=" text-humo hover:underline">
 					¿Ya tienes una cuenta?
