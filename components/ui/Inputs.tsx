@@ -2,7 +2,7 @@
 
 import { Check, Eye, EyeOff, Search } from 'lucide-react';
 import { text } from 'node:stream/consumers';
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 const variants = {
 	light: {
@@ -22,6 +22,10 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 	label: string;
 	variant?: 'light' | 'dark';
 	type?: 'email' | 'text' | 'password';
+}
+interface TextAreaProps
+	extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+	label: string;
 }
 
 export function Input({
@@ -115,7 +119,7 @@ export function Checkbox({ label, className, id, ...props }: InputProps) {
 	);
 }
 
-export default function InputSearch() {
+export function InputSearch() {
 	return (
 		<div className="flex w-fit">
 			<input
@@ -126,6 +130,18 @@ export default function InputSearch() {
 			<button className="rounded-r-full bg-gray-100 hover:bg-gray-300 px-4 border-2 border-niagara-500 border-l-0 transition-colors">
 				<Search />
 			</button>
+		</div>
+	);
+}
+
+export function TextArea({ label }: TextAreaProps) {
+	return (
+		<div className="w-full">
+			<h2 className="text-xs">{label}</h2>
+			<textarea
+				className="w-full border border-black rounded-lg resize-none"
+				rows={4}
+			/>
 		</div>
 	);
 }

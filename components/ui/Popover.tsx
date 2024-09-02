@@ -14,9 +14,9 @@ export default function Popover({ fallback, children }: PopoverProps) {
 		setIsOpen(false);
 	};
 	return (
-		<div className={`relative `}>
+		<div className={`relative`}>
 			<button
-				className="p-2 rounded-md hover:bg-gray-100 -z-50"
+				className="p-2 rounded-md hover:bg-gray-100 z-[-10]"
 				onClick={() => setIsOpen(!isOpen)}
 				onBlur={handleClickOut}
 			>

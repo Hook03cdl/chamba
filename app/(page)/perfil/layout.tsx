@@ -1,27 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 
-import ButtonOpenModal from '@/components/servicio/ButtonOpenModal';
-import Gallery from '@/components/servicio/Gallery';
-import UserActions from '@/components/servicio/UserActions';
+import Navbar from '@/components/servicio/Navbar';
 import { Button } from '@/components/ui/button';
-import Popover from '@/components/ui/Popover';
 import Separator from '@/components/ui/Separator';
 import Tags from '@/components/ui/Tags';
-import { UserRoundPlus, Ellipsis, Camera } from 'lucide-react';
+import { Camera, Mailbox } from 'lucide-react';
+import Link from 'next/link';
 
-const photos = [
-	'/images/notFound.png',
-	'/images/notFound.png',
-	'/images/notFound.png',
-	'/images/notFound.png',
-	'/images/notFound.png',
-	'/images/notFound.png',
-	'/images/notFound.png',
-	'/images/notFound.png',
-	'/images/notFound.png',
-];
-export default function ServicePage() {
+export default function PerfilPage({
+	children,
+}: {
+	children: React.ReactNode;
+}) {
 	return (
 		<section className="min-h-svh p-5">
 			<div className="flex items-center gap-10">
@@ -32,20 +23,19 @@ export default function ServicePage() {
 				/>
 				<div className="space-y-5">
 					<div className="space-y-2">
-						<h2 className="text-2xl font-semibold ">Natanael Cano</h2>
+						<h2 className="text-2xl font-semibold">Natanael Cano</h2>
 						<Tags texts={['Albañil', 'Plomero']} />
 					</div>
 					<div className="flex items-center gap-5">
-						<ButtonOpenModal text="Contratar" />
-						<Button size={'sm'} variant={'outline'}>
-							<UserRoundPlus />
+						<Button size={'sm'} className="px-5">
+							Editar perfil
 						</Button>
-						<Popover fallback={<Ellipsis />}>
-							<UserActions />
-						</Popover>
+						<Button size={'sm'} variant={'outline'}>
+							Compartir perfil
+						</Button>
 					</div>
 				</div>
-				<div className="mx-auto flex gap-10">
+				<div className="ml-20 flex gap-10">
 					<div>
 						<h4 className="font-semibold">Seguidores</h4>
 						<p className="text-center text-sm font-semibold">177</p>
@@ -62,13 +52,8 @@ export default function ServicePage() {
 			</div>
 			<Separator />
 			<div className="space-y-5">
-				<h2 className="font-semibold text-xl flex items-center gap-2">
-					<span>
-						<Camera />
-					</span>
-					Galería
-				</h2>
-				<Gallery photos={photos} />
+				<Navbar />
+				{children}
 			</div>
 		</section>
 	);

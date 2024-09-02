@@ -1,6 +1,6 @@
 import React from 'react';
 import Avatar from '../ui/Avatar';
-import InputSearch from '../ui/Inputs';
+import { InputSearch } from '../ui/Inputs';
 import Notification from './Notification';
 
 export default function Navbar() {
