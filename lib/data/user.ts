@@ -1,11 +1,22 @@
 'use server';
 
-export async function getUser(): Promise<any | undefined> {
-	const user = await fetch('http://localhost:8000/api');
-	console.log(user);
+import { cookies } from 'next/headers';
 
-	if (user) {
-		return user;
+export async function fetchDataUser(): Promise<any | undefined> {
+	const cookie = cookies();
+	const session = cookie.get('session');
+
+	if (session?.value) {
+		try {
+			await fetch('http://localhost:8000/api/user', {
+				headers: {
+					authorization: `bearer ${session?.value}`,
+				},
+			}).then((data) => console.log(data));
+		} catch (error) {
+			console.log('Error user', error);
+		}
 	}
+
 	return undefined;
 }

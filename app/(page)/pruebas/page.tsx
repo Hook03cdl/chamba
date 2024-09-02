@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Checkbox, Input } from '@/components/ui/Inputs';
 import Timeline from '@/components/ui/Timeline';
 import { Toast } from '@/components/ui/Toast';
+import { deleteToken, getToken } from '@/lib/actions/auth';
 import { openModal } from '@/lib/hooks/useModal';
 
 export default function Pruebas() {
@@ -90,6 +91,24 @@ export default function Pruebas() {
 				<div className="bg-shark p-3">
 					<Timeline />
 				</div>
+			</div>
+			<div>
+				<h3 className="text-4xl mb-3">Get Token</h3>
+				<Button
+					onClick={async () => {
+						await getToken();
+					}}
+				>
+					Obtener token
+				</Button>
+				<Button
+					variant={'destructive'}
+					onClick={async () => {
+						await deleteToken();
+					}}
+				>
+					Borrar token
+				</Button>
 			</div>
 		</section>
 	);

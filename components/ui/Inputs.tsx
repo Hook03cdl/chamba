@@ -67,6 +67,7 @@ export function Input({
 				</label>
 				{type === 'password' && (
 					<button
+						type="button"
 						className={`absolute right-0 top-1/2 -translate-y-1/2 ${
 							variant == 'light' ? 'text-humo/65' : 'text-base/65'
 						}`}

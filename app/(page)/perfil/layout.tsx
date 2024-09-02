@@ -1,18 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
-'use client';
 
 import Navbar from '@/components/servicio/Navbar';
 import { Button } from '@/components/ui/button';
 import Separator from '@/components/ui/Separator';
 import Tags from '@/components/ui/Tags';
-import { Camera, Mailbox } from 'lucide-react';
-import Link from 'next/link';
+import { fetchDataUser } from '@/lib/data/user';
 
-export default function PerfilPage({
+export default async function PerfilLayout({
 	children,
 }: {
 	children: React.ReactNode;
 }) {
+	const user = await fetchDataUser();
+	// console.log(user);
+
 	return (
 		<section className="min-h-svh p-5">
 			<div className="flex items-center gap-10">

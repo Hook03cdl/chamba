@@ -1,8 +1,10 @@
+'use client';
+
 import Logo from '@/components/ui/Logo';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/Inputs';
 import Link from 'next/link';
-import Timeline from '@/components/ui/Timeline';
+import { AuthWhitPasswordAndEmail } from '@/lib/actions/auth';
 
 export default function Login() {
 	return (
@@ -11,7 +13,7 @@ export default function Login() {
 				<Logo variant="dark" />
 			</article>
 			<article className="bg-shark flex justify-center items-center flex-col gap-5">
-				<form className="space-y-10 w-72">
+				<form className="space-y-10 w-72" action={AuthWhitPasswordAndEmail}>
 					<div className="space-y-7">
 						<Input
 							label={'Correo electrónico'}
