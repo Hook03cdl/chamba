@@ -19,7 +19,7 @@ export default function Account() {
 			/>
 			<Input
 				label="Confirmar contraseña"
-				id="password_confirm"
+				id="password_confirmation"
 				type="password"
 				required
 				className="w-full"

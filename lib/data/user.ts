@@ -1,22 +1,24 @@
 'use server';
 
 import { cookies } from 'next/headers';
+import { UserProps } from '../interfaces/interface';
+import { Fetch } from '../Fetch';
 
-export async function fetchDataUser(): Promise<any | undefined> {
+export async function fetchDataUser(): Promise<UserProps | undefined> {
 	const cookie = cookies();
 	const session = cookie.get('session');
 
 	if (session?.value) {
 		try {
-			await fetch('http://localhost:8000/api/user', {
+			const user = await Fetch<UserProps>('/user', {
 				headers: {
-					authorization: `bearer ${session?.value}`,
+					Authorization: `Bearer ${session?.value}`,
 				},
-			}).then((data) => console.log(data));
+			});
+			return user;
 		} catch (error) {
 			console.log('Error user', error);
 		}
 	}
-
 	return undefined;
 }

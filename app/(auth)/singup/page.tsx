@@ -1,8 +1,7 @@
 import Account from '@/components/singup/Account';
-import Personal from '@/components/singup/Personal';
-import { Button } from '@/components/ui/button';
+import ButtonSubmit from '@/components/ui/ButtonSubmit';
 import Logo from '@/components/ui/Logo';
-import Timeline from '@/components/ui/Timeline';
+import { SingupWithPasswordAndEmail } from '@/lib/actions/auth';
 import Link from 'next/link';
 
 export default function Page() {
@@ -12,11 +11,14 @@ export default function Page() {
 				<Logo variant="dark" />
 			</div>
 			<article className="bg-shark flex justify-center items-center flex-col gap-5">
-				<form action="" className="w-72 space-y-10" id="form" noValidate>
+				<form
+					action={SingupWithPasswordAndEmail}
+					className="w-72 space-y-10"
+					id="form"
+					noValidate
+				>
 					<Account />
-					<Button type="submit" className="w-full">
-						Registrarme
-					</Button>
+					<ButtonSubmit className="w-full">Registrarme</ButtonSubmit>
 				</form>
 				<Link href={'/login'} className=" text-humo hover:underline">
 					¿Ya tienes una cuenta?

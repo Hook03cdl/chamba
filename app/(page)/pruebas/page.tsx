@@ -5,10 +5,12 @@ import { Button } from '@/components/ui/button';
 import { Checkbox, Input } from '@/components/ui/Inputs';
 import Timeline from '@/components/ui/Timeline';
 import { Toast } from '@/components/ui/Toast';
-import { deleteToken, getToken } from '@/lib/actions/auth';
-import { openModal } from '@/lib/hooks/useModal';
+import { LogoutUser, getToken } from '@/lib/actions/auth';
+import { openModal, useModal } from '@/lib/hooks/useModal';
+import { useToasts } from '@/lib/hooks/useToast';
 
 export default function Pruebas() {
+	const { addToast } = useToasts();
 	return (
 		<section className="p-5 min-h-svh space-y-10">
 			<div>
@@ -104,10 +106,16 @@ export default function Pruebas() {
 				<Button
 					variant={'destructive'}
 					onClick={async () => {
-						await deleteToken();
+						await LogoutUser();
 					}}
 				>
 					Borrar token
+				</Button>
+			</div>
+			<div>
+				<h3 className="text-4xl mb-3">Get Token</h3>
+				<Button onClick={() => addToast('Prueba', 'hola', 'default')}>
+					Obtener token
 				</Button>
 			</div>
 		</section>

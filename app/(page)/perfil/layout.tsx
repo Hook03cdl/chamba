@@ -12,7 +12,6 @@ export default async function PerfilLayout({
 	children: React.ReactNode;
 }) {
 	const user = await fetchDataUser();
-	// console.log(user);
 
 	return (
 		<section className="min-h-svh p-5">
@@ -24,7 +23,7 @@ export default async function PerfilLayout({
 				/>
 				<div className="space-y-5">
 					<div className="space-y-2">
-						<h2 className="text-2xl font-semibold">Natanael Cano</h2>
+						<h2 className="text-2xl font-semibold">{user?.name}</h2>
 						<Tags texts={['Albañil', 'Plomero']} />
 					</div>
 					<div className="flex items-center gap-5">

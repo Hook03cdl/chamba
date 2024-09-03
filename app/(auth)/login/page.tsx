@@ -4,7 +4,8 @@ import Logo from '@/components/ui/Logo';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/Inputs';
 import Link from 'next/link';
-import { AuthWhitPasswordAndEmail } from '@/lib/actions/auth';
+import { AuthWithPasswordAndEmail } from '@/lib/actions/auth';
+import ButtonSubmit from '@/components/ui/ButtonSubmit';
 
 export default function Login() {
 	return (
@@ -13,7 +14,7 @@ export default function Login() {
 				<Logo variant="dark" />
 			</article>
 			<article className="bg-shark flex justify-center items-center flex-col gap-5">
-				<form className="space-y-10 w-72" action={AuthWhitPasswordAndEmail}>
+				<form className="space-y-10 w-72" action={AuthWithPasswordAndEmail}>
 					<div className="space-y-7">
 						<Input
 							label={'Correo electrónico'}
@@ -31,9 +32,7 @@ export default function Login() {
 						/>
 					</div>
 
-					<Button type="submit" className="w-full">
-						Iniciar sesión
-					</Button>
+					<ButtonSubmit className="w-full">Iniciar sesión</ButtonSubmit>
 				</form>
 				<Link href={'/singup'} className=" text-humo hover:underline">
 					¿No tienes una cuenta?

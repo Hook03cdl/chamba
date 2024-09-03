@@ -1,10 +1,11 @@
+import { useToasts } from '@/lib/hooks/useToast';
 import { cn } from '@/lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { X } from 'lucide-react';
 import * as React from 'react';
 
 const toastVariant = cva(
-	'relative flex gap-4  max-w-xl w-full bg-gray-200 p-3 overflow-hidden shadow-5xl',
+	'relative flex gap-4 min-w-96 w-full max-w-xl bg-gray-200 p-3 overflow-hidden shadow-5xl',
 	{
 		variants: {
 			variant: {
@@ -18,25 +19,28 @@ const toastVariant = cva(
 	}
 );
 
-interface ToastProps extends VariantProps<typeof toastVariant> {
+export interface ToastProps extends VariantProps<typeof toastVariant> {
+	id?: string;
 	title: string;
 	description: string;
 	className?: string;
-	fallback?: React.ReactNode;
+	type?: 'error' | 'success' | 'warning' | 'default';
 }
 
 const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
-	({ className, title, description, fallback, variant }, ref) => {
+	({ id, className, title, description, variant }) => {
+		const { removeToast } = useToasts();
 		return (
 			<div className={cn(toastVariant({ className, variant }))}>
-				<div>
+				<div className="grow">
 					<h3 className="font-semibold">{title}</h3>
 					<p>{description}</p>
-					{fallback}
 				</div>
-				<button>
-					<X />
-				</button>
+				{id && (
+					<button onClick={() => removeToast(id)}>
+						<X />
+					</button>
+				)}
 			</div>
 		);
 	}

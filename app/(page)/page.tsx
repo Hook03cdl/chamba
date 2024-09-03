@@ -1,8 +1,10 @@
 import Card from '@/components/Card';
 import Each from '@/components/Each';
+import { fetchDataChambas } from '@/lib/data/chambas';
+import { ChambaProps } from '@/lib/interfaces/interface';
 import { randomUUID } from 'crypto';
 
-export default function Home() {
+export default async function Home() {
 	const servicios = [
 		{
 			sid: randomUUID(),
@@ -42,19 +44,20 @@ export default function Home() {
 		},
 	];
 
+	const chambas = (await fetchDataChambas()) ?? [];
+
 	return (
 		<section className="p-5 min-h-svh">
 			<div className="w-full grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] place-items-center gap-10">
 				<Each
-					of={servicios}
-					render={(s) => (
+					of={chambas}
+					render={(c: ChambaProps) => (
 						<Card
-							href={`/servicio/${s.sid}`}
-							src={s.src}
-							name={s.name}
-							description={s.description}
-							price={s.price}
-							rating={s.rating}
+							href={`/servicio/${c.id.toString()}}`}
+							src={''}
+							name={`${c.title} ${c.worker_name}`}
+							description={c.description}
+							rating={c.job_id}
 						/>
 					)}
 				/>
