@@ -12,7 +12,7 @@ export default function AsideBar() {
 			<div className="h-full w-full flex flex-col gap-3">
 				<Dropdown text="Menu">
 					<NavLink href={'/login'}>Login</NavLink>
-					<NavLink href={'/singup'}>Singup</NavLink>
+					<NavLink href={'/signup'}>Signup</NavLink>
 				</Dropdown>
 				<Dropdown text="Menu">
 					<NavLink href={'/opcion'}>Opcion</NavLink>

@@ -34,7 +34,7 @@ export default function Login() {
 
 					<ButtonSubmit className="w-full">Iniciar sesión</ButtonSubmit>
 				</form>
-				<Link href={'/singup'} className=" text-humo hover:underline">
+				<Link href={'/signup'} className=" text-humo hover:underline">
 					¿No tienes una cuenta?
 				</Link>
 			</article>

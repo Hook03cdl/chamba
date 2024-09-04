@@ -1,4 +1,4 @@
-import Account from '@/components/singup/Account';
+import Account from '@/components/signup/Account';
 import ButtonSubmit from '@/components/ui/ButtonSubmit';
 import Logo from '@/components/ui/Logo';
 import { SingupWithPasswordAndEmail } from '@/lib/actions/auth';
