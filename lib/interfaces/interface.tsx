@@ -2,6 +2,7 @@ export interface UserProps {
 	id: number;
 	name: string;
 	email: string;
+	src: string | null;
 	email_verified_at: boolean | null;
 	rating: number;
 	phone_number: string | null;

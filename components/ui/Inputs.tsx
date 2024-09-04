@@ -140,8 +140,8 @@ export function TextArea({ label }: TextAreaProps) {
 		<div className="w-full">
 			<h2 className="text-xs">{label}</h2>
 			<textarea
-				className="w-full border border-black rounded-lg resize-none"
-				rows={4}
+				className="w-full border border-black p-2 rounded-lg resize-none"
+				rows={6}
 			/>
 		</div>
 	);

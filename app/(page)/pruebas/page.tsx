@@ -82,8 +82,16 @@ export default function Pruebas() {
 			<div>
 				<h3 className="text-4xl mb-3">Modal</h3>
 				<div className="flex gap-10">
-					<Button onClick={() => openModal({})}>Abrir Modal</Button>
-					<Button onClick={() => openModal({ image: '/images/notFount.png' })}>
+					<Button
+						onClick={() =>
+							openModal({
+								content: { header: 'Header', body: <h3>Hola soy un modal</h3> },
+							})
+						}
+					>
+						Abrir Modal
+					</Button>
+					<Button onClick={() => openModal({ image: '/images/notFound.png' })}>
 						Abrir Modal
 					</Button>
 				</div>

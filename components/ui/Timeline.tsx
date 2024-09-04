@@ -17,7 +17,7 @@ export default function Timeline({ sections, buttonSubmit }: TimelineProps) {
 	return (
 		<div>
 			<div className="flex items-center justify-center gap-3 mb-20">
-				<ToolTip content={'Cuenta'} variant={'bottom'}>
+				<ToolTip content={'Cuenta'} position={'bottom'}>
 					<button
 						onClick={() => navigate(0)}
 						className={`${
@@ -32,7 +32,7 @@ export default function Timeline({ sections, buttonSubmit }: TimelineProps) {
 					</button>
 				</ToolTip>
 				<div className="h-[2px] bg-gray-300 w-14 rounded-full" />
-				<ToolTip content={'Datos personales'} variant={'bottom'}>
+				<ToolTip content={'Datos personales'} position={'bottom'}>
 					<button
 						onClick={() => navigate(1)}
 						className={`${

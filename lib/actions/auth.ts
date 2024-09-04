@@ -2,8 +2,7 @@
 
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { useModal } from '../hooks/useModal';
-import { useToasts } from '../hooks/useToast';
+import setTokens from '../utils/tokens';
 
 export async function AuthWithPasswordAndEmail(formdata: FormData) {
 	let tokenAuth = '';
@@ -32,11 +31,15 @@ export async function SingupWithPasswordAndEmail(formdata: FormData) {
 			method: 'POST',
 			body: formdata,
 		});
+		if (!res.ok) return;
+		const user = await res.json();
+		console.log(user);
+		await setTokens('session', user.token);
 	} catch (error) {
 		console.log(error);
 		return;
 	}
-	redirect('/login');
+	redirect('/');
 }
 
 export async function getToken() {

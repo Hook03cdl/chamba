@@ -70,7 +70,7 @@ export default async function ServicePage({
 			</div>
 			<Separator />
 			<div className="space-y-5">
-				<h2 className="font-semibold text-xl flex items-center gap-2">
+				<h2 className="flex items-center gap-2">
 					<span>
 						<Camera />
 					</span>

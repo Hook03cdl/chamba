@@ -2,14 +2,13 @@
 
 import { cn } from '@/lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
-import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect, forwardRef, useCallback } from 'react';
 
 const tooltipVariants = cva(
 	'absolute bg-black rounded-lg p-2 px-4 z-50 text-white text-xs',
 	{
 		variants: {
-			variant: {
+			position: {
 				top: 'absolute bottom-full left-1/2 -translate-x-1/2 mb-3 before:absolute before:top-full before:left-1/2 before:rotate-45 before:-translate-x-1/2 before:-translate-y-1/2 before:bg-black before:size-3 before:z-[-1]',
 				left: 'absolute top-1/2 right-full -translate-y-1/2 mr-3 before:absolute before:left-full before:top-1/2 before:rotate-45 before:-translate-x-1/2 before:-translate-y-1/2 before:bg-black before:size-3 before:z-[-1]',
 				right:
@@ -19,31 +18,44 @@ const tooltipVariants = cva(
 			},
 		},
 		defaultVariants: {
-			variant: 'top',
+			position: 'top',
 		},
 	}
 );
 
 interface TooltipProps extends VariantProps<typeof tooltipVariants> {
-	children: React.ReactNode;
-	content: string | React.ReactNode;
+	children?: React.ReactNode;
+	content?: string | React.ReactNode;
 	className?: string;
-	asChild?: boolean;
+	delay?: number;
 }
 
-const ToolTip = React.forwardRef<HTMLDivElement, TooltipProps>(
-	({ children, content, className, variant }, ref) => {
+const ToolTip = forwardRef<HTMLDivElement, TooltipProps>(
+	({ children, content, className, position, delay = 0 }, ref) => {
 		const [isHover, setIsHover] = useState(false);
+		const [timeOutId, setTimeOutId] = useState<NodeJS.Timeout | null>(null);
+		const handleDelay = () => {
+			const id = setTimeout(() => setIsHover(true), 1000 * delay);
+			setTimeOutId(id);
+		};
+
+		const handleClearDelay = () => {
+			if (timeOutId) {
+				setIsHover(false);
+				clearTimeout(timeOutId);
+				setTimeOutId(null);
+			}
+		};
 		return (
 			<div
 				className="relative"
-				onMouseEnter={() => setIsHover(true)}
-				onMouseLeave={() => setIsHover(false)}
+				onMouseEnter={handleDelay}
+				onMouseLeave={handleClearDelay}
 				ref={ref}
 			>
 				{children}
 				{isHover && (
-					<div className={cn(tooltipVariants({ variant, className }))}>
+					<div className={cn(tooltipVariants({ position, className }))}>
 						{content}
 					</div>
 				)}

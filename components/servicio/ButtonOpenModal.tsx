@@ -11,9 +11,11 @@ export default function ButtonOpenModal({ text }: { text: string }) {
 			className="px-5"
 			onClick={() =>
 				openModal({
-					header: 'Contratar',
-					body: <FormHire />,
-					addButton: <Button>Contratar</Button>,
+					content: {
+						header: 'Contratar',
+						body: <FormHire />,
+						addButton: <Button>Contratar</Button>,
+					},
 				})
 			}
 		>

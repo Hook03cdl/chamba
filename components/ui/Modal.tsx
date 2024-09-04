@@ -21,17 +21,14 @@ export default function Modal() {
 					className="fixed inset-0 flex justify-center items-center bg-black/30 h-svh w-full px-24 py-12 overflow-y-auto"
 					onClick={handleCloseModal}
 				>
-					{modal.body && (
+					{modal.content?.body && (
 						<div className="bg-humo p-5 w-full max-w-4xl rounded-lg">
-							<h3 className="text-3xl text-gray-400">{modal.header}</h3>
+							<h3 className="text-3xl text-gray-400">{modal.content.header}</h3>
 							<Separator />
-							<div>
-								<p className="sr-only">Body</p>
-								{modal.body}
-							</div>
+							<div>{modal.content.body}</div>
 							<Separator />
 							<div className="flex justify-end gap-5">
-								{modal.addButton && modal.addButton}
+								{modal.content.addButton && modal.content.addButton}
 								<Button variant={'secondary'} onClick={closeModal}>
 									Cancelar
 								</Button>
@@ -39,7 +36,7 @@ export default function Modal() {
 						</div>
 					)}
 
-					{modal.image && (
+					{modal?.image && (
 						<img
 							src={modal.image || '/images/notFound.png'}
 							alt="Imagen"

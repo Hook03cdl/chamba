@@ -28,10 +28,10 @@ export interface ToastProps extends VariantProps<typeof toastVariant> {
 }
 
 const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
-	({ id, className, title, description, variant }) => {
+	({ id, className, title, description, variant }, ref) => {
 		const { removeToast } = useToasts();
 		return (
-			<div className={cn(toastVariant({ className, variant }))}>
+			<div className={cn(toastVariant({ className, variant }))} ref={ref}>
 				<div className="grow">
 					<h3 className="font-semibold">{title}</h3>
 					<p>{description}</p>

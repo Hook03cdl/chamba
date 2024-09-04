@@ -3,32 +3,34 @@ import { create } from 'zustand';
 interface ModalProps {
 	isOpen: boolean;
 	modal: {
-		header?: string | React.ReactNode;
-		body?: React.ReactNode;
+		content?: {
+			header: string | React.ReactNode;
+			body: React.ReactNode;
+			addButton?: React.ReactElement;
+		};
 		image?: string;
-		addButton?: React.ReactElement;
 	};
 }
 export const useModal = create<ModalProps>(() => ({
 	isOpen: false,
-	modal: { header: '', body: null, image: 'body' },
+	modal: { content: { header: '', body: null }, image: '' },
 }));
 
 export const openModal = ({
-	header,
-	body,
+	content,
 	image,
-	addButton,
 }: {
-	header?: string;
-	body?: React.ReactNode;
-	addButton?: React.ReactElement;
+	content?: {
+		header: string | React.ReactNode;
+		body: React.ReactNode;
+		addButton?: React.ReactElement;
+	};
 	image?: string;
 }) => {
 	document.body.classList.add('overflow-hidden');
 	useModal.setState(() => ({
 		isOpen: true,
-		modal: { header, body, addButton, image },
+		modal: { content, image },
 	}));
 };
 
