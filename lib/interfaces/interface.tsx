@@ -28,3 +28,15 @@ export interface ChambaProps {
 	job_name: string;
 	worker_name: string;
 }
+
+export interface ReviewsProps {
+	id: number;
+	request_chamba_id: number;
+	chamba_id: number;
+	client_id: number;
+	worker_id: number;
+	rating: number;
+	comment: string;
+	created_at: string;
+	updated_at: string;
+}

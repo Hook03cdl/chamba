@@ -2,7 +2,7 @@
 
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import setTokens from '../utils/tokens';
+import { setToken } from '../utils/tokens';
 
 export async function AuthWithPasswordAndEmail(formdata: FormData) {
 	let tokenAuth = '';
@@ -34,7 +34,7 @@ export async function SingupWithPasswordAndEmail(formdata: FormData) {
 		if (!res.ok) return;
 		const user = await res.json();
 		console.log(user);
-		await setTokens('session', user.token);
+		await setToken('session', user.token);
 	} catch (error) {
 		console.log(error);
 		return;

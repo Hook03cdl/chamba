@@ -1,4 +1,4 @@
-import Gallery from '@/components/servicio/Gallery';
+import Gallery from '@/components/profile/Gallery';
 import { Camera } from 'lucide-react';
 
 const photos = [

@@ -1,10 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 
-import Navbar from '@/components/servicio/Navbar';
+import Navbar from '@/components/profile/Navbar';
 import { Button } from '@/components/ui/button';
 import Separator from '@/components/ui/Separator';
 import Tags from '@/components/ui/Tags';
+import fetchReviewsData from '@/lib/data/reviews';
 import { fetchDataUser } from '@/lib/data/user';
+import { Camera, Mailbox } from 'lucide-react';
 
 export default async function PerfilLayout({
 	children,
@@ -12,6 +14,9 @@ export default async function PerfilLayout({
 	children: React.ReactNode;
 }) {
 	const user = await fetchDataUser();
+	if (user) {
+		const reviews = await fetchReviewsData();
+	}
 
 	return (
 		<section className="min-h-svh p-5">
@@ -52,7 +57,21 @@ export default async function PerfilLayout({
 			</div>
 			<Separator />
 			<div className="space-y-5">
-				<Navbar />
+				<Navbar
+					navOptions={[
+						{ href: '/perfil', text: 'Galerias', icon: <Camera /> },
+						{
+							href: '/perfil/solicitudes',
+							text: 'Solicitides',
+							icon: <Mailbox />,
+							body: (
+								<span className="grid place-items-center size-auto px-2 py-1 rounded-full text-xs text-center bg-gray-300">
+									0
+								</span>
+							),
+						},
+					]}
+				/>
 				{children}
 			</div>
 		</section>

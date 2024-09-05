@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import CardSolict from '@/components/servicio/CardSolict';
+import CardSolict from '@/components/profile/CardSolict';
 import React from 'react';
 
 export default function page() {
