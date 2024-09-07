@@ -7,7 +7,7 @@ import { closeModal, useModal } from '@/lib/hooks/useModal';
 
 export default function Modal() {
 	const { isOpen, modal } = useModal();
-
+	
 	const handleCloseModal = (e: React.MouseEvent<HTMLDivElement>) => {
 		if (e.target == e.currentTarget) {
 			closeModal();
