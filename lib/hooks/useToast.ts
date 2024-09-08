@@ -1,9 +1,15 @@
-import { randomUUID } from 'crypto';
 import { create } from 'zustand';
+
+type ToastType = 'default' | 'success' | 'error' | 'warning';
+export interface ContentToastProps {
+	title: string;
+	msg: string;
+	type?: ToastType;
+}
 
 interface props {
 	toasts: any[];
-	addToast: (
+	addToast: <ToastProps>(
 		title: string,
 		msg: string,
 		type?: 'error' | 'success' | 'warning' | 'default'

@@ -15,7 +15,7 @@ export default function Pruebas() {
 		<section className="p-5 min-h-svh space-y-10">
 			<div>
 				<h3 className="text-4xl mb-3">Header</h3>
-				<Navbar />
+				{/* <Navbar /> */}
 			</div>
 			<div>
 				<h3 className="text-4xl mb-3">CheckBox</h3>
@@ -119,7 +119,7 @@ export default function Pruebas() {
 				>
 					Borrar token
 				</Button>
-			</div>
+			</div>{' '}
 			<div>
 				<h3 className="text-4xl mb-3">Get Token</h3>
 				<Button onClick={() => addToast('Prueba', 'hola', 'default')}>

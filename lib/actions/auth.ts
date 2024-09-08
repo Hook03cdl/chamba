@@ -53,7 +53,7 @@ export async function LogoutUser() {
 	const session = cookie.get('session');
 	try {
 		await fetch('http://127.0.0.1:8000/api/logout', {
-			headers: { Autorization: `Bearer ${session?.value}` },
+			headers: { Authorization: `Bearer ${session?.value}` },
 		});
 		cookie.delete('session');
 		console.log('Sesion eliminadas');

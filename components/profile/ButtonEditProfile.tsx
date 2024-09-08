@@ -2,9 +2,19 @@
 
 import { Button } from '@/components/ui/button';
 import { openModal } from '@/lib/hooks/useModal';
-import Personal from '@/components/signup/Personal';
+import ButtonSubmit from '../ui/ButtonSubmit';
+import FormPersonalData from '../signup/FormPersonalData';
+import { useState } from 'react';
 
 export default function ButtonEditProfile() {
+	const [isLoading, setIsLoading] = useState(false);
+
+	const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		setIsLoading(true);
+		// Aquí va tu lógica de envío del formulario
+		setIsLoading(false);
+	};
 	return (
 		<Button
 			size={'sm'}
@@ -15,13 +25,11 @@ export default function ButtonEditProfile() {
 						header: 'Editar Perfil',
 						body: (
 							<div className="grid place-content-center">
-								<Personal idForm="editUser" />
+								<FormPersonalData idForm="editUser" />
 							</div>
 						),
 						addButton: (
-							<Button type="submit" form="editUser">
-								Guardar cambios
-							</Button>
+							<ButtonSubmit form="editUser">Guardar cambios</ButtonSubmit>
 						),
 					},
 				})

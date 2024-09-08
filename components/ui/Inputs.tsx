@@ -2,7 +2,8 @@
 
 import { Check, Eye, EyeOff, Search } from 'lucide-react';
 import { text } from 'node:stream/consumers';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import Each from '../Each';
 
 const variants = {
 	light: {
@@ -26,6 +27,10 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 interface TextAreaProps
 	extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
 	label: string;
+}
+interface RadioGroupProps extends React.InputHTMLAttributes<HTMLInputElement> {
+	options: { label: string; value: string }[];
+	select?: string;
 }
 
 export function Input({
@@ -147,26 +152,43 @@ export function TextArea({ label }: TextAreaProps) {
 	);
 }
 
-export default function InputRadio({
+export default function RadioGroup({
+	options,
 	className,
 	id,
-	label,
+	select = '',
 	...props
-}: InputProps) {
+}: RadioGroupProps) {
+	const [selectedValue, setSelectedValue] = useState(select);
+	const handleChange = (value: string) => {
+		// console.log(value);
+
+		setSelectedValue(value);
+	};
 	return (
-		<label>
-			<input
-				type="radio"
-				name={id}
-				id={id}
-				className="hidden peer/check"
-				{...props}
+		<>
+			<Each
+				of={options}
+				render={(radio, i) => (
+					<label key={i}>
+						<input
+							type="radio"
+							name={id}
+							id={`${id}-${i}`}
+							className="hidden peer/check"
+							value={radio.value}
+							{...props}
+							checked={selectedValue == radio.value}
+							onChange={() => handleChange(radio.value)}
+						/>
+						<span
+							className={`border-2 border-gray-300 p-2 rounded-lg peer-checked/check:bg-niagara-300 ${className}`}
+						>
+							{radio.label}
+						</span>
+					</label>
+				)}
 			/>
-			<span
-				className={`border-2 border-gray-300 p-2 rounded-lg peer-checked/check:bg-niagara-300 ${className}`}
-			>
-				{label}
-			</span>
-		</label>
+		</>
 	);
 }
