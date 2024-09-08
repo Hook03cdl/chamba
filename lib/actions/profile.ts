@@ -11,9 +11,22 @@ export async function editDataUser(
 ): Promise<ContentToastProps> {
 	const session = await getToken('session');
 
-	// await new Promise((resolve) => {
-	// 	setTimeout(resolve, 5000);
-	// });
+	const data = {
+		name: formData.get('name'),
+		phone: formData.get('phone_number'),
+		city: formData.get('city'),
+		code: formData.get('postal_code'),
+		street: formData.get('street'),
+	};
+
+	if (!data.name || !data.phone || !data.city || !data.code || !data.street) {
+		return {
+			title: 'Campos vacios',
+			msg: 'Necesitas llenar todos lo campos, de lo contario no podras guardar los cambios',
+			type: 'warning',
+		};
+	}
+
 	try {
 		await Fetch('/user/updateProfile', {
 			headers: { Authorization: `Bearer ${session}` },

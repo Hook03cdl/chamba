@@ -9,13 +9,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useFormState } from 'react-dom';
 
-export default function FormPersonalData({
-	idForm,
-	onSubmit,
-}: {
-	idForm: string;
-	onSubmit?: () => void;
-}) {
+export default function FormPersonalData({ idForm }: { idForm: string }) {
 	const route = useRouter();
 	const { addToast } = useToasts();
 	const [user, setUser] = useState<UserProps | undefined>();
@@ -57,6 +51,7 @@ export default function FormPersonalData({
 					className="w-full"
 					required
 					defaultValue={user?.name}
+					errorMsg="No puedes dejar este espacio vacio"
 				/>
 				<Input
 					variant="dark"
@@ -65,20 +60,21 @@ export default function FormPersonalData({
 					className="w-full"
 					required
 					defaultValue={user?.phone_number || ''}
+					minLength={10}
+					maxLength={12}
+					errorMsg="No puedes dejar este espacio vacio"
 				/>
-				<div className="space-y-3">
-					<h3>Selecione una ciudad</h3>
-					<div className="grid grid-cols-[2fr_1fr] gap-5">
-						<div className="space-x-5">
-							<RadioGroup
-								id="city"
-								options={[
-									{ label: 'La Paz', value: 'La Paz' },
-									{ label: 'San Jose del Cabo', value: 'San Jose del Cabo' },
-								]}
-								select={user?.city || ''}
-							/>
-						</div>
+				<div>
+					<div className="grid grid-cols-[2fr_1fr] items-end gap-5">
+						<RadioGroup
+							header="Seleciona una ciudad"
+							id="city"
+							options={[
+								{ label: 'La Paz', value: 'La Paz' },
+								{ label: 'San Jose del Cabo', value: 'San Jose del Cabo' },
+							]}
+							select={user?.city || ''}
+						/>
 
 						<Input
 							variant="dark"
@@ -87,6 +83,8 @@ export default function FormPersonalData({
 							required
 							className="w-full"
 							defaultValue={user?.postal_code || ''}
+							minLength={5}
+							errorMsg="Debe de conenter un codigo postal"
 						/>
 					</div>
 				</div>

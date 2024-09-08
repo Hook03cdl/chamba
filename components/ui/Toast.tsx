@@ -12,7 +12,7 @@ const toastVariant = cva(
 				default: 'shadow-gray-600',
 				success: 'shadow-green-600',
 				error: 'shadow-red-600',
-				warn: 'shadow-yellow-600',
+				warning: 'shadow-yellow-600',
 			},
 		},
 		defaultVariants: { variant: 'default' },
