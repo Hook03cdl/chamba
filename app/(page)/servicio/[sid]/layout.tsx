@@ -38,10 +38,10 @@ export default async function ServicePage({
 					<div className="space-y-5 w-full">
 						<div className="space-y-2">
 							<h2 className="text-2xl font-semibold">
-								{chamba?.worker_name}{' '}
+								{chamba?.worker_name}
 								<span className="text-gray-400 text-sm">({chamba?.title})</span>
 							</h2>
-							{chamba?.worker_name && <Tags texts={chamba?.job_name} />}
+							{chamba?.worker_name && <Tags texts={chamba?.trabajo_name} />}
 						</div>
 						<div className="flex justify-between items-center">
 							<div className="flex items-center gap-5">

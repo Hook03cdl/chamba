@@ -146,3 +146,27 @@ export function TextArea({ label }: TextAreaProps) {
 		</div>
 	);
 }
+
+export default function InputRadio({
+	className,
+	id,
+	label,
+	...props
+}: InputProps) {
+	return (
+		<label>
+			<input
+				type="radio"
+				name={id}
+				id={id}
+				className="hidden peer/check"
+				{...props}
+			/>
+			<span
+				className={`border-2 border-gray-300 p-2 rounded-lg peer-checked/check:bg-niagara-300 ${className}`}
+			>
+				{label}
+			</span>
+		</label>
+	);
+}

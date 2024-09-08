@@ -4,11 +4,9 @@ import Navbar from '@/components/profile/Navbar';
 import { Button } from '@/components/ui/button';
 import Separator from '@/components/ui/Separator';
 import Tags from '@/components/ui/Tags';
-import fetchReviewsData from '@/lib/data/reviews';
 import { fetchDataUser } from '@/lib/data/user';
 import { Camera, Mailbox } from 'lucide-react';
-import { openModal, useModal } from '@/lib/hooks/useModal';
-import ButtonPerfil from './ButtonPerfil';
+import ButtonEditProfile from '@/components/profile/ButtonEditProfile';
 
 export default async function PerfilLayout({
 	children,
@@ -16,10 +14,8 @@ export default async function PerfilLayout({
 	children: React.ReactNode;
 }) {
 	const user = await fetchDataUser();
-	if (user) {
-		const reviews = await fetchReviewsData();
-	}
-	
+	// console.log(user);
+
 	return (
 		<section className="min-h-svh p-5">
 			<div className="flex items-center gap-10">
@@ -34,8 +30,7 @@ export default async function PerfilLayout({
 						<Tags texts={['Albañil', 'Plomero']} />
 					</div>
 					<div className="flex items-center gap-5">
-						<ButtonPerfil>
-						</ButtonPerfil>
+						<ButtonEditProfile />
 						<Button size={'sm'} variant={'outline'}>
 							Compartir perfil
 						</Button>

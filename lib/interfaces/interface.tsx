@@ -25,7 +25,7 @@ export interface ChambaProps {
 	worker_id: number;
 	created_at: string;
 	updated_at: string;
-	job_name: string;
+	trabajo_name: string;
 	worker_name: string;
 }
 

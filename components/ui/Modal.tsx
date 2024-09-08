@@ -7,7 +7,7 @@ import { closeModal, useModal } from '@/lib/hooks/useModal';
 
 export default function Modal() {
 	const { isOpen, modal } = useModal();
-	
+
 	const handleCloseModal = (e: React.MouseEvent<HTMLDivElement>) => {
 		if (e.target == e.currentTarget) {
 			closeModal();
@@ -18,7 +18,7 @@ export default function Modal() {
 		<>
 			{isOpen && (
 				<div
-					className="fixed inset-0 flex justify-center items-center bg-black/30 h-svh w-full px-24 py-12 overflow-y-auto"
+					className="fixed inset-0 flex justify-center items-center bg-black/30 h-svh w-full px-24 py-12 overflow-y-auto transition-[height]"
 					onClick={handleCloseModal}
 				>
 					{modal.content?.body && (

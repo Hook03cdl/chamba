@@ -18,9 +18,7 @@ export async function fetchDataChambas(): Promise<ChambaProps[] | undefined> {
 	}
 	return undefined;
 }
-export async function fetchDataChamba(
-	cid: string
-): Promise<ChambaProps | undefined> {
+export async function fetchDataChamba(cid: string) {
 	const cookie = cookies();
 	const session = cookie.get('session');
 
