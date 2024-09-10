@@ -2,8 +2,10 @@ import Dropdown from '@/components/ui/Dropdown';
 import NavLink from './NavLink';
 import Logo from '../ui/Logo';
 import { Checkbox } from '../ui/Inputs';
+import { fetchDataJobs } from '@/lib/data/jobs';
 
-export default function AsideBar() {
+export default async function AsideBar() {
+	const jobs = (await fetchDataJobs()) ?? [];
 	return (
 		<aside className="sticky top-0 left-0 overflow-y-auto flex flex-col items-center gap-24 w-72 h-screen bg-niagara-500 p-5 py-10">
 			<div>
@@ -21,12 +23,9 @@ export default function AsideBar() {
 				</Dropdown>
 				<Dropdown text="Menu">
 					<div className="flex gap-3 flex-wrap p-2">
-						<Checkbox label="Plomeria" />
-						<Checkbox label="Albañileria" />
-						<Checkbox label="Limpieza" />
-						<Checkbox label="Transporte" />
-						<Checkbox label="Marmoleria" />
-						<Checkbox label="Soldador" />
+						{jobs.map((job) => (
+							<Checkbox key={job.id} label={job.name} />
+						))}
 					</div>
 				</Dropdown>
 				<NavLink href="/pruebas" className="text-white bg-niagara-400">

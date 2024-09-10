@@ -16,6 +16,14 @@ export interface UserProps {
 	worker_name: string;
 }
 
+export interface JobProps {
+	id: number;
+	name: string;
+	description: string;
+	created_at: string;
+	updated_at: string;
+}
+
 export interface ChambaProps {
 	id: number;
 	title: string;
