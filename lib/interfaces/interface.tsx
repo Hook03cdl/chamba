@@ -35,6 +35,7 @@ export interface ChambaProps {
 	updated_at: string;
 	trabajo_name: string;
 	worker_name: string;
+	slug: string;
 }
 
 export interface ReviewsProps {

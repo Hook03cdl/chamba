@@ -25,6 +25,7 @@ export default async function ServicePage({
 	params: { sid: string };
 }) {
 	const chamba = await fetchDataChamba(params.sid);
+	// console.log(chamba);
 
 	return (
 		<section className="min-h-svh p-5">
@@ -41,7 +42,7 @@ export default async function ServicePage({
 								{chamba?.worker_name}
 								<span className="text-gray-400 text-sm">({chamba?.title})</span>
 							</h2>
-							{chamba?.worker_name && <Tags texts={chamba?.trabajo_name} />}
+							{chamba?.job_name && <Tags texts={chamba?.job_name} />}
 						</div>
 						<div className="flex justify-between items-center">
 							<div className="flex items-center gap-5">

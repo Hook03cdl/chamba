@@ -25,7 +25,7 @@ export default function Card({
 	href,
 }: CardProps) {
 	return (
-		<div className="grid grid-rows-[1fr_auto] max-w-64 h-fit rounded-xl border border-gray-300 overflow-hidden shadow-md">
+		<div className="grid grid-rows-[1fr_auto] max-w-md h-full max-h-96 rounded-xl border border-gray-300 overflow-hidden shadow-md">
 			<Link href={href}>
 				<div>
 					<img
@@ -33,7 +33,7 @@ export default function Card({
 						alt={name}
 						className="h-40 w-full object-cover"
 					/>
-					<div className="flex flex-col justify-between p-3 bg-white">
+					<div className="flex flex-col justify-between p-3">
 						<h6 className="text-lg font-semibold">{name}</h6>
 						<span className="text-gray-400 text-xs py-0">{job_name}</span>
 						<p className="text-balance line-clamp-3">{description}</p>

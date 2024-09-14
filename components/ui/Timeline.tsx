@@ -2,8 +2,8 @@
 
 import { AtSign, ChevronLeft, User } from 'lucide-react';
 import { ToolTip } from './Tooltip';
-import { useEffect, useState } from 'react';
-import { navigate, useTimeLine } from '@/lib/hooks/useTimeLine';
+import {  useState } from 'react';
+import { navigate } from '@/lib/hooks/useTimeLine';
 import Each from '../Each';
 import { Button } from './button';
 
