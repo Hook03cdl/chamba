@@ -16,7 +16,7 @@ export default async function Home() {
 					of={chambas || []}
 					render={(c: ChambaProps) => (
 						<Card
-							href={`/servicio/${c.id}`}
+							href={`/servicio/${c.slug}`}
 							src={''}
 							id={c.id.toString()}
 							name={`${c.title}`}
