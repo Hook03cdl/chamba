@@ -39,12 +39,12 @@ export interface ChambaProps {
 }
 
 export interface ReviewsProps {
-	id: number;
-	request_chamba_id: number;
-	chamba_id: number;
-	client_id: number;
-	worker_id: number;
-	rating: number;
+	id: string;
+	request_chamba_id: string;
+	chamba_id: string;
+	client_id: string;
+	worker_id: string;
+	rating: string;
 	comment: string;
 	created_at: string;
 	updated_at: string;
