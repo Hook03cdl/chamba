@@ -66,7 +66,7 @@ export default async function PerfilLayout({
 								</span>
 							),
 						},
-						{ href: '/perfil/dashboard', text: "Dashboard", icon: <CircleGauge></CircleGauge> }
+						{ href: '/dashboard', text: "Dashboard", icon: <CircleGauge></CircleGauge> }
 					]}
 				/>
 				{children}
