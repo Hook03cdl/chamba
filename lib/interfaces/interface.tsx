@@ -46,6 +46,7 @@ export interface ReviewsProps {
 	worker_id: string;
 	rating: string;
 	comment: string;
+	client_name: string;
 	created_at: string;
 	updated_at: string;
 }

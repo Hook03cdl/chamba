@@ -11,7 +11,9 @@ export default async function Page({ params }) {
   return (
     <div className="grid grid-cols-3 grid-rows-2 gap-4">
       <div className="col-span-2 bg-white h-screen rounded-md shadow-md">
-        <h1 className="text-2xl font-bold">{chamba.title}</h1>
+        <div className="m-4">
+          <h1 className="text-gray-800 text-2xl font-bold">{chamba.title}</h1>
+        </div>
         <p className="text-sm">{chamba.description}</p>
         <span>{chamba.job_name}</span>
         <span>{chamba.worker_name}</span>
@@ -20,7 +22,8 @@ export default async function Page({ params }) {
         {" "}
         <RequestChamba />{" "}
       </div>
-      <div className="col-span-3 row-start-2 bg-white rounded-md shadow-md">
+      <div className="col-span-3 row-start-2 bg-white rounded-md shadow-md p-2">
+        <span className="font-bold m-2">Reviews</span>
         {reviews?.map((review: ReviewsProps) => (
           <Review
             key={review.id}
@@ -31,6 +34,7 @@ export default async function Page({ params }) {
             worker_id={review.worker_id}
             rating={review.rating}
             comment={review.comment}
+            client_name={review.client_name}
           />
         ))}
       </div>
