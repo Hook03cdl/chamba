@@ -35,3 +35,21 @@ export async function fetchDataChamba(cid: string) {
 	}
 	return undefined;
 }
+
+export async function fetchDataChambasWorker() {
+	const cookie = cookies();
+	const session = cookie.get('session');
+	try {
+		const { chambas } = await Fetch<any>('/mychambas', {
+			method: 'GET',
+			headers: {
+				Authorization: `Bearer ${session?.value}`,
+			},
+		});
+		console.log(chambas);
+		return chambas;
+	} catch (error) {
+		console.log(error);
+	}
+	return undefined;
+}

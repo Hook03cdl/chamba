@@ -10,12 +10,13 @@ interface NavLinkProps extends LinkProps {
 }
 
 export default function NavLink({
-  className,
+  className = "",
   children,
   href,
   ...props
 }: NavLinkProps) {
   const pathname = usePathname();
+  //No funciona para rutas anidadas ej: /dashboard/chambas/edit/[slug]
   const isActive = pathname === href;
 
   return (
