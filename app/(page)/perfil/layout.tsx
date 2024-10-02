@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import Separator from '@/components/ui/Separator';
 import Tags from '@/components/ui/Tags';
 import { fetchDataUser } from '@/lib/data/user';
-import { Camera, Mailbox, CircleGauge} from 'lucide-react';
+import { Camera, Mailbox } from 'lucide-react';
 import ButtonEditProfile from '@/components/profile/ButtonEditProfile';
 
 export default async function PerfilLayout({
@@ -56,17 +56,7 @@ export default async function PerfilLayout({
 				<Navbar
 					navOptions={[
 						{ href: '/perfil', text: 'Galerias', icon: <Camera /> },
-						{
-							href: '/perfil/solicitudes',
-							text: 'Solicitides',
-							icon: <Mailbox />,
-							body: (
-								<span className="grid place-items-center size-auto px-2 py-1 rounded-full text-xs text-center bg-gray-300">
-									0
-								</span>
-							),
-						},
-						{ href: '/dashboard', text: "Dashboard", icon: <CircleGauge></CircleGauge> }
+						{ href: '/perfil/info', text: 'Información', icon: <Mailbox /> },
 					]}
 				/>
 				{children}
