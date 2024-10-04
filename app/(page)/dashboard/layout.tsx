@@ -1,14 +1,14 @@
-import AsideBar from "@/components/aside/AsideBar";
+import AsideBar from '@/components/aside/AsideBar';
 
 export default function LayoutPage({
-  children,
+	children,
 }: Readonly<{ children: React.ReactNode }>) {
-  return (
-    <>
-      <main className="grid grid-cols-[auto_1fr]">
-        <AsideBar />
-        <div>{children}</div>
-      </main>
-    </>
-  );
+	return (
+		<>
+			<main className="h-screen grid grid-cols-[auto_1fr]">
+				<AsideBar />
+				<div>{children}</div>
+			</main>
+		</>
+	);
 }

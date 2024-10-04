@@ -18,10 +18,14 @@ export default async function Avatar() {
 		>
 			<Link
 				href={'/perfil'}
-				className=" grid rounded-full hover:bg-niagara-200 p-1"
+				className=" grid rounded-full hover:bg-niagara-200 p-1 overflow-hidden"
 			>
 				{user?.src ? (
-					<img src={user.src} alt="user" className="size-12 rounded-full" />
+					<img
+						src={user.src}
+						alt={user?.name}
+						className="size-12 rounded-full"
+					/>
 				) : (
 					<img
 						src={
@@ -31,7 +35,7 @@ export default async function Avatar() {
 								  )}`
 								: '/images/notFound.png'
 						}
-						alt=""
+						alt={user?.name}
 						className="size-10"
 					/>
 				)}

@@ -18,12 +18,12 @@ export async function fetchDataChambas(): Promise<ChambaProps[] | undefined> {
 	}
 	return undefined;
 }
-export async function fetchDataChamba(cid: string) {
+export async function fetchDataChamba(slug: string) {
 	const cookie = cookies();
 	const session = cookie.get('session');
 
 	try {
-		const { chamba } = await Fetch<any>(`/chamba/${cid}`, {
+		const { chamba } = await Fetch<any>(`/chamba/${slug}`, {
 			headers: {
 				Authorization: `Bearer ${session?.value}`,
 			},

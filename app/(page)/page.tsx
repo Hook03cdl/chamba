@@ -6,12 +6,13 @@ import { ChambaProps } from '@/lib/interfaces/interface';
 
 export default async function Home() {
 	const chambas = await fetchDataChambas();
+	console.log(chambas);
 
 	return (
-		<section className="p-5 min-h-svh">
+		<section className="p-5 px-20 min-h-svh">
 			<NavChambas chambas={['Albañil', 'Plomero', 'Carpintero', 'Yesero']} />
 
-			<div className="w-full grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] place-items-center gap-5">
+			<div className="w-full grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] place-items-center gap-10">
 				<Each
 					of={chambas || []}
 					render={(c: ChambaProps) => (

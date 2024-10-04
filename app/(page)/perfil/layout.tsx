@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import Separator from '@/components/ui/Separator';
 import Tags from '@/components/ui/Tags';
 import { fetchDataUser } from '@/lib/data/user';
-import { Camera, Mailbox } from 'lucide-react';
+import { Camera, ChartCandlestick, Mailbox, Users, Wrench } from 'lucide-react';
 import ButtonEditProfile from '@/components/profile/ButtonEditProfile';
 
 export default async function PerfilLayout({
@@ -37,17 +37,20 @@ export default async function PerfilLayout({
 					</div>
 				</div>
 				<div className="ml-20 flex gap-10">
-					<div>
+					<div className="grid place-items-center">
+						<Users />
 						<h4 className="font-semibold">Seguidores</h4>
 						<p className="text-center text-sm font-semibold">177</p>
 					</div>
-					<div>
+					<div className="grid place-items-center">
+						<Wrench />
 						<h4 className="font-semibold">Trabajos realizados</h4>
 						<p className="text-center text-sm font-semibold">3</p>
 					</div>
-					<div>
+					<div className="grid place-items-center">
+						<ChartCandlestick />
 						<h4 className="font-semibold">Rating</h4>
-						<p className="text-center text-sm font-semibold">3</p>
+						<p className="text-center text-sm font-semibold">{user?.rating}</p>
 					</div>
 				</div>
 			</div>

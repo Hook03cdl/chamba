@@ -61,7 +61,7 @@ export function Input({
 					id={id}
 					name={id}
 					type={getType(type)}
-					className={` bg-inherit outline-none border-b-2 peer/input  ${
+					className={`bg-inherit outline-none peer/input  p-1 ${
 						isChange ? 'invalid:border-red-500' : ''
 					}  ${variants[variant].input}  ${className}`}
 					{...props}
@@ -80,7 +80,7 @@ export function Input({
 				)}
 				<label
 					htmlFor={id}
-					className={`absolute top-1/2 left-0 -translate-y-1/2 ${
+					className={`absolute top-1/2 left-1 -translate-y-1/2 ${
 						isChange
 							? 'peer-invalid/input:text-red-500 peer-invalid/input:top-0 peer-invalid/input:left-3 peer-invalid/input:text-xs peer-invalid/input:-translate-y-full'
 							: ''
@@ -94,7 +94,7 @@ export function Input({
 				{type === 'password' && (
 					<button
 						type="button"
-						className={`absolute right-0 top-1/2 -translate-y-1/2 ${
+						className={`absolute right-3 top-1/2 -translate-y-1/2 ${
 							variant == 'light' ? 'text-humo/65' : 'text-base/65'
 						}`}
 						onClick={() => setShow(!show)}
@@ -107,7 +107,13 @@ export function Input({
 	);
 }
 
-export function Checkbox({ label, className, id, ...props }: InputProps) {
+export function Checkbox({
+	label,
+	className,
+	id,
+	children,
+	...props
+}: InputProps) {
 	const checkRef = useRef<HTMLInputElement | null>(null);
 
 	const [isCheck, setIsCheck] = useState(false);
@@ -141,7 +147,10 @@ export function Checkbox({ label, className, id, ...props }: InputProps) {
 					<Check size={13} color="#fff" />
 				</span>
 			</div>
-			<span>{label}</span>
+			<div>
+				<h3>{label}</h3>
+				{children}
+			</div>
 		</label>
 	);
 }
