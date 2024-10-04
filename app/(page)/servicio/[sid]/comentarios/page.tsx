@@ -22,7 +22,7 @@ export default async function Page({ params }: { params: { sid: string } }) {
 					</div>
 					<p>{r.comment}</p>
 					<span className="text-xs text-shark">
-						<RelativeTime dateTime={r.created_at} />
+						{r.created_at && <RelativeTime dateTime={r.created_at} />}
 					</span>
 				</div>
 			))}

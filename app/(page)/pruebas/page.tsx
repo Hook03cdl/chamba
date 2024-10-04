@@ -72,7 +72,7 @@ export default function Pruebas() {
 					}
 				/>
 				<Toast
-					variant={'warn'}
+					variant={'warning'}
 					title={'Warning'}
 					description={
 						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi neque magnam fugiat deserunt eum pariatur.'
@@ -119,7 +119,7 @@ export default function Pruebas() {
 				>
 					Borrar token
 				</Button>
-			</div>{' '}
+			</div>
 			<div>
 				<h3 className="text-4xl mb-3">Get Token</h3>
 				<Button onClick={() => addToast('Prueba', 'hola', 'default')}>

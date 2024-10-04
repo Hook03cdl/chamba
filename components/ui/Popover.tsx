@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
-import ClickOut from './ClickOut';
+import React, { useState } from 'react';
+import ClickOut from './Clickout';
 
 interface PopoverProps {
 	fallback: React.ReactNode;
