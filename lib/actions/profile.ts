@@ -84,3 +84,54 @@ export async function updateUserJobs(
 		};
 	}
 }
+
+export async function updatePassword(_prevState: ContentToastProps, formData: FormData): Promise<ContentToastProps> {
+    const session = await getToken('session');
+    const data = {
+        email: formData.get('email'),
+        password: formData.get('password'),
+        password_confirmation: formData.get('password_confirmation'),
+    };
+
+    if (!data.email || !data.password || !data.password_confirmation) {
+        return {
+            title: 'Campos vacios',
+            msg: 'Necesitas llenar todos lo campos, de lo contario no podras guardar los cambios',
+            type: 'warning',
+        };
+    }
+
+    try {
+        const response = await fetch('http://localhost:8000/api/user/updatePassword', {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${session}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+        if (!response.ok) {
+            throw new Error('HTTP error! status: ' + response.status);
+        }
+        const result = await response.json();
+        if (result.error) {
+            return {
+                title: 'Error!',
+                msg: result.error,
+                type: 'error',
+            };
+        }
+        return {
+            title: 'Contrasena actualizada',
+            msg: 'Los cambios se han realizado con exito',
+            type: 'success',
+        };
+    } catch (error) {
+        console.error(error);
+        return {
+            title: 'Error!',
+            msg: 'A ocurrido un problema al momento de intentar efectuar los cambios',
+            type: 'error',
+        };
+    }
+}
