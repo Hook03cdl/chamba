@@ -17,7 +17,7 @@ export interface UserProps {
 }
 
 export interface JobProps {
-	id: number;
+	id: string;
 	name: string;
 	description: string;
 	created_at: string;

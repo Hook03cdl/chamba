@@ -5,13 +5,37 @@ import FileInput from "../FileInput";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { createChamba } from "@/lib/actions/dashboard/chambas";
-import React from "react";
+import React, { useEffect } from "react";
 import ButtonSubmit from "@/components/ui/ButtonSubmit";
+import { useFormState } from "react-dom";
+import { useRouter } from "next/navigation";
+import { useToasts } from "@/lib/hooks/useToast";
 
 export default function CreateForm({ jobs }: { jobs: any }) {
+  const [state, formAction] = useFormState(createChamba, {
+    title: "",
+    msg: "",
+    type: "default",
+  });
+
+  const router = useRouter();
+  const { addToast } = useToasts();
+
+  useEffect(() => {
+    if (state.msg && state.title) {
+      addToast(state.title, state.msg, state.type);
+      if (state.type === "success") {
+        router.refresh();
+      }
+      // Resetea el estado después de mostrar el toast
+      state.title = "";
+      state.msg = "";
+    }
+  }, [addToast, router, state, state.msg, state.title]);
+
   return (
     <div>
-      <form action={createChamba}>
+      <form action={formAction} noValidate>
         <div className="m-2 grid grid-cols-2 grid-rows-3 gap-2 border rounded-md bg-gray-100">
           <div className="p-4 text-gray-800">
             <label htmlFor="title" className="font-semibold text-md">
@@ -25,13 +49,13 @@ export default function CreateForm({ jobs }: { jobs: any }) {
           </div>
           <div className="p-4 text-gray-800">
             <span className="font-semibold text-md">Oficio</span>
-            <select id="job_id" name="job_id">
-              {jobs.map((job: JobProps) => (
-                <option key={job.id} value={job.id}>
+            <Select id="job_id" name="job_id">
+              {jobs.jobs.map((job: JobProps) => (
+                <SelectItem key={job.id} value={job.id}>
                   {job.name}
-                </option>
+                </SelectItem>
               ))}
-            </select>
+            </Select>
           </div>
           <div className="p-4 col-span-2 text-gray-800">
             <span className="font-semibold text-md">Descripcion</span>
@@ -41,9 +65,6 @@ export default function CreateForm({ jobs }: { jobs: any }) {
               placeholder="Escribe la descripcion de tu chamba"
               rows={2}
             />
-          </div>
-          <div className="p-4 text-gray-800 col-span-2 row-start-3">
-            <FileInput />
           </div>
           <div className="flex gap-4 p-4">
             <ButtonSubmit>Guardar</ButtonSubmit>
