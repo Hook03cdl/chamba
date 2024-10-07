@@ -6,7 +6,7 @@ export interface UserProps {
 	email_verified_at: boolean | null;
 	rating: number;
 	phone_number: string | null;
-	role: number;
+	role: string;
 	street: string | null;
 	postal_code: string | null;
 	city: string | null;

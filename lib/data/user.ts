@@ -15,6 +15,7 @@ export async function fetchDataUser(): Promise<UserProps | undefined> {
 					Authorization: `Bearer ${session?.value}`,
 				},
 			});
+			console.log('User: ', user);
 			return user;
 		} catch (error) {
 			console.log('Error user', error);
