@@ -50,3 +50,8 @@ export interface ReviewsProps {
 	created_at?: string;
 	updated_at?: string;
 }
+
+export interface DataDashboardProps {
+	requests: string
+	chambas: string;
+}
