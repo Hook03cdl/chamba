@@ -25,7 +25,7 @@ export interface JobProps {
 }
 
 export interface ChambaProps {
-	id: number;
+	id: string;
 	title: string;
 	description: string;
 	rating: number;
