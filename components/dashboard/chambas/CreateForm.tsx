@@ -50,7 +50,7 @@ export default function CreateForm({ jobs }: { jobs: any }) {
           <div className="p-4 text-gray-800">
             <span className="font-semibold text-md">Oficio</span>
             <Select id="job_id" name="job_id">
-              {jobs.jobs.map((job: JobProps) => (
+              {jobs.map((job: JobProps) => (
                 <SelectItem key={job.id} value={job.id}>
                   {job.name}
                 </SelectItem>
