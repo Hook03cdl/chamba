@@ -17,10 +17,14 @@ export default function JobsOptions() {
 			const userJobsData = await fetchJobsUser();
 
 			setJobs(data);
-			console.log(userJobsData.jobs);
+			setUserJobs(userJobsData.jobs);
 		}
 		fetchJobs();
 	}, []);
+
+	const isUserJob = (job: JobProps) => {
+		return userJobs?.some(userJob => userJob.id === job.id);
+	};
 
 	if (!jobs) {
 		return <h1>Cargando...</h1>;
@@ -33,7 +37,7 @@ export default function JobsOptions() {
 					of={jobs}
 					render={(job) => (
 						<div className="hover:bg-slate-300 p-2 rounded-md transition-colors duration-300">
-							<Checkbox label={job.name} value={job.name} name="jobs">
+							<Checkbox label={job.name} value={job.id} name="jobs" checked={isUserJob(job)}>
 								<p className={'text-gray-500'}>{job.description}</p>
 							</Checkbox>
 						</div>
