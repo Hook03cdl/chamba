@@ -2,22 +2,29 @@
 
 import React, { useState } from 'react';
 import ClickOut from './Clickout';
+import Link from 'next/link';
 
 interface PopoverProps {
 	fallback: React.ReactNode;
 	children?: React.ReactNode;
+	className?: string;
 }
 
-export default function Popover({ fallback, children }: PopoverProps) {
+interface ChildProps {
+	onClick?: () => void;
+}
+
+export default function Popover({
+	fallback,
+	children,
+	className,
+}: PopoverProps) {
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (
 		<ClickOut onClickout={(isClickout) => setIsOpen(!isClickout)}>
 			<div className={`relative`}>
-				<button
-					className="p-2 rounded-md hover:bg-gray-200 z-[-10]"
-					onClick={() => setIsOpen(!isOpen)}
-				>
+				<button className={className} onClick={() => setIsOpen(!isOpen)}>
 					{fallback}
 				</button>
 				{isOpen && (
@@ -27,5 +34,40 @@ export default function Popover({ fallback, children }: PopoverProps) {
 				)}
 			</div>
 		</ClickOut>
+	);
+}
+
+export function PopButton({
+	children,
+	onClick,
+}: {
+	children: React.ReactNode;
+	onClick: () => void;
+}) {
+	return (
+		<button
+			className="flex gap-4 items-center hover:bg-gray-200 p-2 rounded-md"
+			onClick={() => {
+				onClick();
+			}}
+		>
+			{children}
+		</button>
+	);
+}
+export function PopLink({
+	children,
+	href,
+}: {
+	children?: React.ReactNode;
+	href: string;
+}) {
+	return (
+		<Link
+			href={href}
+			className="flex gap-4 items-center hover:bg-gray-200 p-2 rounded-md"
+		>
+			{children}
+		</Link>
 	);
 }

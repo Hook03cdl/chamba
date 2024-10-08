@@ -1,14 +1,15 @@
 import { cookies } from 'next/headers';
 import { Fetch } from '../Fetch';
 import { ChambaProps } from '../interfaces/interface';
+import { getToken } from '../utils/tokens';
 
 export async function fetchDataChambas(): Promise<ChambaProps[] | undefined> {
 	const cookie = cookies();
-	const session = cookie.get('session');
+	const session = await getToken('session');
 	try {
 		const { chambas } = await Fetch<any>('/chamba', {
 			headers: {
-				Authorization: `Bearer ${session?.value}`,
+				Authorization: `Bearer ${session}`,
 			},
 		});
 

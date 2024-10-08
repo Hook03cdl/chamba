@@ -4,7 +4,7 @@ import Navbar from '@/components/profile/Navbar';
 import { Button } from '@/components/ui/button';
 import Separator from '@/components/ui/Separator';
 import Tags from '@/components/ui/Tags';
-import { fetchDataUser } from '@/lib/data/user';
+import { fetchDataUser, fetchJobsUser } from '@/lib/data/user';
 import { Camera, ChartCandlestick, Mailbox, Users, Wrench } from 'lucide-react';
 import ButtonEditProfile from '@/components/profile/ButtonEditProfile';
 
@@ -14,7 +14,8 @@ export default async function PerfilLayout({
 	children: React.ReactNode;
 }) {
 	const user = await fetchDataUser();
-	// console.log(user);
+	const jobsUser = await fetchJobsUser();
+	const jobs = jobsUser?.map((job) => job.name);
 
 	return (
 		<section className="min-h-svh p-5">
@@ -27,7 +28,7 @@ export default async function PerfilLayout({
 				<div className="space-y-5">
 					<div className="space-y-2">
 						<h2 className="text-2xl font-semibold">{user?.name}</h2>
-						<Tags texts={['Albañil', 'Plomero']} />
+						<Tags texts={jobs ? jobs : []} />
 					</div>
 					<div className="flex items-center gap-5">
 						<ButtonEditProfile />

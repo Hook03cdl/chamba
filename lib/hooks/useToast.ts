@@ -9,7 +9,7 @@ export interface ContentToastProps {
 
 interface props {
 	toasts: any[];
-	addToast: <ToastProps>(
+	addToast: (
 		title: string,
 		msg: string,
 		type?: 'error' | 'success' | 'warning' | 'default'

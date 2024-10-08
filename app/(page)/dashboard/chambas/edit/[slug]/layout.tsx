@@ -1,4 +1,4 @@
-export default async function LayoutPage({
+export default function LayoutPage({
   children,
 }: {
   children: React.ReactNode;

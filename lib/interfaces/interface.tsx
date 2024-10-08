@@ -6,7 +6,7 @@ export interface UserProps {
 	email_verified_at: boolean | null;
 	rating: number;
 	phone_number: string | null;
-	role: number;
+	role: string;
 	street: string | null;
 	postal_code: string | null;
 	city: string | null;
@@ -16,8 +16,11 @@ export interface UserProps {
 	worker_name: string;
 }
 
+export interface JobContainerProps {
+	jobs: JobProps[];
+}
 export interface JobProps {
-	id: number;
+	id: string;
 	name: string;
 	description: string;
 	created_at: string;
@@ -25,7 +28,7 @@ export interface JobProps {
 }
 
 export interface ChambaProps {
-	id: number;
+	id: string;
 	title: string;
 	description: string;
 	rating: number;
@@ -49,4 +52,9 @@ export interface ReviewsProps {
 	client_name?: string;
 	created_at?: string;
 	updated_at?: string;
+}
+
+export interface DataDashboardProps {
+	requests: string;
+	chambas: string;
 }

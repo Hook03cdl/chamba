@@ -29,6 +29,7 @@ export default function Modal() {
 							<Separator />
 							<div className="flex justify-end gap-5">
 								{modal.content.addButton && modal.content.addButton}
+								{modal.actionButton}
 								<Button variant={'secondary'} onClick={closeModal}>
 									Cancelar
 								</Button>

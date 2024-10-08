@@ -112,18 +112,18 @@ export function Checkbox({
 	className,
 	id,
 	children,
+	checked,
+	onChange,
 	...props
-}: InputProps) {
+}: InputProps & { checked?: boolean}) {
 	const checkRef = useRef<HTMLInputElement | null>(null);
 
-	const [isCheck, setIsCheck] = useState(false);
-
-	const hanleCheck = () => {
+	const handleCheck = () => {
 		const checkCurrent = checkRef.current;
 		if (checkCurrent) {
-			setIsCheck(checkCurrent.checked);
+			onChange && onChange(checkCurrent.checked);
 		}
-	};
+	}
 
 	return (
 		<label className="flex max-w-max items-center gap-2 cursor-pointer h-fit">
@@ -134,14 +134,15 @@ export function Checkbox({
 				className="hidden peer/checkbox"
 				{...props}
 				ref={checkRef}
-				onChange={hanleCheck}
+				checked={checked}
+				onChange={handleCheck}
 			/>
 			<div
 				className={`grid place-content-center border-2 rounded-sm border-tuatara size-4 peer-checked/checkbox:bg-tuatara transition-colors duration-300 ${className}`}
 			>
 				<span
 					className={`${
-						isCheck ? 'opacity-100' : 'opacity-0'
+						checked ? 'opacity-100' : 'opacity-0'
 					} transition-opacity duration-300 `}
 				>
 					<Check size={13} color="#fff" />

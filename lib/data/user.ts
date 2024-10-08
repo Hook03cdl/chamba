@@ -1,18 +1,21 @@
 'use server';
 
-import { cookies } from 'next/headers';
-import { UserProps } from '../interfaces/interface';
+import {
+	JobContainerProps,
+	JobProps,
+	UserProps,
+} from '../interfaces/interface';
 import { Fetch } from '../Fetch';
+import { getToken } from '../utils/tokens';
 
 export async function fetchDataUser(): Promise<UserProps | undefined> {
-	const cookie = cookies();
-	const session = cookie.get('session');
+	const session = await getToken('session');
 
-	if (session?.value) {
+	if (session) {
 		try {
 			const user = await Fetch<UserProps>('/user', {
 				headers: {
-					Authorization: `Bearer ${session?.value}`,
+					Authorization: `Bearer ${session}`,
 				},
 			});
 			return user;
@@ -23,21 +26,20 @@ export async function fetchDataUser(): Promise<UserProps | undefined> {
 	return undefined;
 }
 
-export async function fetchJobsUser() {
-	const cookie = cookies();
-	const session = cookie.get('session');
+export async function fetchJobsUser(): Promise<JobProps[] | []> {
+	const session = await getToken('session');
 
 	try {
-		const response = await fetch('http://localhost:8000/api/user/showJobs', {
+		const { jobs } = await Fetch<JobContainerProps>('/user/showJobs', {
 			method: 'GET',
 			headers: {
-				Authorization: `Bearer ${session?.value}`,
+				Authorization: `Bearer ${session}`,
 			},
 		});
-		const data = await response.json();
-		return data;
+
+		return jobs;
 	} catch (error) {
 		console.log('Error user', error);
 	}
-	return undefined;
+	return [];
 }

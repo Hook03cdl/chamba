@@ -1,18 +1,23 @@
 "use client";
-import { JobProps } from "@/lib/interfaces/interface";
-import { TextInput, Textarea, Select, SelectItem } from "@tremor/react";
-import FileInput from "../FileInput";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { createChamba } from "@/lib/actions/dashboard/chambas";
-import React, { useEffect } from "react";
 import ButtonSubmit from "@/components/ui/ButtonSubmit";
-import { useFormState } from "react-dom";
-import { useRouter } from "next/navigation";
+import { updateChambaWorker } from "@/lib/actions/dashboard/chambas";
 import { useToasts } from "@/lib/hooks/useToast";
+import { ChambaProps, JobProps } from "@/lib/interfaces/interface";
+import { Textarea, TextInput } from "@tremor/react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { useFormState } from "react-dom";
 
-export default function CreateForm({ jobs }: { jobs: any }) {
-  const [state, formAction] = useFormState(createChamba, {
+export default function EditForm({
+  jobs,
+  chamba,
+}: {
+  jobs: any;
+  chamba: ChambaProps;
+}) {
+  const [state, formAction] = useFormState(updateChambaWorker, {
     title: "",
     msg: "",
     type: "default",
@@ -36,6 +41,13 @@ export default function CreateForm({ jobs }: { jobs: any }) {
   return (
     <div>
       <form action={formAction} noValidate>
+        <TextInput
+          id="id"
+          name="id"
+          hidden
+          placeholder="Ingrese el titulo de su chamba"
+          defaultValue={chamba.id}
+        />
         <div className="m-2 grid grid-cols-2 grid-rows-3 gap-2 border rounded-md bg-gray-100">
           <div className="p-4 text-gray-800">
             <label htmlFor="title" className="font-semibold text-md">
@@ -45,17 +57,18 @@ export default function CreateForm({ jobs }: { jobs: any }) {
               id="title"
               name="title"
               placeholder="Ingrese el titulo de su chamba"
+              defaultValue={chamba.title}
             />
           </div>
           <div className="p-4 text-gray-800">
             <span className="font-semibold text-md">Oficio</span>
-            <Select id="job_id" name="job_id">
-              {jobs.map((job: JobProps) => (
-                <SelectItem key={job.id} value={job.id}>
+            <select id="job_id" name="job_id">
+              {jobs.jobs.map((job: JobProps) => (
+                <option key={job.id} value={job.id}>
                   {job.name}
-                </SelectItem>
+                </option>
               ))}
-            </Select>
+            </select>
           </div>
           <div className="p-4 col-span-2 text-gray-800">
             <span className="font-semibold text-md">Descripcion</span>
@@ -63,6 +76,7 @@ export default function CreateForm({ jobs }: { jobs: any }) {
               id="description"
               name="description"
               placeholder="Escribe la descripcion de tu chamba"
+              defaultValue={chamba.description}
               rows={2}
             />
           </div>
