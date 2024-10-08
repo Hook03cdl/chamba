@@ -1,6 +1,7 @@
 'use client';
 
 import Each from '@/components/Each';
+import SkeletonChambas from '@/components/skeleton/SkeletonChambas';
 import { Checkbox } from '@/components/ui/Inputs';
 import { fetchDataJobs } from '@/lib/data/jobs';
 import { fetchJobsUser } from '@/lib/data/user';
@@ -14,16 +15,16 @@ export default function JobsOptions() {
 	useEffect(() => {
 		async function fetchJobs() {
 			const data = await fetchDataJobs();
-			const userJobsData = await fetchJobsUser();
+			// const userJobsData = await fetchJobsUser();
 
 			setJobs(data);
-			console.log(userJobsData.jobs);
+			console.log(data);
 		}
 		fetchJobs();
 	}, []);
 
 	if (!jobs) {
-		return <h1>Cargando...</h1>;
+		return <SkeletonChambas />;
 	}
 
 	return (
@@ -33,7 +34,7 @@ export default function JobsOptions() {
 					of={jobs}
 					render={(job) => (
 						<div className="hover:bg-slate-300 p-2 rounded-md transition-colors duration-300">
-							<Checkbox label={job.name} value={job.name} name="jobs">
+							<Checkbox label={job.name} value={job.id} name="jobs_ids">
 								<p className={'text-gray-500'}>{job.description}</p>
 							</Checkbox>
 						</div>

@@ -6,6 +6,7 @@ import ButtonSubmit from '@/components/ui/ButtonSubmit';
 import JobsOptions from './JobsOptions';
 import { Suspense, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import SkeletonChambas from '@/components/skeleton/SkeletonChambas';
 
 export default function FormUpdateJobs() {
 	const [state, formAction] = useFormState(updateUserJobs, {

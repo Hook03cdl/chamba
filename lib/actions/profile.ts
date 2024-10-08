@@ -52,7 +52,7 @@ export async function updateUserJobs(
 	_prevState: ContentToastProps,
 	formData: FormData
 ): Promise<ContentToastProps> {
-	const selectJobs = formData.getAll('jobs');
+	const selectJobs = formData.getAll('jobs_ids');
 	const session = await getToken('session');
 
 	if (selectJobs.length === 0) {
@@ -62,14 +62,29 @@ export async function updateUserJobs(
 			type: 'warning',
 		};
 	}
+	if (!session) {
+		return {
+			title: 'Sin cuenta',
+			msg: 'Si no tienes con una cuentas no podras realizar ninguna accion',
+			type: 'error',
+		};
+	}
 
 	try {
-		await fetch('http://127.0.0.1:8000/api/user/updateJobs', {
+		const res = await fetch('http://127.0.0.1:8000/api/user/updateJobs', {
 			headers: { Authorization: `Bearer ${session}` },
 			method: 'POST',
 			body: formData,
 		});
-
+		console.log(selectJobs);
+		console.log(res);
+		if (!res.ok) {
+			return {
+				title: 'Error!',
+				msg: 'A ocurrido un problema al momento de intentar efectuar los cambios',
+				type: 'error',
+			};
+		}
 		return {
 			title: 'Usuario actializado',
 			msg: 'Los cambios se han realizado con exito',
@@ -85,53 +100,59 @@ export async function updateUserJobs(
 	}
 }
 
-export async function updatePassword(_prevState: ContentToastProps, formData: FormData): Promise<ContentToastProps> {
-    const session = await getToken('session');
-    const data = {
-        email: formData.get('email'),
-        password: formData.get('password'),
-        password_confirmation: formData.get('password_confirmation'),
-    };
+export async function updatePassword(
+	_prevState: ContentToastProps,
+	formData: FormData
+): Promise<ContentToastProps> {
+	const session = await getToken('session');
+	const data = {
+		email: formData.get('email'),
+		password: formData.get('password'),
+		password_confirmation: formData.get('password_confirmation'),
+	};
 
-    if (!data.email || !data.password || !data.password_confirmation) {
-        return {
-            title: 'Campos vacios',
-            msg: 'Necesitas llenar todos lo campos, de lo contario no podras guardar los cambios',
-            type: 'warning',
-        };
-    }
+	if (!data.email || !data.password || !data.password_confirmation) {
+		return {
+			title: 'Campos vacios',
+			msg: 'Necesitas llenar todos lo campos, de lo contario no podras guardar los cambios',
+			type: 'warning',
+		};
+	}
 
-    try {
-        const response = await fetch('http://localhost:8000/api/user/updatePassword', {
-            method: 'POST',
-            headers: {
-                Authorization: `Bearer ${session}`,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        });
-        if (!response.ok) {
-            throw new Error('HTTP error! status: ' + response.status);
-        }
-        const result = await response.json();
-        if (result.error) {
-            return {
-                title: 'Error!',
-                msg: result.error,
-                type: 'error',
-            };
-        }
-        return {
-            title: 'Contrasena actualizada',
-            msg: 'Los cambios se han realizado con exito',
-            type: 'success',
-        };
-    } catch (error) {
-        console.error(error);
-        return {
-            title: 'Error!',
-            msg: 'A ocurrido un problema al momento de intentar efectuar los cambios',
-            type: 'error',
-        };
-    }
+	try {
+		const response = await fetch(
+			'http://localhost:8000/api/user/updatePassword',
+			{
+				method: 'POST',
+				headers: {
+					Authorization: `Bearer ${session}`,
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data),
+			}
+		);
+		if (!response.ok) {
+			throw new Error('HTTP error! status: ' + response.status);
+		}
+		const result = await response.json();
+		if (result.error) {
+			return {
+				title: 'Error!',
+				msg: result.error,
+				type: 'error',
+			};
+		}
+		return {
+			title: 'Contrasena actualizada',
+			msg: 'Los cambios se han realizado con exito',
+			type: 'success',
+		};
+	} catch (error) {
+		console.error(error);
+		return {
+			title: 'Error!',
+			msg: 'A ocurrido un problema al momento de intentar efectuar los cambios',
+			type: 'error',
+		};
+	}
 }

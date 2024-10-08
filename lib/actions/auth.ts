@@ -2,7 +2,7 @@
 
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { setToken } from '../utils/tokens';
+import { getToken, setToken } from '../utils/tokens';
 
 export async function AuthWithPasswordAndEmail(formdata: FormData) {
 	let tokenAuth = '';
@@ -42,7 +42,7 @@ export async function SingupWithPasswordAndEmail(formdata: FormData) {
 	redirect('/');
 }
 
-export async function getToken() {
+export async function getTokenP() {
 	const cookie = cookies();
 
 	console.log(cookie.get('session'));
@@ -50,15 +50,18 @@ export async function getToken() {
 
 export async function LogoutUser() {
 	const cookie = cookies();
-	const session = cookie.get('session');
+	const session = await getToken('session');
+	console.log(session);
+
 	try {
-		await fetch('http://127.0.0.1:8000/api/logout', {
-			headers: { Authorization: `Bearer ${session?.value}` },
+		const res = await fetch('http://127.0.0.1:8000/api/logout', {
+			headers: { Authorization: `Bearer ${session}` },
 		});
 		cookie.delete('session');
-		console.log('Sesion eliminadas');
+		console.log(res);
 	} catch (error) {
-		cookie.delete('session');
 		console.log(error);
+		return;
 	}
+	redirect('/');
 }

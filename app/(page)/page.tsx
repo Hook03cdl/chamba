@@ -6,7 +6,6 @@ import { ChambaProps } from '@/lib/interfaces/interface';
 
 export default async function Home() {
 	const chambas = await fetchDataChambas();
-	console.log(chambas);
 
 	return (
 		<section className="p-5 px-20 min-h-svh">

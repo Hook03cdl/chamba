@@ -1,11 +1,11 @@
 'use client';
 
-import Navbar from '@/components/header/Navbar';
+import SkeletonChambas from '@/components/skeleton/SkeletonChambas';
 import { Button } from '@/components/ui/button';
 import { Checkbox, Input } from '@/components/ui/Inputs';
 import Timeline from '@/components/ui/Timeline';
 import { Toast } from '@/components/ui/Toast';
-import { LogoutUser, getToken } from '@/lib/actions/auth';
+import { LogoutUser, getTokenP } from '@/lib/actions/auth';
 import { openModal, useModal } from '@/lib/hooks/useModal';
 import { useToasts } from '@/lib/hooks/useToast';
 
@@ -13,6 +13,10 @@ export default function Pruebas() {
 	const { addToast } = useToasts();
 	return (
 		<section className="p-5 min-h-svh space-y-10">
+			<div>
+				<SkeletonChambas />
+			</div>
+
 			<div>
 				<h3 className="text-4xl mb-3">Header</h3>
 				{/* <Navbar /> */}
@@ -106,7 +110,7 @@ export default function Pruebas() {
 				<h3 className="text-4xl mb-3">Get Token</h3>
 				<Button
 					onClick={async () => {
-						await getToken();
+						await getTokenP();
 					}}
 				>
 					Obtener token
