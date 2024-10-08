@@ -18,7 +18,7 @@ export default function JobsOptions() {
 			// const userJobsData = await fetchJobsUser();
 
 			setJobs(data);
-			console.log(data);
+			setUserJobs(data);
 		}
 		fetchJobs();
 	}, []);
