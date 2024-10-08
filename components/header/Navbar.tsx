@@ -3,7 +3,8 @@ import { InputSearch } from '../ui/Inputs';
 import Logo from '../ui/Logo';
 // import DropdownMenu from './DropdownMenu';
 import Notification from './Notification';
-import NavChambas from './NavChambas';
+import { Button } from '../ui/button';
+import Link from 'next/link';
 
 export default function Navbar() {
 	return (
