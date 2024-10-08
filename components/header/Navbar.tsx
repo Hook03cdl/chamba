@@ -12,9 +12,9 @@ export default function Navbar() {
 			<div className="flex justify-between items-center p-3 px-10 shadow-md z-40">
 				<Logo size="small" variant="dark" />
 				<InputSearch />
-				<div className="flex gap-3 items-center">
+				<div className="flex gap-4 items-center">
 					<Button>
-						<Link href={"/suscribirse"}>Suscribirse</Link>
+						<Link className='font-semibold' href={"/suscribirse"}>Chamba Pro</Link>
 					</Button>
 					<Notification />
 					<Avatar />
