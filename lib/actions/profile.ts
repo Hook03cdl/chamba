@@ -72,12 +72,13 @@ export async function updateUserJobs(
 
 	try {
 		const res = await fetch('http://127.0.0.1:8000/api/user/updateJobs', {
-			headers: { Authorization: `Bearer ${session}` },
+			headers: { 
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${session}` 
+			},
 			method: 'POST',
-			body: formData,
+			body: JSON.stringify({ jobs_ids: selectJobs }),
 		});
-		console.log(selectJobs);
-		console.log(res);
 		if (!res.ok) {
 			return {
 				title: 'Error!',
