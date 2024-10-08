@@ -1,6 +1,10 @@
 'use server';
 
-import { UserProps } from '../interfaces/interface';
+import {
+	JobContainerProps,
+	JobProps,
+	UserProps,
+} from '../interfaces/interface';
 import { Fetch } from '../Fetch';
 import { getToken } from '../utils/tokens';
 
@@ -22,21 +26,20 @@ export async function fetchDataUser(): Promise<UserProps | undefined> {
 	return undefined;
 }
 
-export async function fetchJobsUser() {
+export async function fetchJobsUser(): Promise<JobProps[] | []> {
 	const session = await getToken('session');
 
 	try {
-		const response = await fetch('http://localhost:8000/api/user/showJobs', {
+		const { jobs } = await Fetch<JobContainerProps>('/user/showJobs', {
 			method: 'GET',
 			headers: {
 				Authorization: `Bearer ${session}`,
 			},
 		});
 
-		const data = await response.json();
-		return data;
+		return jobs;
 	} catch (error) {
 		console.log('Error user', error);
 	}
-	return undefined;
+	return [];
 }

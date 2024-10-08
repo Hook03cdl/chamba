@@ -15,7 +15,7 @@ export default async function PerfilLayout({
 }) {
 	const user = await fetchDataUser();
 	const jobsUser = await fetchJobsUser();
-	console.log(jobsUser.jobs);
+	const jobs = jobsUser?.map((job) => job.name);
 
 	return (
 		<section className="min-h-svh p-5">
@@ -28,7 +28,7 @@ export default async function PerfilLayout({
 				<div className="space-y-5">
 					<div className="space-y-2">
 						<h2 className="text-2xl font-semibold">{user?.name}</h2>
-						<Tags texts={['Albañil', 'Plomero']} />
+						<Tags texts={jobs ? jobs : []} />
 					</div>
 					<div className="flex items-center gap-5">
 						<ButtonEditProfile />

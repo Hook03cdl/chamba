@@ -72,9 +72,9 @@ export async function updateUserJobs(
 
 	try {
 		const res = await fetch('http://127.0.0.1:8000/api/user/updateJobs', {
-			headers: { 
+			headers: {
 				'Content-Type': 'application/json',
-				Authorization: `Bearer ${session}` 
+				Authorization: `Bearer ${session}`,
 			},
 			method: 'POST',
 			body: JSON.stringify({ jobs_ids: selectJobs }),
@@ -87,7 +87,7 @@ export async function updateUserJobs(
 			};
 		}
 		return {
-			title: 'Usuario actializado',
+			title: 'Usuario actualizado',
 			msg: 'Los cambios se han realizado con exito',
 			type: 'success',
 		};

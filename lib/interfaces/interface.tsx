@@ -16,6 +16,9 @@ export interface UserProps {
 	worker_name: string;
 }
 
+export interface JobContainerProps {
+	jobs: JobProps[];
+}
 export interface JobProps {
 	id: string;
 	name: string;
@@ -52,6 +55,6 @@ export interface ReviewsProps {
 }
 
 export interface DataDashboardProps {
-	requests: string
+	requests: string;
 	chambas: string;
 }

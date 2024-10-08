@@ -10,15 +10,16 @@ import { useEffect, useState } from 'react';
 
 export default function JobsOptions() {
 	const [jobs, setJobs] = useState<JobProps[] | undefined>(undefined);
-	const [userJobs, setUserJobs] = useState<JobProps[] | undefined>(undefined);
+	const [userJobs, setUserJobs] = useState<string[] | undefined>(undefined);
 
 	useEffect(() => {
 		async function fetchJobs() {
 			const data = await fetchDataJobs();
-			// const userJobsData = await fetchJobsUser();
+			const userJobsData = await fetchJobsUser();
 
 			setJobs(data);
-			setUserJobs(data);
+			const jobs = userJobsData?.map((job) => job.id);
+			setUserJobs(jobs);
 		}
 		fetchJobs();
 	}, []);
