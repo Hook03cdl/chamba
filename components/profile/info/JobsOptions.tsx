@@ -24,6 +24,16 @@ export default function JobsOptions() {
 		fetchJobs();
 	}, []);
 
+    const handleCheckboxChange = (jobId: string, checked: boolean) => {
+        setUserJobs((prevUserJobs) => {
+            if (checked) {
+                return prevUserJobs ? [...prevUserJobs, jobId] : [jobId];
+            } else {
+                return prevUserJobs?.filter((id) => id !== jobId);
+            }
+        });
+    };
+
 	if (!jobs) {
 		return <SkeletonChambas />;
 	}
@@ -35,7 +45,7 @@ export default function JobsOptions() {
 					of={jobs}
 					render={(job) => (
 						<div className="hover:bg-slate-300 p-2 rounded-md transition-colors duration-300">
-							<Checkbox label={job.name} value={job.id} name="jobs_ids">
+							<Checkbox label={job.name} value={job.id} name="jobs_ids" checked={userJobs?.includes(job.id)} onChange={(checked) => handleCheckboxChange(job.id, checked)}>
 								<p className={'text-gray-500'}>{job.description}</p>
 							</Checkbox>
 						</div>
