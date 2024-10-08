@@ -4,6 +4,7 @@ import { Camera, Mailbox } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Each from '../Each';
+import { Button } from '@/components/ui/button';
 
 interface NavbarProps {
 	navOptions: {

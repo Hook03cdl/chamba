@@ -4,6 +4,8 @@ import { InputSearch } from '../ui/Inputs';
 import Logo from '../ui/Logo';
 import Notification from './Notification';
 import NavChambas from './NavChambas';
+import { Button } from '../ui/button';
+import Link from 'next/link';
 
 export default function Navbar() {
 	return (
@@ -12,6 +14,9 @@ export default function Navbar() {
 				<Logo size="small" variant="dark" />
 				<InputSearch />
 				<div className="flex gap-3 items-center">
+					<Button>
+						<Link href={"/suscribirse"}>Suscribirse</Link>
+					</Button>
 					<Notification />
 					<Avatar />
 				</div>
