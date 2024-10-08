@@ -1,6 +1,6 @@
 "use client"
 
-export default function Plan({ nombre, precio, beneficios }) {
+export default function Plan({ name, price, benefits }) {
 
   return (
     <div
@@ -8,12 +8,12 @@ export default function Plan({ nombre, precio, beneficios }) {
     >
       <div className="p-1 bg-niagara-500"></div>
       <div className="p-8">
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">{nombre}</h2>
+        <h2 className="text-3xl font-bold text-gray-800 mb-4">{name}</h2>
         <p className="text-gray-600 mb-6">Suscribete para conseguir los siguiente beneficios</p>
-        <p className="text-4xl font-bold text-gray-800 mb-6">{precio}</p>
+        <p className="text-4xl font-bold text-gray-800 mb-6">{price}</p>
         <ul className="text-sm text-gray-600 mb-6">
           {
-            beneficios.map(beneficio => {
+            benefits.map(benefit => {
               return (
                 <li className="mb-2 flex items-center">
                   <svg
@@ -30,7 +30,7 @@ export default function Plan({ nombre, precio, beneficios }) {
                       stroke-linecap="round"
                     ></path>
                   </svg>
-                  {beneficio}
+                  {benefit}
                 </li>
               )
             })

@@ -44,7 +44,7 @@ export default function Suscribirse() {
                 </div>
                 <Button className="block mx-auto mt-5">Actualizar</Button>
             </form>
-            <Plan nombre={"Plan Premium"} precio={'$50.00'} beneficios={["Más opciones de contrato",
+            <Plan name={"Plan Premium"} price={'$50.00'} benefits={["Más opciones de contrato",
                 "Reseñas destacadas", "Certificación o verificación",
                 "Descuentos en comisiones", "Análisis y estadística", "Soporte prioritario"]}></Plan>
         </section>
