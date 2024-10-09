@@ -6,7 +6,13 @@ export default function Notification() {
 	const notifications: any[] = [];
 
 	return (
-		<Popover fallback={<Bell color='#62646a' size={30} />}>
+		<Popover
+			fallback={
+				<span className="text-gray-600">
+					<Bell size={30} />
+				</span>
+			}
+		>
 			<div className="min-w-72 h-96 overflow-y-auto">
 				{notifications.length > 0 ? (
 					<Each of={notifications} render={(e) => <div>Hola {e}</div>} />

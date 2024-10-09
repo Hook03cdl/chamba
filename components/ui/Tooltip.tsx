@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { useState, useEffect, forwardRef, useCallback } from 'react';
+import { useState, forwardRef } from 'react';
 
 const tooltipVariants = cva(
 	'absolute bg-black rounded-lg p-2 px-4 z-50 text-white text-xs',
@@ -48,7 +48,7 @@ const ToolTip = forwardRef<HTMLDivElement, TooltipProps>(
 		};
 		return (
 			<div
-				className="relative"
+				className="relative flex"
 				onMouseEnter={handleDelay}
 				onMouseLeave={handleClearDelay}
 				ref={ref}

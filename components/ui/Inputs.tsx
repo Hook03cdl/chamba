@@ -113,17 +113,20 @@ export function Checkbox({
 	id,
 	children,
 	checked,
-	onChange,
+	onChangeState,
 	...props
-}: InputProps & { checked?: boolean}) {
+}: InputProps & {
+	checked?: boolean;
+	onChangeState?: (checked: boolean) => void;
+}) {
 	const checkRef = useRef<HTMLInputElement | null>(null);
 
 	const handleCheck = () => {
 		const checkCurrent = checkRef.current;
 		if (checkCurrent) {
-			onChange && onChange(checkCurrent.checked);
+			onChangeState && onChangeState(checkCurrent.checked);
 		}
-	}
+	};
 
 	return (
 		<label className="flex max-w-max items-center gap-2 cursor-pointer h-fit">

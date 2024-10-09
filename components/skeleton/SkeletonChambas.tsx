@@ -6,6 +6,7 @@ export default function SkeletonChambas() {
 				<div className="space-y-2 w-full">
 					<div className="h-5 w-32 bg-gray-200 rounded-md" />
 					<div className="h-5 w-full bg-gray-200 rounded-md" />
+					<div className="h-5 w-4/5 bg-gray-200 rounded-md" />
 				</div>
 			</div>
 		);

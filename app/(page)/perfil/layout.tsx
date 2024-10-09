@@ -45,7 +45,7 @@ export default async function PerfilLayout({
 					</div>
 					<div className="grid place-items-center">
 						<Wrench />
-						<h4 className="font-semibold">Trabajos realizados</h4>
+						<h4 className="font-semibold">Trabajos</h4>
 						<p className="text-center text-sm font-semibold">3</p>
 					</div>
 					<div className="grid place-items-center">

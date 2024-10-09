@@ -5,13 +5,15 @@ import React from 'react';
 
 export default function LayoutPage({
 	children,
-}: Readonly<{ children: React.ReactNode }>) {
+	modal,
+}: Readonly<{ children: React.ReactNode; modal: React.ReactNode }>) {
 	return (
 		<>
 			<main>
 				<Navbar />
 				{children}
 				<Footer />
+				{modal}
 			</main>
 			<Modal />
 		</>

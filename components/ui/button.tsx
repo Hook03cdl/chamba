@@ -16,12 +16,14 @@ const buttonVariants = cva(
 				cancel: 'bg-yellow-500 hover:bg-yellow-400 text-white',
 				ghost: 'hover:bg-gray-200',
 				link: 'hover:underline',
+				none: '',
 			},
 			size: {
 				default: 'px-4 py-3 h-fit',
 				sm: 'h-9 rounded-md p-2',
 				lg: 'h-11 rounded-md px-8',
 				icon: 'h-10 w-10',
+				none: '',
 			},
 		},
 		defaultVariants: {

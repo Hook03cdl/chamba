@@ -1,9 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { Button } from './button';
 import Separator from './Separator';
 import { closeModal, useModal } from '@/lib/hooks/useModal';
+import { X } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Modal() {
 	const { isOpen, modal } = useModal();
@@ -47,5 +50,24 @@ export default function Modal() {
 				</div>
 			)}
 		</>
+	);
+}
+
+export function ModalIntercepting({ children }: { children: React.ReactNode }) {
+	const route = useRouter();
+	return (
+		<div className="fixed h-svh w-full inset-0 bg-black/35 backdrop-blur grid place-content-center z-50">
+			{children}
+			<div className="flex justify-center mt-20">
+				<Button
+					variant={'ghost'}
+					onClick={() => {
+						route.back();
+					}}
+				>
+					<X size={30} />
+				</Button>
+			</div>
+		</div>
 	);
 }
