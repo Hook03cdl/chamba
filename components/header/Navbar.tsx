@@ -7,11 +7,13 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { fetchDataUser } from "@/lib/data/user";
 import { UserProps } from "@/lib/interfaces/interface";
+import NavChambas from "@/components/header/NavChambas";
+import { fetchDataJobs } from "@/lib/data/jobs";
 
 export default async function Navbar() {
   const response = fetchDataUser();
   const data = await response;
-  console.log(data);
+  const jobs = await fetchDataJobs();
   return (
     <header className="sticky z-40 top-0 bg-humo">
       <div className="flex justify-between items-center p-3 px-10 shadow-md">
@@ -27,6 +29,7 @@ export default async function Navbar() {
           ) : (
             <></>
           )}
+          <NavChambas jobs={jobs} />
           <Notification />
           <Avatar />
         </div>
