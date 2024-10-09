@@ -15,7 +15,7 @@ export default function Plan({ name, price, benefits }) {
           {
             benefits.map(benefit => {
               return (
-                <li className="mb-2 flex items-center">
+                <li key={benefit} className="mb-2 flex items-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -25,9 +25,9 @@ export default function Plan({ name, price, benefits }) {
                   >
                     <path
                       d="M5 13l4 4L19 7"
-                      stroke-width="2"
-                      stroke-linejoin="round"
-                      stroke-linecap="round"
+                      strokeWidth={2}
+                      strokeLinejoin="round"
+                      strokeLinecap="round"
                     ></path>
                   </svg>
                   {benefit}

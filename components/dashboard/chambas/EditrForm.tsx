@@ -63,7 +63,7 @@ export default function EditForm({
           <div className="p-4 text-gray-800">
             <span className="font-semibold text-md">Oficio</span>
             <select id="job_id" name="job_id">
-              {jobs.jobs.map((job: JobProps) => (
+              {jobs.map((job: JobProps) => (
                 <option key={job.id} value={job.id}>
                   {job.name}
                 </option>
