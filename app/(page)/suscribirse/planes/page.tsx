@@ -1,7 +1,12 @@
 "use client"
 
-export default function Plan({ name, price, benefits }) {
+interface PlanProps {
+  name: String,
+  price: String,
+  benefits: Array<string>
+}
 
+export default function Plan({ name, price, benefits }: PlanProps) {
   return (
     <div
       className="bg-white rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 w-2/4 mx-auto mt-10"
