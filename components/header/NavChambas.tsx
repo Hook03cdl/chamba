@@ -1,33 +1,32 @@
-'use client';
+"use client";
 
-import { usePathname } from 'next/navigation';
-import Each from '../Each';
-import { Button } from '../ui/button';
+import { usePathname } from "next/navigation";
+import { JobProps } from "@/lib/interfaces/interface";
+import Popover, { PopLink } from "../ui/Popover";
+import { ChevronDown } from "lucide-react";
 
-interface ChambasOptionsProps {
-	chambas: string[];
-}
+export default function NavChambas({ jobs }: { jobs: JobProps[] | undefined }) {
+  const path = usePathname();
 
-export default function NavChambas({ chambas }: ChambasOptionsProps) {
-	const path = usePathname();
-
-	return (
-		<nav
-			className={`flex gap-3 bg-humo  ${
-				path.includes('/perfil') ? 'h-0 overflow-y-hidden' : ' h-16 py-3'
-			}`}
-		>
-			<Button variant={'outline'} size={'sm'}>
-				Todos
-			</Button>
-			<Each
-				of={chambas}
-				render={(chamba) => (
-					<Button variant={'outline'} size={'sm'}>
-						{chamba}
-					</Button>
-				)}
-			/>
-		</nav>
-	);
+  return (
+    <Popover
+      fallback={
+        <div className="flex flex-row justify-center items-center">
+          <span className="text-gray-800 font-bold">Chambas</span>
+          <ChevronDown size="1.5em" />
+        </div>
+      }
+    >
+      <div className="min-w-72 h-96 overflow-y-auto grid grid-cols-2 gap-4">
+        {jobs?.map((job) => (
+          <PopLink key={job.id} href={`/chambas/${job.slug}`}>
+            <div className="flex flex-col">
+              <span>{job.name}</span>
+              <p className="text-sm font-normal text-gray-400">{job.description}</p>
+            </div>
+          </PopLink>
+        ))}
+      </div>
+    </Popover>
+  );
 }

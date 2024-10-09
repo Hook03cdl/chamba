@@ -58,3 +58,9 @@ export interface DataDashboardProps {
 	requests: string;
 	chambas: string;
 }
+
+export interface PlanProps {
+	name: string;
+	price: string;
+	benefits: string[];
+}

@@ -1,8 +1,10 @@
 import Avatar from '../ui/Avatar';
 import { InputSearch } from '../ui/Inputs';
 import Logo from '../ui/Logo';
+// import DropdownMenu from './DropdownMenu';
 import Notification from './Notification';
-import ButtonLinkSuscription from './ButtonLinkSuscription';
+import { Button } from '../ui/button';
+import Link from 'next/link';
 
 export default function Navbar() {
 	return (
@@ -11,7 +13,9 @@ export default function Navbar() {
 				<Logo size="small" variant="dark" />
 				<InputSearch />
 				<div className="flex gap-3 items-center">
-					<ButtonLinkSuscription />
+					<Button>
+						<Link href={"/suscribirse"}>Suscribirse</Link>
+					</Button>
 					<Notification />
 					<Avatar />
 				</div>
