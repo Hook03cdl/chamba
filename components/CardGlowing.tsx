@@ -21,7 +21,7 @@ export default function CardGlowing({
 	return (
 		<div
 			className={`relative flex flex-col justify-between flex-1  min-w-96 p-6  gap-10 text-humo bg-shark border
-				border-humo/90 rounded-2xl transition-all duration-300 ease-in-out hover:shadow-humo hover:shadow-2xl`}
+				border-humo/90 rounded-2xl hover:shadow-humo hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-in-out`}
 		>
 			<div className="space-y-1">
 				<h2 className="font-semibold text-humo">{title}</h2>
@@ -45,7 +45,7 @@ export default function CardGlowing({
 					route.push(href);
 				}}
 			>
-				Get Started
+				Empezar
 			</Button>
 		</div>
 	);

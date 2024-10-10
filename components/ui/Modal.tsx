@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Button } from './button';
 import Separator from './Separator';
 import { closeModal, useModal } from '@/lib/hooks/useModal';
-import { X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Modal() {
@@ -57,6 +57,19 @@ export function ModalIntercepting({ children }: { children: React.ReactNode }) {
 	const route = useRouter();
 	return (
 		<div className="fixed h-svh w-full inset-0 bg-black/35 backdrop-blur grid place-content-center z-50">
+			<div className="flex justify-end">
+				<Button
+					variant={'ghost'}
+					onClick={() => {
+						route.refresh();
+					}}
+				>
+					Ver todo
+					<span>
+						<ChevronRight />
+					</span>
+				</Button>
+			</div>
 			{children}
 			<div className="flex justify-center mt-20">
 				<Button

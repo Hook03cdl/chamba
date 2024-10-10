@@ -9,7 +9,7 @@ export default function Notification() {
 		<Popover
 			fallback={
 				<span className="text-gray-600">
-					<Bell size={30} />
+					<Bell size={28} />
 				</span>
 			}
 		>

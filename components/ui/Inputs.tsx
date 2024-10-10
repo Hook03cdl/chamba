@@ -11,9 +11,8 @@ const variants = {
 	},
 	dark: {
 		label:
-			'text-black/40 peer-focus/input:text-black  peer-valid/input:text-black',
-		input:
-			'border-niagara-200 focus:border-niagara-500 valid:border-niagara-500 invalid:border-red-500',
+			'text-black/40 peer-focus/input:text-black peer-valid/input:text-black',
+		input: 'border-niagara-200 focus:border-niagara-500',
 	},
 };
 

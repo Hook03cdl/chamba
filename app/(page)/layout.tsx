@@ -1,7 +1,6 @@
 import Footer from '@/components/footer/Footer';
 import Navbar from '@/components/header/Navbar';
 import Modal from '@/components/ui/Modal';
-import React from 'react';
 
 export default function LayoutPage({
 	children,
@@ -9,12 +8,12 @@ export default function LayoutPage({
 }: Readonly<{ children: React.ReactNode; modal: React.ReactNode }>) {
 	return (
 		<>
+			<Navbar />
 			<main>
-				<Navbar />
 				{children}
-				<Footer />
 				{modal}
 			</main>
+			<Footer />
 			<Modal />
 		</>
 	);

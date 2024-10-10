@@ -15,7 +15,7 @@ export default async function middleware(req: NextRequest) {
 
 export const config = {
 	matcher: [
-		'/servicio/:path*',
+		'/chamba/:path*',
 		'/perfil',
 		'/perfil/:path*',
 		'/dashboard',
