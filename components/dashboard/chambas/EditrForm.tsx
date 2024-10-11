@@ -60,9 +60,9 @@ export default function EditForm({
               defaultValue={chamba.title}
             />
           </div>
-          <div className="p-4 text-gray-800">
+          <div className="p-4 text-gray-800 flex flex-col">
             <span className="font-semibold text-md">Oficio</span>
-            <select id="job_id" name="job_id">
+            <select id="job_id" name="job_id" className="rounded-md shadow-sm border-gray-200">
               {jobs.map((job: JobProps) => (
                 <option key={job.id} value={job.id}>
                   {job.name}
