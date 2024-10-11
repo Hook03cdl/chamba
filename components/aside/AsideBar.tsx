@@ -20,7 +20,7 @@ export default async function AsideBar() {
     },
     {
       label: "Galeria",
-      href: "/dashboard/galeria",
+      href: "/dashboard/gallery",
       icon: <Images size={24} />,
     },
   ];

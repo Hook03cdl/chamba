@@ -68,3 +68,11 @@ export interface PlanProps {
 	price: string;
 	benefits: string[];
 }
+
+export interface ImageProps {
+	id: string;
+	image: string;
+	alt: string;
+	path: string;
+	user_id: string;
+}

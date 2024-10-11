@@ -72,20 +72,22 @@ Input.displayName = "Input";
 
 export default function FileInput() {
   return (
-    <div>
+    <div className="flex flex-col gap-2">
+      <label htmlFor="alt">Ingrese el texto alternativo para la imagen</label>
+      <Input id="alt" name="alt" placeholder="Ingrese el texto alternativo para la imagen."/>
       <label
-        htmlFor="file-1"
+        htmlFor="image"
         className="text-tremor-default font-medium text-tremor-content-strong dark:text-dark-tremor-content-strong"
       >
         Sube tu imagen
         <span className="text-red-500">*</span>
       </label>
       <Input
-        id="file-1"
-        name="file-1"
+        id="image"
+        name="image"
         type="file"
         className="mt-2"
-        accept=".jpeg, .jpg"
+        accept=".jpeg, .jpg, .png"
       />
       <p className="mt-2 text-tremor-label text-tremor-content dark:text-dark-tremor-content">
         Solo puedes subir archivos JPEG, JPG.
