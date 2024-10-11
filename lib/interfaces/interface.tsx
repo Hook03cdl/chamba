@@ -41,6 +41,7 @@ export interface  ChambaProps {
 	worker_name: string;
 	slug: string;
 	image_id: string;
+	path: string;
 }
 export interface ChambaContainerProps {
 	chamba: ChambaProps[];

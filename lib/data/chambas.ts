@@ -10,8 +10,6 @@ export async function fetchDataChambasBySlug(
 	try {
 		const res = await fetch(`http://localhost:8000/api/chambas/${slug}`);
 		const data = await res.json();
-		console.log(data.chamba);
-
 		return data.chamba;
 
 		// return res?.chambas;
@@ -65,7 +63,6 @@ export async function fetchDataChambasWorker() {
 				Authorization: `Bearer ${session?.value}`,
 			},
 		});
-		console.log(chambas);
 		return chambas;
 	} catch (error) {
 		console.log(error);

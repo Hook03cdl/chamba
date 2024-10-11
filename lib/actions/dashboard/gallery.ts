@@ -11,8 +11,6 @@ export async function uploadImage(_prevState: ContentToastProps, formData: FormD
     alt: formData.get('alt')
   }
 
-  console.log(data);
-
   if (!data.image || !data.alt) {
     return {
       title: "Campos vacios",
@@ -57,7 +55,6 @@ export async function getImages(): Promise<ImageProps[] | undefined>{
       }
     });
     const data = await response.json();
-    console.log(data.images);
     return data.images;
   } catch (error) {
     console.error(error);
