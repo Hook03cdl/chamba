@@ -60,30 +60,27 @@ export function Input({
 					id={id}
 					name={id}
 					type={getType(type)}
-					className={`bg-inherit outline-none peer/input  p-1 ${
-						isChange ? 'invalid:border-red-500' : ''
-					}  ${variants[variant].input}  ${className}`}
+					className={`bg-inherit outline-none peer/input  p-1 ${isChange ? 'invalid:border-red-500' : ''
+						}  ${variants[variant].input}  ${className}`}
 					{...props}
 					onBlur={() => setIsChange(true)}
 				/>
 				{errorMsg && (
 					<span
-						className={`${
-							isChange
+						className={`${isChange
 								? 'peer-invalid/input:block peer-valid/input:hidden'
 								: 'hidden'
-						} text-red-500 text-xs`}
+							} text-red-500 text-xs`}
 					>
 						{errorMsg}
 					</span>
 				)}
 				<label
 					htmlFor={id}
-					className={`absolute top-1/2 left-1 -translate-y-1/2 ${
-						isChange
+					className={`absolute top-1/2 left-1 -translate-y-1/2 ${isChange
 							? 'peer-invalid/input:text-red-500 peer-invalid/input:top-0 peer-invalid/input:left-3 peer-invalid/input:text-xs peer-invalid/input:-translate-y-full'
 							: ''
-					} ${variants[variant].label}
+						} ${variants[variant].label}
 					peer-focus/input:top-0 peer-focus/input:left-3 peer-focus/input:text-xs peer-focus/input:-translate-y-full 
 					peer-valid/input:top-0 peer-valid/input:left-3 peer-valid/input:text-xs peer-valid/input:-translate-y-full 
 					transition-all duration-300`}
@@ -93,9 +90,8 @@ export function Input({
 				{type === 'password' && (
 					<button
 						type="button"
-						className={`absolute right-3 top-1/2 -translate-y-1/2 ${
-							variant == 'light' ? 'text-humo/65' : 'text-base/65'
-						}`}
+						className={`absolute right-3 top-1/2 -translate-y-1/2 ${variant == 'light' ? 'text-humo/65' : 'text-base/65'
+							}`}
 						onClick={() => setShow(!show)}
 					>
 						{show ? <Eye size={20} /> : <EyeOff size={20} />}
@@ -143,9 +139,8 @@ export function Checkbox({
 				className={`grid place-content-center border-2 rounded-sm border-tuatara size-4 peer-checked/checkbox:bg-tuatara transition-colors duration-300 ${className}`}
 			>
 				<span
-					className={`${
-						checked ? 'opacity-100' : 'opacity-0'
-					} transition-opacity duration-300 `}
+					className={`${checked ? 'opacity-100' : 'opacity-0'
+						} transition-opacity duration-300 `}
 				>
 					<Check size={13} color="#fff" />
 				</span>
@@ -173,13 +168,14 @@ export function InputSearch() {
 	);
 }
 
-export function TextArea({ label }: TextAreaProps) {
+export function TextArea({ label, value }: TextAreaProps) {
 	return (
 		<div className="w-full">
 			<h2 className="text-xs">{label}</h2>
 			<textarea
 				className="w-full border border-black p-2 rounded-lg resize-none"
 				rows={6}
+				value={value}
 			/>
 		</div>
 	);

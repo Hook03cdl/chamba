@@ -8,7 +8,8 @@ import { ReviewsProps } from '@/lib/interfaces/interface';
 export default async function Page({ params }: { params: { sid: string } }) {
 	const chamba = await fetchDataChamba(params.sid);
 	const reviews = await fetchReviewsData(chamba.id);
-	// console.log(reviews);
+	console.log(chamba);
+
 	return (
 		<div className="grid grid-cols-3 grid-rows-2 gap-4">
 			<div className="col-span-2 bg-white h-screen rounded-md shadow-md">
@@ -20,7 +21,7 @@ export default async function Page({ params }: { params: { sid: string } }) {
 				<span>{chamba.worker_name}</span>
 			</div>
 			<div className="col-start-3 bg-white h-screen rounded-md shadow-md">
-				<RequestChamba />
+				<RequestChamba worker={chamba.worker_name} chambaTitle={chamba.title} />
 			</div>
 			<div className="col-span-3 bg-white rounded-md shadow-md p-2">
 				<span className="font-bold m-2">Reviews</span>
