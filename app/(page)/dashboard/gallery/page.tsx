@@ -54,6 +54,7 @@ export default function Page() {
             </div>
             <div className="bg-white p-4 border rounded-lg shadow-lg">
                 <h1>Tus imagenes</h1>
+                {images?.length === 0 && <p className="mt-2">No hay imagenes</p>}
                 <Each of={images} render={(i: ImageProps) => (
                     <div key={i.id}>
                         <Image src={i.path} alt={i.alt} width={100} height={100}/>

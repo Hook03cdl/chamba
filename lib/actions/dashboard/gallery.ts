@@ -11,6 +11,8 @@ export async function uploadImage(_prevState: ContentToastProps, formData: FormD
     alt: formData.get('alt')
   }
 
+  console.log(data);
+
   if (!data.image || !data.alt) {
     return {
       title: "Campos vacios",
@@ -21,10 +23,11 @@ export async function uploadImage(_prevState: ContentToastProps, formData: FormD
 
   try {
     await fetch("http://127.0.0.1:8000/api/images", {
+      method: "POST",
       headers: {
-        method: "POST",
         Authorization: `Bearer ${session}`,
-      }
+      },
+      body: formData,
     });
 
     return {
