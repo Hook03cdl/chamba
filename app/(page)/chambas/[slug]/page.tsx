@@ -43,7 +43,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 								<Card
 									key={index}
 									href={`/chamba/${c.slug}`}
-									src={''}
+									src={c.path}
 									id={c.id.toString()}
 									name={`${c.title}`}
 									description={c.description}
