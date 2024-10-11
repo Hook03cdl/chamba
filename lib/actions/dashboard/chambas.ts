@@ -13,10 +13,11 @@ export async function createChamba(
     title: formData.get("title"),
     description: formData.get("description"),
     slug: slugify(formData.get("title") as string),
+    image_id: formData.get("image_id"),
     job_id: formData.get("job_id"),
   };
 
-  if (!data.title || !data.description || !data.job_id) {
+  if (!data.title || !data.description || !data.job_id || !data.image_id) {
     return {
       title: "Campos vacios",
       msg: "Necesitas llenar todos lo campos, de lo contario no podras guardar los cambios",
@@ -25,13 +26,14 @@ export async function createChamba(
   }
 
   try {
-    await Fetch("/chamba", {
+    await fetch("http://127.0.0.1:8000/api/chamba", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${session}`,
+        'Accept': 'application/json',
       },
       body: formData,
-    });
+    })
     return {
       title: "Chamba creada",
       msg: "La chamba se ha creado con exito",

@@ -1,5 +1,5 @@
 "use client";
-import { JobProps } from "@/lib/interfaces/interface";
+import { ImageProps, JobProps } from "@/lib/interfaces/interface";
 import { TextInput, Textarea, Select, SelectItem } from "@tremor/react";
 import FileInput from "../FileInput";
 import { Button } from "@/components/ui/button";
@@ -11,7 +11,7 @@ import { useFormState } from "react-dom";
 import { useRouter } from "next/navigation";
 import { useToasts } from "@/lib/hooks/useToast";
 
-export default function CreateForm({ jobs }: { jobs: any }) {
+export default function CreateForm({ jobs, images }: { jobs: any, images: any }) {
   const [state, formAction] = useFormState(createChamba, {
     title: "",
     msg: "",
@@ -36,7 +36,7 @@ export default function CreateForm({ jobs }: { jobs: any }) {
   return (
     <div>
       <form action={formAction} noValidate>
-        <div className="m-2 grid grid-cols-2 grid-rows-3 gap-2 border rounded-md bg-gray-100">
+        <div className="m-2 grid grid-cols-2 grid-rows-2 gap-2 border rounded-md bg-gray-100">
           <div className="p-4 text-gray-800">
             <label htmlFor="title" className="font-semibold text-md">
               Titulo
@@ -57,7 +57,17 @@ export default function CreateForm({ jobs }: { jobs: any }) {
               ))}
             </Select>
           </div>
-          <div className="p-4 col-span-2 text-gray-800">
+          <div className="p-4 text-gray-800">
+            <span className="font-semibold text-md">Imagen</span>
+            <Select id="image_id" name="image_id">
+              {images.map((image: ImageProps) => (
+                <SelectItem key={image.id} value={image.id}>
+                  {image.alt}
+                </SelectItem>
+              ))}
+            </Select>
+          </div>
+          <div className="p-4 text-gray-800">
             <span className="font-semibold text-md">Descripcion</span>
             <Textarea
               id="description"

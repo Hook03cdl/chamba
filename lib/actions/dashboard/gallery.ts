@@ -21,10 +21,11 @@ export async function uploadImage(_prevState: ContentToastProps, formData: FormD
 
   try {
     await fetch("http://127.0.0.1:8000/api/images", {
+      method: "POST",
       headers: {
-        method: "POST",
         Authorization: `Bearer ${session}`,
-      }
+      },
+      body: formData,
     });
 
     return {
@@ -54,7 +55,6 @@ export async function getImages(): Promise<ImageProps[] | undefined>{
       }
     });
     const data = await response.json();
-    console.log(data.images);
     return data.images;
   } catch (error) {
     console.error(error);
