@@ -9,11 +9,11 @@ export default function LayoutPage({
 	return (
 		<>
 			<Navbar />
-			<main>
+			<main className="h-full">
 				{children}
 				{modal}
 			</main>
-			{/* <Footer /> */}
+			<Footer />
 			<Modal />
 		</>
 	);

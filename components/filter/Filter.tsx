@@ -4,16 +4,10 @@ import Slide from '../ui/Slide';
 
 export default async function Filter() {
 	return (
-		<div className="mt-5">
+		<div className="mt-5 overflow-x-auto">
 			<Slide buttonContent={<SlidersHorizontal />}>
 				<Jobs />
 			</Slide>
 		</div>
-		// <div className="mt-5 flex">
-		// 	<Jobs />
-		// 	<div className="flex flex-row justify-center items-center">
-		// 		<SlidersHorizontal />
-		// 	</div>
-		// </div>
 	);
 }

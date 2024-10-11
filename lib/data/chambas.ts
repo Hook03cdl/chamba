@@ -8,11 +8,8 @@ export async function fetchDataChambasBySlug(
 	slug: string
 ): Promise<ChambaProps[] | undefined> {
 	try {
-		const res = await fetch(`http://localhost:8000/api/chambas/${slug}`);
-		const data = await res.json();
-		return data;
-
-		// return res?.chambas;
+		const { chamba } = await Fetch<any>(`/chambas/${slug}`);
+		return chamba;
 	} catch (error) {
 		console.log(error);
 		return undefined;

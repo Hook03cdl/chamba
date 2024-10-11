@@ -1,19 +1,16 @@
 import { fetchDataJobs } from '@/lib/data/jobs';
 import React from 'react';
-import Link from 'next/link';
+import ActiveLink from './ActiveLink';
 
 export default async function Jobs() {
 	const jobs = await fetchDataJobs();
 	return (
 		<div className="flex gap-5">
+			<ActiveLink href={'/'}>Todos</ActiveLink>
 			{jobs?.map((job) => (
-				<Link
-					className="text-nowrap p-2 hover:bg-gray-300 rounded-md"
-					key={job.id}
-					href={`/chambas/${job.slug}`}
-				>
+				<ActiveLink key={job.id} href={`/?chamba=${job.slug}`}>
 					{job.name}
-				</Link>
+				</ActiveLink>
 			))}
 		</div>
 	);
