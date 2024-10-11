@@ -9,9 +9,15 @@ export default async function Page({ params }: { params: { slug: string } }) {
 	const allChambas = await fetchDataChambas();
 	console.log(params.slug.replaceAll("-", " "))
 
+	function thereIsChambas() {
+		return allChambas?.filter(c => c.job_name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") === params.slug.toLowerCase().replaceAll("-", " ")).length === 0;
+	}
+
 	return (
 		<section className="p-4 px-20 min-h-svh">
-			<div className='w-full grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] place-items-center gap-10'>
+			<h2 className={`text-center ${thereIsChambas() ? "hidden" : "block"}`}>Oficios de {params.slug.replaceAll("-", " ")}</h2>
+			<h2 className={`text-center ${thereIsChambas() ? "block" : "hidden"}`}>No hay oficios de {params.slug.replaceAll("-", " ")}</h2>
+			<div className='w-full grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] place-items-center gap-10 mt-5'>
 				{/* {chambas ? (
 					<Each
 						of={chambas}
