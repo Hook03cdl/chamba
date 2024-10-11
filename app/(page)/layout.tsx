@@ -13,7 +13,7 @@ export default function LayoutPage({
 				{children}
 				{modal}
 			</main>
-			<Footer />
+			{/* <Footer /> */}
 			<Modal />
 		</>
 	);
