@@ -68,8 +68,8 @@ export function Input({
 				{errorMsg && (
 					<span
 						className={`${isChange
-								? 'peer-invalid/input:block peer-valid/input:hidden'
-								: 'hidden'
+							? 'peer-invalid/input:block peer-valid/input:hidden'
+							: 'hidden'
 							} text-red-500 text-xs`}
 					>
 						{errorMsg}
@@ -78,8 +78,8 @@ export function Input({
 				<label
 					htmlFor={id}
 					className={`absolute top-1/2 left-1 -translate-y-1/2 ${isChange
-							? 'peer-invalid/input:text-red-500 peer-invalid/input:top-0 peer-invalid/input:left-3 peer-invalid/input:text-xs peer-invalid/input:-translate-y-full'
-							: ''
+						? 'peer-invalid/input:text-red-500 peer-invalid/input:top-0 peer-invalid/input:left-3 peer-invalid/input:text-xs peer-invalid/input:-translate-y-full'
+						: ''
 						} ${variants[variant].label}
 					peer-focus/input:top-0 peer-focus/input:left-3 peer-focus/input:text-xs peer-focus/input:-translate-y-full 
 					peer-valid/input:top-0 peer-valid/input:left-3 peer-valid/input:text-xs peer-valid/input:-translate-y-full 
@@ -168,14 +168,14 @@ export function InputSearch() {
 	);
 }
 
-export function TextArea({ label, value }: TextAreaProps) {
+export function TextArea({ label, placeholder }: TextAreaProps) {
 	return (
 		<div className="w-full">
 			<h2 className="text-xs">{label}</h2>
 			<textarea
 				className="w-full border border-black p-2 rounded-lg resize-none"
 				rows={6}
-				value={value}
+				placeholder={placeholder}
 			/>
 		</div>
 	);
