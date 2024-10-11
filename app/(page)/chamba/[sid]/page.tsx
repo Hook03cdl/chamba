@@ -8,17 +8,19 @@ import { ReviewsProps } from '@/lib/interfaces/interface';
 export default async function Page({ params }: { params: { sid: string } }) {
 	const chamba = await fetchDataChamba(params.sid);
 	const reviews = await fetchReviewsData(chamba.id);
-	console.log(chamba);
 
 	return (
 		<div className="grid grid-cols-3 grid-rows-2 gap-4">
 			<div className="col-span-2 bg-white h-screen rounded-md shadow-md">
 				<div className="m-4">
-					<h1 className="text-gray-800 text-2xl font-bold">{chamba.title}</h1>
+					<h1 className="text-3xl font-bold text-center text-niagara-500">{chamba.title}</h1>
 				</div>
-				<p className="text-sm">{chamba.description}</p>
-				<span>{chamba.job_name}</span>
-				<span>{chamba.worker_name}</span>
+				<div className='p-7'>
+					<p className="text-md">{chamba.description}</p>
+					<span>{chamba.job_name}</span>
+					<br></br>
+					<blockquote>{chamba.worker_name}</blockquote>
+				</div>
 			</div>
 			<div className="col-start-3 bg-white h-screen rounded-md shadow-md">
 				<RequestChamba worker={chamba.worker_name} chambaTitle={chamba.title} />

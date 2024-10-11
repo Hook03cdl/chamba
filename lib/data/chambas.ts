@@ -10,7 +10,7 @@ export async function fetchDataChambasBySlug(
 	try {
 		const res = await fetch(`http://localhost:8000/api/chambas/${slug}`);
 		const data = await res.json();
-		return data.chamba;
+		return data;
 
 		// return res?.chambas;
 	} catch (error) {
