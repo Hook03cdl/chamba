@@ -1,5 +1,6 @@
 import { RequestProps } from "@/lib/interfaces/interface";
 import { Button } from "../ui/button";
+import Badge from "../ui/Badge";
 
 /* eslint-disable @next/next/no-img-element */
 export default function UserRequest({ request }: { request: RequestProps }) {
@@ -27,8 +28,8 @@ export default function UserRequest({ request }: { request: RequestProps }) {
         <p className="text-wrap line-clamp-1">{request.chamba_name}</p>
       </div>
       <div className="flex flex-col items-center">
-        <h5>Estado</h5>
-        <span>{request.status}</span>
+        <h5 className="text-xs text-gray-400">Estado</h5>
+        <Badge status={request.status} />
       </div>
     </div>
   );
