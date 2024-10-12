@@ -23,6 +23,14 @@ export default function UserRequest({ request }: { request: RequestProps }) {
         <h5 className="text-xs text-gray-400">Descripcion</h5>
         <p className="text-wrap line-clamp-1">{request.message}</p>
       </div>
+      {request.status === "accepted" && (
+        <div className="flex flex-col items-center">
+          <h5 className="text-xs text-gray-400">Chat</h5>
+          <Button size="sm" variant="outline">
+            Chat
+          </Button>
+        </div>
+      )}
       <div>
         <h5 className="text-xs text-gray-400">Chamba</h5>
         <p className="text-wrap line-clamp-1">{request.chamba_name}</p>
