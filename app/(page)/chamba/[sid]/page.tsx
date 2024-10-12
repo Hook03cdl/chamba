@@ -5,6 +5,7 @@ import { fetchDataChamba } from "@/lib/data/chambas";
 import fetchReviewsData from "@/lib/data/reviews";
 import { ReviewsProps } from "@/lib/interfaces/interface";
 import Image from "next/image";
+import { Wrench, UserCog } from "lucide-react";
 
 export default async function Page({ params }: { params: { sid: string } }) {
   const chamba = await fetchDataChamba(params.sid);
@@ -21,9 +22,16 @@ export default async function Page({ params }: { params: { sid: string } }) {
         </div>
         <div className="p-7">
           <p className="text-md">{chamba.description}</p>
-          <span>{chamba.job_name}</span>
-          <br></br>
-          <blockquote>{chamba.worker_name}</blockquote>
+          <div className="flex gap-x-3 mt-5">
+            <div className="flex gap-x-1">
+              <UserCog color="#1f7c67"></UserCog>
+              <p>{chamba.worker_name}</p>
+            </div>
+            <div className="flex gap-x-1">
+              <Wrench color="#1f7c67"></Wrench>
+              <span>{chamba.job_name}</span>
+            </div>
+          </div>
           {chamba.path?.length > 0 && (
             <Image
               src={chamba.path}
