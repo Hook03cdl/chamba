@@ -5,7 +5,7 @@ export default function LayoutPage({
 }: Readonly<{ children: React.ReactNode }>) {
 	return (
 		<>
-			<main className="h-screen grid grid-cols-[auto_1fr]">
+			<main className="grid grid-cols-[auto_1fr]">
 				<AsideBar />
 				<div>{children}</div>
 			</main>
