@@ -78,3 +78,19 @@ export interface ImageProps {
 	path: string;
 	user_id: string;
 }
+
+export interface RequestProps {
+	id: string;
+	client_id: string;
+	worker_id: string;
+	chamba_id: string;
+	message: string;
+	status: string;
+	start_date: Date;
+	end_date: Date;
+	created_at: string;
+	updated_at: string;
+	client_name: string;
+	worker_name: string;
+	chamba_name: string;
+}

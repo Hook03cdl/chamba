@@ -1,16 +1,15 @@
-import Gallery from '@/components/profile/Gallery';
-const photos = [
-	'/images/notFound.png',
-	'/images/notFound.png',
-	'/images/notFound.png',
-	'/images/notFound.png',
-	'/images/notFound.png',
-	'/images/notFound.png',
-	'/images/notFound.png',
-	'/images/notFound.png',
-	'/images/notFound.png',
-];
+"use client";
+import getRole from "@/lib/utils/getRole";
+import { useEffect, useState } from "react";
 
-export default function page() {
-	return <Gallery photos={photos} />;
+export default function Page() {
+  const [role, setRole] = useState("");
+  useEffect(() => {
+    const fetchRole = async () => {
+      const role = await getRole();
+      setRole(role);
+    };
+    fetchRole();
+  }, []);
+  return <>{role === "1" ? <h1>Trabajador</h1> : <h1>Nose Todavia</h1>}</>;
 }
