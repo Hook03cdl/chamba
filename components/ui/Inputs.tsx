@@ -172,9 +172,9 @@ export function InputSearch() {
 export function TextArea({ label, value, placeholder }: TextAreaProps) {
 	return (
 		<div className="w-full">
-			<h2 className="text-xs">{label}</h2>
+			<h2 className="text-xs text-niagara-600">{label}</h2>
 			<textarea
-				className="w-full border border-black p-2 rounded-lg resize-none"
+				className="w-full border-2 border-niagara-400 p-2 rounded-lg resize-none"
 				rows={6}
 				placeholder={placeholder}
 			>{value}</textarea>
