@@ -27,7 +27,7 @@ export default function Card({
 	href,
 }: CardProps) {
 	return (
-		<div className="grid grid-rows-[1fr_auto] max-w-md h-full max-h-96 rounded-xl border border-gray-300 overflow-hidden shadow-md">
+		<div className="transition ease-in-out delay-75 hover:-translate-y-2 hover:scale-20 duration-300 grid grid-rows-[1fr_auto] max-w-md h-full max-h-96 rounded-xl border border-gray-300 overflow-hidden shadow-md">
 			<Link href={href}>
 				<div>
 					<img
