@@ -40,6 +40,7 @@ export interface  ChambaProps {
 	updated_at: string;
 	trabajo_name: string;
 	worker_name: string;
+	worker_slug: string;
 	slug: string;
 	image_id: string;
 	path: string;

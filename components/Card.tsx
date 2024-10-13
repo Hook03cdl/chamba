@@ -6,6 +6,7 @@ import { User } from 'lucide-react';
 interface CardProps {
 	src: string;
 	id: string;
+	worker_slug: string;
 	name: string;
 	description: string;
 	worker_name: string;
@@ -17,6 +18,7 @@ interface CardProps {
 export default function Card({
 	src,
 	id,
+	worker_slug,
 	name,
 	description,
 	rating,
@@ -42,7 +44,7 @@ export default function Card({
 			</Link>
 			<div className="flex space-x-2 justify-between items-center *:text-sm border-t-2 p-3">
 				<Link
-					href={`/worker/${id}`}
+					href={`/user/${worker_slug}`}
 					className="flex gap-2 hover:bg-niagara-100/60 rounded-md p-1"
 				>
 					<User size={16} />

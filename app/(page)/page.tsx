@@ -39,6 +39,7 @@ export default async function Home({
 									name={`${c.title}`}
 									description={c.description}
 									rating={c.rating}
+									worker_slug={c.worker_slug}
 									worker_name={c.worker_name}
 									job_name={c.trabajo_name}
 								/>
