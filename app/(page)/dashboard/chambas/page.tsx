@@ -12,7 +12,7 @@ export default async function Page() {
 			<Link href={"/dashboard/chambas/create"}>
 				<Button>Crear Chamba</Button>
 			</Link>
-			<div className="w-full grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] place-items-center gap-5">
+			<div className="w-full grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] place-items-center gap-5 mt-4">
 				<Each
 					of={chambas || []}
 					render={(c: ChambaProps) => (

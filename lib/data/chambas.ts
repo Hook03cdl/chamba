@@ -51,16 +51,17 @@ export async function fetchDataChamba(slug: string) {
 }
 
 export async function fetchDataChambasWorker() {
-	const cookie = cookies();
-	const session = cookie.get('session');
+	const session = await getToken('session');
 	try {
-		const { chambas } = await Fetch<any>('/mychambas', {
+		const response = await fetch('http://127.0.0.1:8000/api/mychambas', {
 			method: 'GET',
 			headers: {
-				Authorization: `Bearer ${session?.value}`,
-			},
+				Authorization: `Bearer ${session}`,
+				Accept: 'application/json',
+			}
 		});
-		return chambas;
+		const data = await response.json();
+		return data.chambas;
 	} catch (error) {
 		console.log(error);
 	}

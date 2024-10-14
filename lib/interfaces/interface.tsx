@@ -93,6 +93,7 @@ export interface RequestProps {
 	created_at: string;
 	updated_at: string;
 	client_name: string;
+	chamba_slug: string;
 	worker_name: string;
 	chamba_name: string;
 }

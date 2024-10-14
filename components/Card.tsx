@@ -6,7 +6,7 @@ import { User } from 'lucide-react';
 interface CardProps {
 	src: string;
 	id: string;
-	worker_slug: string;
+	worker_slug: string | null;
 	name: string;
 	description: string;
 	worker_name: string;
