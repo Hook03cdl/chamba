@@ -1,9 +1,7 @@
 "use client";
 import CardSolict from "@/components/profile/CardSolict";
 import Badge from "@/components/ui/Badge";
-import { Button } from "@/components/ui/button";
-import Popover, { PopButton, PopLink } from "@/components/ui/Popover";
-import Separator from "@/components/ui/Separator";
+import Popover, { PopButton } from "@/components/ui/Popover";
 import { fetchRequests } from "@/lib/actions/requests";
 import { RequestProps } from "@/lib/interfaces/interface";
 import {
@@ -16,6 +14,7 @@ import {
 } from "@tremor/react";
 import { Check, EllipsisVertical, ExternalLink, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { updateRequestStatus } from "@/lib/actions/requests";
 
 export default function Page() {
   const [requests, setRequests] = useState<RequestProps[]>([]);
@@ -27,6 +26,41 @@ export default function Page() {
     };
     fetch();
   }, []);
+
+  const handleAccept = async (requestId: string) => {
+    const updatedRequest = await updateRequestStatus(
+      {
+        title: "Solicitud actualizada",
+        msg: "La solicitud se ha actualizado con exito",
+        type: "success",
+      },
+      requestId,
+      "accepted"
+    );
+    setRequests((prevRequests) =>
+      prevRequests.map((request) =>
+        request.id === requestId ? { ...request, status: "accepted" } : request
+      )
+    );
+  };
+
+  const handleReject = async (requestId: string) => {
+    const updatedRequest = await updateRequestStatus(
+      {
+        title: "Solicitud actualizada",
+        msg: "La solicitud se ha actualizado con exito",
+        type: "warning",
+      },
+      requestId,
+      "rejected"
+    );
+    setRequests((prevRequests) =>
+      prevRequests.map((request) =>
+        request.id === requestId ? { ...request, status: "rejected" } : request
+      )
+    );
+  };
+
   return (
     <div className="p-4">
       <h1 className="font-bold text-xl">Tus Solicitudes</h1>
@@ -60,20 +94,22 @@ export default function Page() {
                   <Badge status={request.status} />
                 </TableHeaderCell>
                 <TableHeaderCell>
-                  <Popover fallback={<EllipsisVertical />}>
-                    <PopButton onClick={() => console.log("Aceptar")}>
-                      <div className="flex flex-row items-center">
-                        <Check color="green" size={16} />
-                        <span className="pl-1">Aceptar</span>
-                      </div>
-                    </PopButton>
-                    <PopButton onClick={() => console.log("Rechazar")}>
-                      <div className="flex flex-row items-center">
-                        <X color="red" size={16} />
-                        <span className="pl-1">Rechazar</span>
-                      </div>
-                    </PopButton>
-                  </Popover>
+                  {request.status === "pending" && (
+                    <Popover fallback={<EllipsisVertical />}>
+                      <PopButton onClick={() => handleAccept(request.id)}>
+                        <div className="flex flex-row items-center">
+                          <Check color="green" size={16} />
+                          <span className="pl-1">Aceptar</span>
+                        </div>
+                      </PopButton>
+                      <PopButton onClick={() => handleReject(request.id)}>
+                        <div className="flex flex-row items-center">
+                          <X color="red" size={16} />
+                          <span className="pl-1">Rechazar</span>
+                        </div>
+                      </PopButton>
+                    </Popover>
+                  )}
                 </TableHeaderCell>
               </TableRow>
             ))}
