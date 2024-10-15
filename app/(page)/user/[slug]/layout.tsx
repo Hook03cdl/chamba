@@ -9,7 +9,7 @@ export default async function Layout({
   children,
   params,
 }: {
-  childre: React.ReactNode;
+  children: React.ReactNode;
   params: { slug: string };
 }) {
   const user = await getUserInfoSlug(params.slug);

@@ -14,7 +14,6 @@ export default async function Home({
 	let chambasBySlug = undefined;
 	let chambas = undefined;
 	const notifications = await getUserNotifications();
-	console.log(notifications);
 	try {
 		chambas = await fetchDataChambas();
 		if (searchParams['chamba']) {

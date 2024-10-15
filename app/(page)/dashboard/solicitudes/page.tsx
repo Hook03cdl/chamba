@@ -61,6 +61,10 @@ export default function Page() {
     );
   };
 
+  const handleRowClicked = (requestId: string) => {
+    console.log(`Row clicked: ${requestId}`);
+  };
+
   return (
     <div className="p-4">
       <h1 className="font-bold text-xl">Tus Solicitudes</h1>
@@ -77,7 +81,17 @@ export default function Page() {
           </TableHead>
           <TableBody>
             {requests.map((request) => (
-              <TableRow key={request.id}>
+              <TableRow
+                key={request.id}
+                onClick={
+                  request.status === "accepted"
+                    ? () => handleRowClicked(request.id)
+                    : undefined
+                }
+                className={`${
+                  request.status === "accepted" ? "transition hover:bg-slate-50 cursor-pointer" : ""
+                }`}
+              >
                 <TableHeaderCell>
                   <a href={`/dashboard/chambas/edit/${request.chamba_slug}`}>
                     <div className="flex flex-row gap-1 items-center">
