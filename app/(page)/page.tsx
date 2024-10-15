@@ -2,6 +2,7 @@ import Card from '@/components/Card';
 import Each from '@/components/Each';
 import Filter from '@/components/filter/Filter';
 import { fetchDataChambas, fetchDataChambasBySlug } from '@/lib/data/chambas';
+import { getUserNotifications } from '@/lib/data/notifications';
 import { ChambaProps } from '@/lib/interfaces/interface';
 import { notFound } from 'next/navigation';
 
@@ -12,6 +13,8 @@ export default async function Home({
 }) {
 	let chambasBySlug = undefined;
 	let chambas = undefined;
+	const notifications = await getUserNotifications();
+	console.log(notifications);
 	try {
 		chambas = await fetchDataChambas();
 		if (searchParams['chamba']) {
