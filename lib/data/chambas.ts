@@ -32,7 +32,9 @@ export async function fetchDataChambas(): Promise<ChambaProps[] | undefined> {
 	}
 	return undefined;
 }
-export async function fetchDataChamba(slug: string) {
+export async function fetchDataChamba(
+	slug: string
+): Promise<ChambaProps | undefined> {
 	const cookie = cookies();
 	const session = cookie.get('session');
 
@@ -58,7 +60,7 @@ export async function fetchDataChambasWorker() {
 			headers: {
 				Authorization: `Bearer ${session}`,
 				Accept: 'application/json',
-			}
+			},
 		});
 		const data = await response.json();
 		return data.chambas;

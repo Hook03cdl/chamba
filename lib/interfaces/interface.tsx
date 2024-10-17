@@ -29,7 +29,7 @@ export interface JobProps {
 	updated_at: string;
 }
 
-export interface  ChambaProps {
+export interface ChambaProps {
 	id: string;
 	title: string;
 	description: string;
@@ -38,7 +38,7 @@ export interface  ChambaProps {
 	worker_id: number;
 	created_at: string;
 	updated_at: string;
-	trabajo_name: string;
+	job_name: string;
 	worker_name: string;
 	worker_slug: string;
 	slug: string;
