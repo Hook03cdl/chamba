@@ -53,7 +53,7 @@ export default function Modal() {
 	);
 }
 
-export function ModalIntercepting({ children }: { children: React.ReactNode }) {
+export function ModalIntercepting({ children }: { children?: React.ReactNode }) {
 	const route = useRouter();
 	return (
 		<div className="fixed h-svh w-full inset-0 bg-black/35 backdrop-blur grid place-content-center z-50">

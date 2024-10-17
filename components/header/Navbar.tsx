@@ -1,7 +1,7 @@
 import Avatar from '../ui/Avatar';
 import { InputSearch } from '../ui/Inputs';
 import Logo from '../ui/Logo';
-import Notification from './Notification';
+import Notifications from './Notifications';
 import Link from 'next/link';
 import { getToken } from '@/lib/utils/tokens';
 import { Gem } from 'lucide-react';
@@ -16,11 +16,13 @@ export default async function Navbar() {
 				{/* <NavChambas /> */}
 				<div className="flex gap-3 items-center">
 					{session && (
-						<Link href={'/suscribirse'} className="text-gray-600">
-							<Gem size={28} />
-						</Link>
+						<>
+							<Link href={'/suscribirse'} className="text-gray-600">
+								<Gem size={28} />
+							</Link>
+							<Notifications />
+						</>
 					)}
-					<Notification />
 					<Avatar />
 				</div>
 			</div>

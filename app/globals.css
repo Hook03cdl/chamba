@@ -21,3 +21,14 @@ aside::-webkit-scrollbar-track {
 aside::-webkit-scrollbar-thumb {
 	background: transparent;
 }
+
+.change-scroll::-webkit-scrollbar {
+	width: 5px;
+}
+.change-scroll::-webkit-scrollbar-thumb {
+	background: #196354;
+	border-radius: 5px;
+}
+.change-scroll::-webkit-scrollbar-track {
+	background: transparent;
+}
