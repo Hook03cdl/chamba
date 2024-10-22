@@ -7,7 +7,6 @@ import React from "react";
 
 export default async function page() {
   const requests = await fetchRequests();
-  console.log(requests);
   return (
     <div className="divide-y-[1px] divide-gray-300 pb-10">
       <Each of={requests} render={(c: RequestProps) => <UserRequest request={c}/>} />

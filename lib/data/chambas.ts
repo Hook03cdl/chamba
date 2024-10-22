@@ -17,7 +17,6 @@ export async function fetchDataChambasBySlug(
 			}
 		})
 		const data = await response.json();
-		console.log(data);
 		return data.chambas;
 	} catch (error) {
 		console.log(error);
