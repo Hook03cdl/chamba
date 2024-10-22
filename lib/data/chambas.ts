@@ -7,9 +7,18 @@ import { getToken } from '../utils/tokens';
 export async function fetchDataChambasBySlug(
 	slug: string
 ): Promise<ChambaProps[] | undefined> {
+	const session = await getToken('session');
 	try {
-		const { chamba } = await Fetch<any>(`/chambas/${slug}`);
-		return chamba;
+		const response = await fetch(`http://127.0.0.1:8000/api/chambas/${slug}`, {
+			method: "GET",
+			headers: {
+				Authorization: `Bearer ${session}`,
+				Accept: 'application/json',
+			}
+		})
+		const data = await response.json();
+		console.log(data);
+		return data.chambas;
 	} catch (error) {
 		console.log(error);
 		return undefined;
@@ -20,13 +29,15 @@ export async function fetchDataChambas(): Promise<ChambaProps[] | undefined> {
 	const cookie = cookies();
 	const session = await getToken('session');
 	try {
-		const { chambas } = await Fetch<any>('/chamba', {
+		const response = await fetch('http://127.0.0.1:8000/api/chamba', {
+			method: "GET",
 			headers: {
-				Authorization: `Bearer ${session}`,
-			},
+				'Accept': 'application/json',
+			}
 		});
-
-		return chambas;
+		const data = await response.json();
+		console.log(data);
+		return data;
 	} catch (error) {
 		console.log(error);
 	}
