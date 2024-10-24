@@ -65,6 +65,8 @@ export interface ReviewsProps {
 export interface DataDashboardProps {
 	requests: string;
 	chambas: string;
+	images: string;
+	chambasRealizadas: string;
 }
 
 export interface PlanProps {

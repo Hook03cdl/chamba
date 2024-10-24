@@ -11,19 +11,21 @@ export default function Page() {
   const [data, setData] = useState<DataDashboardProps>();
 
   const datos = [
-    { titulo: "Chambas", numero: data?.chambas },
-    { titulo: "Solicitudes pendientes", numero: data?.requests },
-    { titulo: "titulo3", numero: 1943 },
-    { titulo: "titulo4", numero: 900 },
+    { title: "Chambas", data: data?.chambas },
+    { title: "Solicitudes Pendientes", data: data?.requests },
+    { title: "Imagenes", data: data?.images },
+    { title: "Chambas Completadas", data: data?.chambasRealizadas},
   ];
 
   useEffect(() => {
     const fetchData = async () => {
-		const data = getData();
-		setData(await data);
+      const data = getData();
+      setData(await data);
     };
     fetchData();
   }, []);
+
+  console.log(data);
 
   return (
     <div className="p-5 space-y-10">
@@ -31,7 +33,7 @@ export default function Page() {
         <Each
           of={datos}
           render={(dato, index) => (
-            <Badge key={index} titulo={dato.titulo} dato={dato.numero} />
+            <Badge key={index} titulo={dato.title} dato={dato.data} />
           )}
         />
       </div>
