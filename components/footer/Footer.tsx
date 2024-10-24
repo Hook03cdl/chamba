@@ -5,7 +5,6 @@ import Separator from "../ui/Separator";
 
 export default async function Footer() {
   const jobs = await fetchDataJobs();
-  console.log(jobs);
   return (
     <footer className="p-10 bg-niagara-500 text-white">
       <div className="flex flex-row gap-6">

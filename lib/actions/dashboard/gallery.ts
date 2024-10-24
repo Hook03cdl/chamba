@@ -58,9 +58,7 @@ export async function getImages(): Promise<ImageProps[] | undefined> {
 			},
 		});
 		const data = await response.json();
-		if (data.images > 0) {
-			return data.images;
-		}
+		return data.images;
 	} catch (error) {
 		console.error(error);
 	}
