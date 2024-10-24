@@ -25,8 +25,6 @@ export default function Page() {
     fetchData();
   }, []);
 
-  console.log(data);
-
   return (
     <div className="p-5 space-y-10">
       <div className="flex gap-3">

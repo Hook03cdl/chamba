@@ -6,10 +6,12 @@ import Link from 'next/link';
 import { getToken } from '@/lib/utils/tokens';
 import { Gem } from 'lucide-react';
 import { fetchDataUser } from '@/lib/data/user';
+import { getUserNotifications } from '@/lib/data/notifications';
 
 export default async function Navbar() {
 	const session = await getToken('session');
 	const user = await fetchDataUser();
+	const notifications = await getUserNotifications();
 	return (
     <header className="sticky z-40 top-0 bg-humo">
       <div className="flex justify-between items-center p-3 px-10 shadow-md">
@@ -22,7 +24,7 @@ export default async function Navbar() {
               <Link href={"/suscribirse"} className="text-gray-600">
                 <Gem size={28} />
               </Link>
-              <Notifications />
+              <Notifications notifications={notifications} />
             </>
           )}
           <Avatar />
