@@ -7,16 +7,18 @@ import { getToken } from '@/lib/utils/tokens';
 import { Gem } from 'lucide-react';
 import { fetchDataUser } from '@/lib/data/user';
 import { getUserNotifications } from '@/lib/data/notifications';
+import { fetchDataChambas } from '@/lib/data/chambas';
 
 export default async function Navbar() {
 	const session = await getToken('session');
 	const user = await fetchDataUser();
 	const notifications = await getUserNotifications();
+  const chambas = await fetchDataChambas();
 	return (
     <header className="sticky z-40 top-0 bg-humo">
       <div className="flex justify-between items-center p-3 px-10 shadow-md">
         <Logo size="small" variant="dark" />
-        <InputSearch />
+        <InputSearch chambas={chambas.chambas} />
         {/* <NavChambas /> */}
         <div className="flex gap-3 items-center">
           {session && (

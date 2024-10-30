@@ -1,13 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ClickOut from './Clickout';
 import Link from 'next/link';
 
 interface PopoverProps {
-	fallback: React.ReactNode;
+	fallback?: React.ReactNode;
 	children?: React.ReactNode;
 	className?: string;
+	isOpen?: boolean;
 }
 
 interface ChildProps {
@@ -18,8 +19,15 @@ export default function Popover({
 	fallback,
 	children,
 	className,
+	isOpen: controlledIsOpen,
 }: PopoverProps) {
 	const [isOpen, setIsOpen] = useState(false);
+
+	useEffect(() => {
+		if (controlledIsOpen !== undefined) {
+			setIsOpen(controlledIsOpen);
+		}
+	}, [controlledIsOpen]);
 
 	return (
 		<ClickOut onClickout={(isClickout) => setIsOpen(!isClickout)}>

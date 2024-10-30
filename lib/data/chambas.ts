@@ -24,7 +24,7 @@ export async function fetchDataChambasBySlug(
 	}
 }
 
-export async function fetchDataChambas(): Promise<ChambaProps[] | undefined> {
+export async function fetchDataChambas(): Promise<ChambaProps[]> {
 	const cookie = cookies();
 	const session = await getToken('session');
 	try {
@@ -38,8 +38,8 @@ export async function fetchDataChambas(): Promise<ChambaProps[] | undefined> {
 		return data;
 	} catch (error) {
 		console.log(error);
+		return [];
 	}
-	return undefined;
 }
 export async function fetchDataChamba(
 	slug: string
