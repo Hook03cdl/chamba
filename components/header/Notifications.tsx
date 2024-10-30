@@ -3,7 +3,7 @@ import Popover from '../ui/Popover';
 import Each from '../Each';
 import Noti from './Noti';
 
-export default function Notifications({notifications}: {notifications: any}) {
+export default function Notifications({ notifications }: { notifications: any }) {
 
 	return (
 		<Popover
@@ -15,7 +15,7 @@ export default function Notifications({notifications}: {notifications: any}) {
 			}
 		>
 			<div className="min-w-80 h-auto max-h-96 overflow-y-auto change-scroll">
-				{notifications.length > 0 ? (
+				{notifications?.length > 0 ? (
 					<div className="grid gap-1 pr-1">
 						<Each
 							of={notifications}

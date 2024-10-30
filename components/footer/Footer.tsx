@@ -23,8 +23,8 @@ export default async function Footer() {
         </p>
       </div>
       <div className="mt-2">
-        <ul>
-          <span className="font-bold">Trabajos</span>
+        <span className="font-bold">Trabajos</span>
+        <ul className="grid grid-cols-5 gap-2 mt-3">
           {jobs?.map((job) => (
             <li key={job.id}>{job.name}</li>
           ))}
