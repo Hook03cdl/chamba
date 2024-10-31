@@ -49,3 +49,48 @@ export async function updateRequestStatus(
     };
   }
 }
+
+export async function storeRequest(
+  _prevState: ContentToastProps,
+  formData: FormData
+): Promise<ContentToastProps> {
+  const session = await getToken("session");
+
+  const data = {
+    worker_id: formData.get("worker_id"),
+    chamba_id: formData.get("chamba_id"),
+    message: formData.get("message"),
+  };
+
+  if (!data.worker_id || !data.chamba_id || !data.message) {
+    return {
+      title: "Mensaje vacio",
+      msg: "Necesita escribir un mensaje para poder enviar la solicitud",
+      type: "warning",
+    };
+  }
+
+  try {
+    await fetch("http://127.0.0.1:8000/api/requests", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${session}`,
+        Accept: "application/json",
+      },
+      body: formData,
+    });
+
+    return {
+      title: "Solicitud enviada",
+      msg: "La solicitud se ha enviado con exito",
+      type: "success",
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      title: "Error!",
+      msg: "A ocurrido un problema al momento de intentar efectuar los cambios",
+      type: "error",
+    };
+  }
+}

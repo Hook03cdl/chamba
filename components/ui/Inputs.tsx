@@ -222,11 +222,12 @@ export function InputSearch({ chambas }: InputSearch) {
   );
 }
 
-export function TextArea({ label, value, placeholder }: TextAreaProps) {
+export function TextArea({ label, value, placeholder, name }: TextAreaProps) {
   return (
     <div className="w-full">
       <h2 className="text-xs text-niagara-600">{label}</h2>
       <textarea
+        name={name}
         className="w-full border-2 border-niagara-400 p-2 rounded-lg resize-none"
         rows={6}
         placeholder={placeholder}
