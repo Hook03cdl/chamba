@@ -5,12 +5,16 @@ import Noti from './Noti';
 
 export default function Notifications({ notifications }: { notifications: any }) {
 
+	const unreadNotifications = notifications?.filter((n: any) => !n.read_at);
+
 	return (
 		<Popover
 			fallback={
 				<div className="relative text-gray-600">
 					<Bell size={28} />
-					<div className="absolute top-0 right-0 size-3 rounded-full bg-red-600" />
+					{unreadNotifications?.length > 0 && (
+						<div className="absolute top-0 right-0 size-3 rounded-full bg-red-600" />
+					)}
 				</div>
 			}
 		>
