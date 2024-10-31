@@ -6,10 +6,12 @@ import Rating from '@/components/ui/Rating';
 import { fetchDataChamba } from '@/lib/data/chambas';
 import fetchReviewsData from '@/lib/data/reviews';
 import { ReviewsProps } from '@/lib/interfaces/interface';
+import getRole from '@/lib/utils/getRole';
 import { User, Wrench } from 'lucide-react';
 
 export default async function Page({ params }: { params: { sid: string } }) {
 	// let reviews = ;
+	const role = await getRole();
 
 	const chamba = await fetchDataChamba(params.sid);
 	const reviews = (await fetchReviewsData(chamba?.id)) || [];
@@ -67,9 +69,16 @@ export default async function Page({ params }: { params: { sid: string } }) {
 						{chamba?.rating ? <Rating rating={chamba?.rating} /> : null}
 					</div>
 					<RequestChamba
+						disabled={role === '0'}
 						worker={chamba?.worker_name}
 						chambaTitle={chamba?.title}
 					/>
+					{/* Mensaje si el usuario no es cliente */}
+					{role === '0' && (
+						<div className="col-span-3 text-red-700 font-medium bg-white p-5 rounded-md shadow-md">
+							<p className="text-center">Solo los <strong>clientes</strong> pueden solicitar chambas.</p>
+						</div>
+					)}
 				</div>
 			</div>
 			{/* Reviews */}

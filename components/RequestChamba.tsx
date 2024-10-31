@@ -4,11 +4,13 @@ import { TextArea } from './ui/Inputs';
 interface propsChamba {
 	worker?: string;
 	chambaTitle?: string;
+	disabled?: boolean;
 }
 
 export default function RequestChamba({
 	worker = 'User',
 	chambaTitle = 'Chamba',
+	disabled: disabled,
 }: propsChamba) {
 	return (
 		<div className="flex flex-col items-center w-full gap-4">
@@ -18,7 +20,7 @@ export default function RequestChamba({
 				placeholder={`Hola, ${worker}!, me interesa tu servicio ${chambaTitle}, ¿podrías ayudarme?`}
 				defaultValue={`Hola, ${worker}!, me interesa tu servicio ${chambaTitle}, ¿podrías ayudarme?`}
 			/>
-			<Button className="w-full">Contactar</Button>
+			<Button disabled={disabled} className="w-full">Contactar</Button>
 		</div>
 	);
 }
