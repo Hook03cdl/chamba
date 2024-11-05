@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/Inputs';
 import Link from 'next/link';
 import { AuthWithPasswordAndEmail } from '@/lib/actions/auth';
 import ButtonSubmit from '@/components/ui/ButtonSubmit';
+import { CircleX } from 'lucide-react';
 
 
 export default function Login() {
@@ -34,7 +35,10 @@ export default function Login() {
 				}}
 				>
 					{error && (
-						<p className="text-red-500">Correo electrónico o contraseña incorrectos</p>
+						<div className='flex gap-x-2'>
+							<CircleX color='red' size={30}></CircleX>
+							<p className="text-red-500">Correo electrónico o contraseña incorrectos</p>
+						</div>
 					)}
 					<div className="space-y-7">
 						<Input
