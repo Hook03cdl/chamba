@@ -2,7 +2,7 @@ import Navbar from "@/components/profile/Navbar";
 import Separator from "@/components/ui/Separator";
 import Tags from "@/components/ui/Tags";
 import {getJobsBySlug, getUserInfoSlug} from "@/lib/data/user";
-import {ChartCandlestick, Mailbox, Users, Wrench} from "lucide-react";
+import {Briefcase, ChartCandlestick, Eye, Mailbox, Users, Wrench} from "lucide-react";
 import ButtonFollow from "@/components/ButtonFollow";
 import {followers, followersUser} from "@/lib/actions/profile";
 
@@ -74,6 +74,18 @@ export default async function Layout({
                             icon: <Mailbox/>,
                             display: user?.role === "1",
                         },
+                        {
+                            href: `/user/${params.slug}/chambas`,
+                            text: 'Chambas',
+                            icon: <Briefcase/>,
+                            display: user?.role === "1",
+                        },
+                        {
+                            href: `/user/${params.slug}/reviews`,
+                            text: 'Reseñas',
+                            icon: <Eye/>,
+                            display: user?.role === "1",
+                        }
                     ]}
                 />
                 {children}
