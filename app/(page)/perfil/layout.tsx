@@ -8,6 +8,7 @@ import { fetchDataUser, fetchJobsUser } from '@/lib/data/user';
 import { ChartCandlestick, Mailbox, Users, Wrench } from 'lucide-react';
 import ButtonEditProfile from '@/components/profile/ButtonEditProfile';
 import getRole from '@/lib/utils/getRole';
+import React from "react";
 
 export default async function PerfilLayout({
 	children,
@@ -63,6 +64,7 @@ export default async function PerfilLayout({
 			<div className="space-y-5">
 				<Navbar
 					navOptions={[
+                        { href: '/perfil', text: 'Información', icon: <Mailbox />, display: role === '0' },
 						{ href: '/perfil/solicitudes', text: 'Solicitudes', icon: <Mailbox />, display: role === '0' },
 						{ href: '/perfil/info', text: 'Información', icon: <Mailbox />, display: role === '1' },
 					]}
