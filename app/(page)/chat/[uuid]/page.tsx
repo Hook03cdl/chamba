@@ -12,12 +12,12 @@ import Each from "@/components/Each";
 }
 
 export default function Page() {
-    const [messages, setMessages] = useState<MessageProps[] | []>([]);
+    const [messages, setMessages] = useState<MessageProps[]>([]);
     const params = useParams();
 
     useEffect(() => {
         const fetchMessages = async () => {
-            const messages = await getChatMessages(String(params.chat_id));
+            const messages = await getChatMessages(String(params.uuid));
             setMessages(messages);
         }
 
@@ -26,13 +26,13 @@ export default function Page() {
             fetchMessages();
         }, 2000 * 5);
         return () => clearInterval(intervalId);
-    }, [params.chat_id]);
+    }, [params.uuid]);
 
     return (
         <div>
             <h1>Chat {params.chat_id}</h1>
             <div>
-                {messages.message ? (
+                {messages.length === 0 ? (
                     <span>No Messages Found</span>
                 ) : (
 

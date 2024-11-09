@@ -102,15 +102,21 @@ export interface RequestProps {
     chamba_name: string;
 }
 
+export interface UserMessageProps {
+    id: string;
+    name: string;
+}
+
 export interface MessageProps {
     id: string;
     body: string;
     user_id: string;
     chat_id: string;
-    user: object;
+    user: UserMessageProps;
     created_at: string;
     updated_at: string;
     deleted_at: string;
+    message: string;
 }
 
 export interface ChatProps {
