@@ -115,6 +115,7 @@ export interface MessageProps {
 
 export interface ChatProps {
     id: string;
+    uuid: string;
     client_id: string;
     worker_id: string;
     message: string;

@@ -42,7 +42,7 @@ export default async function Navbar() {
                                         {chats.message ? (<span>{chats.message}</span>) :
                                             (
                                                 <Each of={chats} render={(c: ChatProps) => (
-                                                    <PopLink href={`/chat/${c.id}`}>
+                                                    <PopLink href={`/chat/${c.uuid}`}>
                                                         <div className={"flex flex-col"}>
                                                             <span className="font-bold">{c.worker.name}</span>
                                                             <span

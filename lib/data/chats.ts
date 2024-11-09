@@ -1,8 +1,6 @@
 "use server"
 
 import {getToken} from "@/lib/utils/tokens";
-import {ChatProps, MessageProps} from "@/lib/interfaces/interface";
-import {Fetch} from "@/lib/Fetch";
 
 export async function getAuthUserChats() {
     const session = await getToken("session");
@@ -23,11 +21,11 @@ export async function getAuthUserChats() {
     }
 }
 
-export async function getChatMessages(chatId: string) {
+export async function getChatMessages(chatUuid: string) {
     const session = await getToken("session");
 
     try {
-        const messages = await fetch(`http://localhost:8000/api/chat/${chatId}/messages`, {
+        const messages = await fetch(`http://localhost:8000/api/chat/${chatUuid}/messages`, {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${session}`,
