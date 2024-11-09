@@ -13,6 +13,7 @@ import {closeModal, openModal} from "@/lib/hooks/useModal";
 import {X} from "lucide-react";
 import {ToolTip} from "@/components/ui/Tooltip";
 import Image from "next/image";
+import Popover, {PopButton, PopLink} from "@/components/ui/Popover";
 
 export default function Page() {
     const [images, setImages] = useState<ImageProps[] | []>([]);
@@ -74,36 +75,40 @@ export default function Page() {
                         <Each
                             of={images}
                             render={(i: ImageProps) => (
-                                <div className="bg-gray-100 p-4 rounded-lg flex flex-col gap-2">
-                                    <Button
-                                        onClick={() => {
-                                            openModal({
-                                                content: {
-                                                    header: "Eliminar Imagen",
-                                                    body: (
-                                                        <p>Estas seguro de que quieres eliminar esta imagen?</p>
-                                                    ),
-                                                },
-                                                actionButton: (
-                                                    <ButtonSubmit variant={"default"} onClick={() => handleDelete(i.id)}>Aceptar</ButtonSubmit>
+                                <Popover fallback={
+
+                                    <div className="bg-gray-100 p-4 rounded-lg flex flex-col gap-2">
+                                        <ToolTip content={i.alt} position={"bottom"} delay={1}>
+                                            <Image
+                                                className="h-auto max-w-full rounded-lg"
+                                                key={i.id}
+                                                src={i.path}
+                                                alt={i.alt}
+                                                width={200}
+                                                height={200}
+                                            />
+                                        </ToolTip>
+                                    </div>
+                                }>
+                                    <PopButton onClick={() => {
+                                        openModal({
+                                            content: {
+                                                header: "Eliminar Imagen",
+                                                body: (
+                                                    <p>Estas seguro de que quieres eliminar esta imagen?</p>
                                                 ),
-                                            });
-                                        }}
-                                        size={"icon"}
-                                    >
-                                        <X size={24}/>
-                                    </Button>
-                                    <ToolTip content={i.alt} position={"bottom"} delay={1}>
-                                        <Image
-                                            className="h-auto max-w-full rounded-lg"
-                                            key={i.id}
-                                            src={i.path}
-                                            alt={i.alt}
-                                            width={200}
-                                            height={200}
-                                        />
-                                    </ToolTip>
-                                </div>
+                                            },
+                                            actionButton: (
+                                                <ButtonSubmit variant={"default"}
+                                                              onClick={() => handleDelete(i.id)}>Aceptar</ButtonSubmit>
+                                            ),
+                                        });
+                                    }}>
+                                        <div className="flex flex-row items-center gap-2">
+                                            <X size={16} color="red"/>
+                                            <span>Eliminar</span>
+                                        </div>
+                                    </PopButton> </Popover>
                             )}
                         />
                     </div>
