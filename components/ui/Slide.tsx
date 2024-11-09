@@ -14,7 +14,7 @@ export default function Slide({
 	return (
 		<div className=" flex items-center justify-between pr-20 gap-5">
 			<div
-				className={`px-10 ${
+				className={`px-20 ${
 					isOpen ? 'translate-x-0' : '-translate-x-full'
 				} transition-transform`}
 			>
