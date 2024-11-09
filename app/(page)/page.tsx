@@ -62,7 +62,7 @@ export default async function Home({
                 <>
                     {
                         userFollowingChambas.length > 0 ? (
-                            <section className="p-5 px-20 min-h-svh">
+                            <section className="p-5 px-20 min-h-3.5">
                                 <h1 className="mb-2 uppercase text-xl font-bold text-shark">Chambas de los trabajadores
                                     que
                                     sigues.</h1>
