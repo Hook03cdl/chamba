@@ -6,5 +6,5 @@ interface EachProps {
 }
 
 export default function Each({ of, render }: EachProps) {
-	return <>{Children.toArray(of.map((item, index) => render(item, index)))}</>;
+	return <>{Children.toArray(of?.map((item, index) => render(item, index)))}</>;
 }

@@ -69,7 +69,7 @@ export default function Page() {
     <div className="p-4">
       <h1 className="font-bold text-xl">Tus Solicitudes</h1>
       <div className="h-full mt-4">
-        <Table className="bg-white border rounded-lg">
+        <Table className="bg-white border rounded-lg shadow-md">
           <TableHead className="border-b-2">
             <TableRow>
               <TableHeaderCell className="font-bold">Chamba</TableHeaderCell>
@@ -93,7 +93,7 @@ export default function Page() {
                 }`}
               >
                 <TableHeaderCell>
-                  <a href={`/dashboard/chambas/edit/${request.chamba_slug}`}>
+                  <a href={`/dashboard/solicitudes/view/${request.id}`}>
                     <div className="flex flex-row gap-1 items-center">
                       <span className="text-blue-700 decoration-solid underline">
                         {request.chamba_name}

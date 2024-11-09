@@ -15,7 +15,7 @@ import { useFormState } from "react-dom";
 export default function Gallery({
   images,
 }: {
-  images: ImageProps[] | undefined;
+  images: ImageProps | undefined;
 }) {
   const [state, formAction] = useFormState(destroyImage, {
     title: "",

@@ -1,4 +1,4 @@
-import { BadgeDelta, Card } from '@tremor/react';
+import { Card } from '@tremor/react';
 
 interface BadgeProps {
 	titulo: string;
@@ -12,16 +12,9 @@ export function Badge({ titulo, dato }: BadgeProps) {
 				<h4 className="text-tremor-default text-tremor-content dark:text-dark-tremor-content">
 					{titulo}
 				</h4>
-				<BadgeDelta
-					deltaType="moderateIncrease"
-					isIncreasePositive={true}
-					size="xs"
-				>
-					+9.3%
-				</BadgeDelta>
 			</div>
 			<p className="text-tremor-metric text-tremor-content-strong dark:text-dark-tremor-content-strong font-semibold">
-				{dato}
+				{!dato ? '0' : dato}
 			</p>
 		</Card>
 	);
