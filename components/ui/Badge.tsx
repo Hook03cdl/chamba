@@ -24,7 +24,7 @@ export default function Badge({status}: { status: string | undefined }) {
         case "done":
             return (
                 <span
-                    className="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-1 rounded dark:bg-green-900 dark:text-green-300">
+                    className="bg-green-600 text-green-800 text-xs font-medium me-2 px-2.5 py-1 rounded dark:bg-green-900 dark:text-green-300">
           Terminado
         </span>
             );
