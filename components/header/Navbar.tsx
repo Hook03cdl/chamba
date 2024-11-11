@@ -4,7 +4,7 @@ import Logo from '../ui/Logo';
 import Notifications from './Notifications';
 import Link from 'next/link';
 import { getToken } from '@/lib/utils/tokens';
-import { Gem } from 'lucide-react';
+import {Gem, MessageCircle} from 'lucide-react';
 import { fetchDataUser } from '@/lib/data/user';
 import { getUserNotifications } from '@/lib/data/notifications';
 import { fetchDataChambas } from '@/lib/data/chambas';
@@ -29,7 +29,7 @@ export default async function Navbar() {
 					{session && (
 						<>
 							{user?.role === '1' && (
-								<Popover fallback={<span>Chats</span>}>
+								<Popover fallback={<MessageCircle size={28} className="text-gray-600"/> }>
 									<div className="min-w-80">
 										{chats.message ? (
 											<span>{chats.message}</span>
