@@ -96,7 +96,8 @@ export default async function Home({
                                 <h1 className="mb-2 uppercase text-xl font-bold text-shark">
                                     Chambas de los usuario que sigues.
                                 </h1>
-                                <p>Sigue a trabajadores para poder ver sus chambas.</p>
+                                <p>Sigue a <a href="/workers" className="text-blue-700 underline">trabajadores</a> para
+                                    poder ver sus chambas.</p>
                             </section>
                         )
                     }
