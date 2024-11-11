@@ -14,7 +14,7 @@ export default function Login() {
 	const [error, setError] = useState(false);
 	const [ isLoading, setIsLoading ] = useState(false);
 
-	const handleSubmit = async (formdata) => {
+	const handleSubmit = async (formdata: FormData) => {
 		setIsLoading(true);
 		const result = await AuthWithPasswordAndEmail(formdata);
 		setIsLoading(false);
@@ -33,7 +33,7 @@ export default function Login() {
 			<article className="bg-shark flex justify-center items-center flex-col gap-5">
 				<form className="space-y-10 w-72" onSubmit={(e) => {
 					e.preventDefault();
-					const formData = new FormData(e.target);
+					const formData = new FormData(e.currentTarget);
 					handleSubmit(formData);
 				}}
 				>

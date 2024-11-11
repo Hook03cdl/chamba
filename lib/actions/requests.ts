@@ -113,3 +113,79 @@ export async function fetchRequestById(requestId: string) {
         console.error(error);
     }
 }
+
+export async function startChamba($id: string, _prevState: ContentToastProps): Promise<ContentToastProps> {
+    const session = await getToken("session");
+
+    try {
+        const response = await fetch(`http://localhost:8000/api/requests/${$id}/startChamba`, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${session}`,
+                Accept: "application/json",
+            },
+        });
+
+        const data = await response.json();
+        console.log(data);
+
+        if (data.error) {
+            return {
+                title: "Error",
+                msg: data.error,
+                type: "error",
+            }
+        }
+
+        return {
+            title: "Chamba iniciada",
+            msg: "La chamba ha sido iniciada.",
+            type: "success",
+        }
+    } catch (error) {
+        console.error(error);
+    }
+    return {
+        title: "Error",
+        msg: "Ha ocurrido un error al intentar iniciar la chamba",
+        type: "error",
+    }
+}
+
+export async function endChamba($id: string, _prevState: ContentToastProps): Promise<ContentToastProps> {
+    const session = await getToken("session");
+
+    try {
+        const response = await fetch(`http://localhost:8000/api/requests/${$id}/endChamba`, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${session}`,
+                Accept: "application/json",
+            },
+        });
+
+        const data = await response.json();
+        console.log(data);
+
+        if (data.error) {
+            return {
+                title: "Error",
+                msg: data.error,
+                type: "error",
+            }
+        }
+
+        return {
+            title: "Chamba finalizada",
+            msg: "La chamba ha sido finalizada.",
+            type: "success",
+        }
+    } catch (error) {
+        console.error(error);
+    }
+    return {
+        title: "Error",
+        msg: "Ha ocurrido un error al intentar iniciar la chamba",
+        type: "error",
+    }
+}

@@ -15,7 +15,7 @@ export default function EditForm({
   chamba,
 }: {
   jobs: any;
-  chamba: ChambaProps;
+  chamba: ChambaProps | undefined;
 }) {
   const [state, formAction] = useFormState(updateChambaWorker, {
     title: "",
@@ -46,7 +46,7 @@ export default function EditForm({
           name="id"
           hidden
           placeholder="Ingrese el titulo de su chamba"
-          defaultValue={chamba.id}
+          defaultValue={chamba?.id}
         />
         <div className="m-2 grid grid-cols-2 grid-rows-3 gap-2 border rounded-md bg-gray-100">
           <div className="p-4 text-gray-800">
@@ -57,7 +57,7 @@ export default function EditForm({
               id="title"
               name="title"
               placeholder="Ingrese el titulo de su chamba"
-              defaultValue={chamba.title}
+              defaultValue={chamba?.title}
             />
           </div>
           <div className="p-4 text-gray-800 flex flex-col">
@@ -76,7 +76,7 @@ export default function EditForm({
               id="description"
               name="description"
               placeholder="Escribe la descripcion de tu chamba"
-              defaultValue={chamba.description}
+              defaultValue={chamba?.description}
               rows={2}
             />
           </div>

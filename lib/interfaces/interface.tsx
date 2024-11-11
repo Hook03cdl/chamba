@@ -86,31 +86,31 @@ export interface ImageProps {
 }
 
 export interface RequestProps {
-	id: string;
-	client_id: string;
-	worker_id: string;
-	chamba_id: string;
-	message: string;
-	status: string;
-	start_date: Date;
-	end_date: Date;
-	created_at: string;
-	updated_at: string;
-	client_name: string;
-	chamba_slug: string;
-	worker_name: string;
-	chamba_name: string;
+    id: string;
+    client_id: string;
+    worker_id: string;
+    chamba_id: string;
+    message: string;
+    status: string;
+    start_date: Date;
+    end_date: Date;
+    created_at: string;
+    updated_at: string;
+    client_name: string;
+    chamba_slug: string;
+    worker_name: string;
+    chamba_name: string;
 }
 
 export interface MessageProps {
-	id: string;
-	body: string;
-	user_id: string;
-	chat_id: string;
-	user: object;
-	created_at: string;
-	updated_at: string;
-	deleted_at: string;
+    id: string;
+    body: string;
+    user_id: string;
+    chat_id: string;
+    user: object;
+    created_at: string;
+    updated_at: string;
+    deleted_at: string;
 }
 
 export interface ChatProps {

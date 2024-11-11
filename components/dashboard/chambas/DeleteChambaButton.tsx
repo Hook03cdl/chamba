@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useFormState } from "react-dom";
 
-export default function DeleteChambaButton({ id }: { id: string }) {
+export default function DeleteChambaButton({ id }: { id: string | undefined }) {
   const [state, formAction] = useFormState(deleteChambaWorker, {
     title: "",
     msg: "",

@@ -25,7 +25,7 @@ export default async function Page() {
 							rating={c.rating}
 							worker_slug={c.worker_slug}
 							worker_name={c.worker_name}
-							job_name={c.trabajo_name}
+							job_name={c.job_name}
 						/>
 					)}
 				/>
