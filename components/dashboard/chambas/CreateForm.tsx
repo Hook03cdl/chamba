@@ -16,7 +16,7 @@ export default function CreateForm({
 	images,
 }: {
 	jobs: JobProps[];
-	images: ImageProps[];
+	images: ImageProps[] | undefined;
 }) {
 	const [state, formAction] = useFormState(createChamba, {
 		title: '',

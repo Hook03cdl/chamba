@@ -5,7 +5,7 @@ interface NotificacionProps {
 	id: number | string;
 	title: string;
 	msg: string;
-	date: string;
+	date: Date;
 	read_at?: boolean;
 }
 

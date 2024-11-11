@@ -1,7 +1,7 @@
 import { Children } from 'react';
 
 interface EachProps {
-	of: any[];
+	of: any[] | undefined;
 	render: (item: any, index: number) => React.ReactNode;
 }
 

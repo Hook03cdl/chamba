@@ -16,7 +16,7 @@ import Image from "next/image";
 import Popover, {PopButton, PopLink} from "@/components/ui/Popover";
 
 export default function Page() {
-    const [images, setImages] = useState<ImageProps[] | []>([]);
+    const [images, setImages] = useState<ImageProps[] | undefined>([]);
     const [state, formAction] = useFormState(uploadImage, {
         toast: {
             title: "",
@@ -55,7 +55,7 @@ export default function Page() {
         addToast(deleteState.title, deleteState.msg, deleteState.type);
         closeModal();
         if (deleteState.type === "success") {
-            setImages((prevImages) => prevImages.filter((image) => image.id !== id))
+            setImages((prevImages) => prevImages?.filter((image) => image.id !== id))
         }
     }
 

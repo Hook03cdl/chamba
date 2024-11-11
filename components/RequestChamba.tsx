@@ -55,7 +55,6 @@ export default function RequestChamba({
 					name="message"
 					className="w-full"
 					placeholder={`Hola, ${worker}!, me interesa tu servicio ${chambaTitle}, ¿podrías ayudarme?`}
-					defaultValue={`Hola, ${worker}!, me interesa tu servicio ${chambaTitle}, ¿podrías ayudarme?`}
 				/>
 				<ButtonSubmit disabled={disabled} className="w-full">
 					Solicitar

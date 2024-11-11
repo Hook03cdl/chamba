@@ -68,42 +68,46 @@ export default function Page() {
                     {request?.start_date ? (
                         <div className="flex flex-col gap-2">
                             <label>Fecha inicial</label>
-                            <input id="start_date" type="date"
+                            <input id="start_date" type="text"
                                    name="start_date"
                                    disabled={true}
-                                   value={request?.start_date.split(' ')[0]}
+                                   value={String(request?.start_date)}
+                                   placeholder="Inicie la chamba para establecer la fecha"
                                    className="w-full rounded bg-gray-100 shadow-lg border-gray-400"
-                                   min={request?.created_at.split(' ')[0]}/>
+                            />
                             <Button disabled={true} onClick={handleStartChamba}>Iniciar chamba</Button>
                         </div>
                     ) : (
                         <div className="flex flex-col gap-2">
                             <label>Fecha inicial</label>
-                            <input id="start_date" type="date"
+                            <input id="start_date" type="text"
                                    name="start_date"
                                    disabled={true}
                                    className="w-full rounded bg-gray-100 shadow-lg border-gray-400"
-                                   min={request?.created_at.split(' ')[0]}/>
+                                   placeholder="Inicie la chamba para establecer la fecha"
+                            />
                             <Button onClick={handleStartChamba}>Iniciar chamba</Button>
                         </div>
                     )}
                     {request?.start_date ? (
                         <div className="flex flex-col gap-2">
                             <label>Fecha de terminacion</label>
-                            <input id="end_date" type="date"
+                            <input id="end_date" type="text"
                                    className="w-full rounded bg-gray-100 shadow-lg border-gray-400"
                                    disabled={true}
-                                   value={request.end_date ? request.end_date.split(' ')[0] : ""}
+                                   value={(String(request?.end_date) === "null" ? "Termine la chamba para establecer la fecha" : String(request?.end_date))}
+                                   placeholder="Termine la chamba para establecer la fecha"
                             />
-                            <ButtonSubmit disabled={request.end_date} onClick={handleEndChamba}>Terminar
+                            <ButtonSubmit disabled={Boolean(request.end_date)} onClick={handleEndChamba}>Terminar
                                 chamba</ButtonSubmit>
                         </div>
                     ) : (
                         <div className="flex flex-col gap-2 opacity-25">
                             <label>Fecha de terminacion</label>
-                            <input id="end_date" type="date"
+                            <input id="end_date" type="text"
                                    disabled={true}
                                    className="w-full rounded bg-gray-100 shadow-lg border-gray-400"
+                                   placeholder="Termine la chamba para establecer la fecha"
                             />
                             <ButtonSubmit disabled={true}>Terminar chamba</ButtonSubmit>
                         </div>

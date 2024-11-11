@@ -35,8 +35,7 @@ export async function fetchDataChambas(): Promise<ChambaProps[] | undefined> {
 		// console.log(response);
 		if (!response.ok) return undefined;
 
-		const { chambas } = await response.json();
-
+		const chambas = await response.json();
 		return chambas;
 	} catch (error) {
 		console.log(error);
