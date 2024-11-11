@@ -20,5 +20,6 @@ export const config = {
 		'/perfil/:path*',
 		'/dashboard',
 		'/dashboard/:path*',
+		'/chat/:path*',
 	],
 };

@@ -3,10 +3,10 @@
 import '@github/relative-time-element';
 import { useEffect } from 'react';
 
-const RelativeTime = ({ dateTime }: { dateTime: string }) => {
+const RelativeTime = ({ dateTime }: { dateTime: Date }) => {
 	useEffect(() => {
 		import('@github/relative-time-element');
 	}, []);
-	return <relative-time datetime={dateTime}></relative-time>;
+	return <relative-time datetime={dateTime.toString()}></relative-time>;
 };
 export default RelativeTime;

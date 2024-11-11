@@ -2,10 +2,14 @@ import { ArchiveX, Bell } from 'lucide-react';
 import Popover from '../ui/Popover';
 import Each from '../Each';
 import Noti from './Noti';
+import { NotificationProps } from '@/lib/interfaces/notifications/interfaces';
 
-export default function Notifications({ notifications }: { notifications: any }) {
-
-	const unreadNotifications = notifications?.filter((n: any) => !n.read_at);
+export default function Notifications({
+	notifications,
+}: {
+	notifications: NotificationProps[];
+}) {
+	const unreadNotifications = notifications?.filter((n) => !n.read_at);
 
 	return (
 		<Popover
@@ -23,11 +27,11 @@ export default function Notifications({ notifications }: { notifications: any })
 					<div className="grid gap-1 pr-1">
 						<Each
 							of={notifications}
-							render={(n, i) => (
+							render={(n: NotificationProps, i) => (
 								<Noti
 									id={n.id}
 									title={n.data.title}
-									msg={n.data.msg}
+									msg={n.data.message}
 									read_at={n.read_at}
 									created_at={n.created_at}
 									key={i}

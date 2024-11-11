@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 	title: 'Chamba',
 	description:
 		'Con nostros podras encontrar desde un trabajo hasta alguien que te realice un trabaje ',
-	icons: { icon: '/images/notFound.png' },
+	icons: { icon: '/logo.png' },
 };
 
 export default function RootLayout({

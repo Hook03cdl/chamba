@@ -16,30 +16,31 @@ export async function fetchDataChambasBySlug(
 				Accept: 'application/json',
 			},
 		});
-		const data = await response.json();
-		return data.chambas;
+		const { chambas } = await response.json();
+		if (chambas.length > 0) {
+			return chambas;
+		}
+		return undefined;
 	} catch (error) {
 		console.log(error);
 		return undefined;
 	}
 }
 
-export async function fetchDataChambas(): Promise<ChambaProps[]> {
+export async function fetchDataChambas(): Promise<ChambaProps[] | undefined> {
 	const cookie = cookies();
 	const session = await getToken('session');
 	try {
-		const response = await fetch('http://127.0.0.1:8000/api/chamba', {
-			method: 'GET',
-			headers: {
-				Accept: 'application/json',
-			},
-		});
+		const response = await fetch('http://127.0.0.1:8000/api/chamba');
+		// console.log(response);
+		if (!response.ok) return undefined;
+
 		const { chambas } = await response.json();
 
 		return chambas;
 	} catch (error) {
 		console.log(error);
-		return [];
+		return undefined;
 	}
 }
 
