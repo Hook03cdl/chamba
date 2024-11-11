@@ -32,3 +32,12 @@ aside::-webkit-scrollbar-thumb {
 .change-scroll::-webkit-scrollbar-track {
 	background: transparent;
 }
+
+.change-horizontal-scroll::-webkit-scrollbar {
+	height: 5px;
+}
+
+.change-horizontal-scroll::-webkit-scrollbar-thumb {
+	background: #196354;
+	border-radius: 10px;
+}

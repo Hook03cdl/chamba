@@ -7,6 +7,7 @@ export default async function ProfilePage() {
 	const role = await getRole();
 	const user = await fetchDataUser();
 	const images = await getImages();
+	// console.log(images);
 
 	return (
 		<>

@@ -57,8 +57,12 @@ export async function getImages(): Promise<ImageProps[] | undefined> {
 				Accept: 'application/json',
 			},
 		});
-		const data = await response.json();
-		return data.images;
+		const { images } = await response.json();
+
+		if (images.length > 0) {
+			return images;
+		}
+		return undefined;
 	} catch (error) {
 		console.error(error);
 	}

@@ -36,7 +36,7 @@ export default function Card({
 						className="h-40 w-full object-cover"
 					/>
 					<div className="flex flex-col justify-between p-3">
-						<h6 className="text-lg font-semibold">{name}</h6>
+						<h6 className="text-lg font-semibold line-clamp-1">{name}</h6>
 						<span className="text-gray-400 text-xs py-0">{job_name}</span>
 						<p className="text-balance line-clamp-3">{description}</p>
 					</div>

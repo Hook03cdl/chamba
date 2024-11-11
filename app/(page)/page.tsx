@@ -1,19 +1,19 @@
 import Card from '@/components/Card';
 import Each from '@/components/Each';
 import Filter from '@/components/filter/Filter';
-import {fetchDataChambas, fetchDataChambasBySlug, fetchUserFollowingChambas} from '@/lib/data/chambas';
-import {getUserNotifications} from '@/lib/data/notifications';
-import {ChambaProps} from '@/lib/interfaces/interface';
-import {notFound} from 'next/navigation';
+import { fetchDataChambas, fetchDataChambasBySlug } from '@/lib/data/chambas';
+// import { getUserNotifications } from '@/lib/data/notifications';
+import { ChambaProps } from '@/lib/interfaces/interface';
+import { notFound } from 'next/navigation';
 
 export default async function Home({
-                                       searchParams,
-                                   }: {
-    searchParams: { chamba: string };
+	searchParams,
+}: {
+	searchParams: { chamba: string };
 }) {
 	let chambasBySlug = undefined;
 	let chambas = undefined;
-	const notifications = await getUserNotifications();
+	// const notifications = await getUserNotifications();
 	try {
 		chambas = await fetchDataChambas();
 		if (searchParams['chamba']) {
@@ -24,6 +24,7 @@ export default async function Home({
 	}
 
 	const renderData = searchParams['chamba'] ? chambasBySlug : chambas;
+	// console.log(renderData);
 
 	return (
 		<>
@@ -43,7 +44,7 @@ export default async function Home({
 									rating={c.rating}
 									worker_slug={c.worker_slug}
 									worker_name={c.worker_name}
-									job_name={c.trabajo_name}
+									job_name={c.job_name}
 								/>
 							)}
 						/>

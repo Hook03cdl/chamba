@@ -64,7 +64,6 @@ export default async function Page({ params }: { params: { sid: string } }) {
 				<div className="col-span-1 p-5 bg-white space-y-5 ">
 					<div className="flex justify-between">
 						<p className="text-sm text-gray-400">{reviews.length} reviews</p>
-						{/* <Rating rating={3} /> */}
 						{chamba?.rating ? <Rating rating={chamba?.rating} /> : null}
 					</div>
 					<RequestChamba
