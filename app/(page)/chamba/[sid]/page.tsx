@@ -20,24 +20,24 @@ export default async function Page({ params }: { params: { sid: string } }) {
 		<section className="min-h-svh p-10 space-y-5">
 			<div className="grid grid-cols-3 gap-5">
 				<img
-					src="/images/notFound.png"
+					src="/images/people-working1.jpg"
 					alt=""
 					className="h-full w-full object-cover rounded-md"
 				/>
 				<div className="flex flex-col gap-5">
 					<img
-						src="/images/notFound.png"
+						src="/images/people-working2.jpg"
 						alt=""
 						className="h-48 w-full object-cover grow rounded-md"
 					/>
 					<img
-						src="/images/notFound.png"
+						src="/images/people-working3.jpg"
 						alt=""
 						className="h-48 w-full object-cover grow rounded-md"
 					/>
 				</div>
 				<img
-					src="/images/notFound.png"
+					src="/images/people-working4.jpg"
 					alt=""
 					className="h-full w-full object-cover rounded-md"
 				/>
