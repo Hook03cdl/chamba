@@ -2,6 +2,7 @@ export interface UserProps {
 	id: number;
 	name: string;
 	email: string;
+	slug: string;
 	about_me: string | null;
 	src: string | null;
 	email_verified_at: boolean | null;
@@ -64,11 +65,21 @@ export interface ReviewsProps {
 	updated_at?: string;
 }
 
-export interface DataDashboardProps {
-	requests: string;
-	chambas: string;
-	images: string;
-	chambasRealizadas: string;
+export interface DashboardProps {
+	chambas_count: number;
+	requests_pendant_count: number;
+	images_count: number;
+	chambas_done_count: number;
+	clients_city_count: DashboardPropsClients_city_count;
+	chambas_most_requested_count: DashboardPropsChambas_most_requested_count[];
+}
+export interface DashboardPropsClients_city_count {
+	"La Paz": number;
+	"San Jose del Cabo": number;
+}
+export interface DashboardPropsChambas_most_requested_count {
+	title: string;
+	conteo: number;
 }
 
 export interface PlanProps {
