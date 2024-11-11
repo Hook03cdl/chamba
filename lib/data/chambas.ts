@@ -34,9 +34,8 @@ export async function fetchDataChambas(): Promise<ChambaProps[]> {
 				Accept: 'application/json',
 			},
 		});
-		const { chambas } = await response.json();
-
-		return chambas;
+		const  data = await response.json();
+		return data;
 	} catch (error) {
 		console.log(error);
 		return [];
@@ -100,4 +99,21 @@ export async function fetchUserFollowingChambas() {
 	} catch (error) {
 		console.error(error);
 	}
+}
+
+export async function fetchMostRatedChambas() {
+    const session = await getToken('session');
+    try {
+        const response = await fetch("http://127.0.0.1:8000/api/mostRatedChambas", {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${session}`,
+                Accept: "application/json",
+            }
+        });
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.log(error);
+    }
 }
