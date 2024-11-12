@@ -112,8 +112,9 @@ export async function fetchMostRatedChambas() {
 				Accept: 'application/json',
 			},
 		});
-		const { chambas } = await response.json();
-		return chambas;
+		const data = await response.json();
+
+		return data;
 	} catch (error) {
 		console.log(error);
 		return undefined;

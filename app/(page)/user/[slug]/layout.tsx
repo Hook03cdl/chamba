@@ -25,6 +25,7 @@ export default async function Layout({
 	const trabajos = await getJobsBySlug(params.slug);
 	const jobs = trabajos?.map((job: any) => job.name);
 	const followers = await followersUser(String(user?.id));
+	console.log(user);
 
 	return (
 		<section className="min-h-svh p-5">

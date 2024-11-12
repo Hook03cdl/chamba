@@ -49,19 +49,19 @@ export async function getUserInfoSlug(
 ): Promise<UserProps | undefined> {
 	const session = await getToken('session');
 
-	if (session) {
-		try {
-			const user = await Fetch<UserProps>(`/getUserInfoSlug/${slug}`, {
-				headers: {
-					Authorization: `Bearer ${session}`,
-				},
-			});
-			console.log(user);
-			return user;
-		} catch (error) {
-			console.log('Error user', error);
-		}
+	if (!session) return undefined;
+	try {
+		const user = await Fetch<UserProps>(`/getUserInfoSlug/${slug}`, {
+			headers: {
+				Authorization: `Bearer ${session}`,
+			},
+		});
+		console.log(user);
+		return user;
+	} catch (error) {
+		console.log('Error user', error);
 	}
+
 	return undefined;
 }
 
