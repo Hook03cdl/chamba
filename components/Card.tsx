@@ -52,7 +52,7 @@ export default function Card({
 						{worker_name}
 					</p>
 				</Link>
-				<span className="bg-niagara-500/60 px-2 rounded-full text-shark ">
+				<span className="bg-niagara-500/60 text-niagara-800 px-2 rounded-full font-semibold">
 					{rating}
 				</span>
 			</div>
