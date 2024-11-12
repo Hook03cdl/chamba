@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import Each from "@/components/Each";
-import JobsUser from "@/components/JobsUser";
 import ButtonEditProfile from "@/components/profile/ButtonEditProfile";
 import JobsOptions from "@/components/profile/info/JobsOptions";
 import Navbar from "@/components/profile/Navbar";
