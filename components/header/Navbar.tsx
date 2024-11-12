@@ -1,17 +1,17 @@
 import Avatar from '../ui/Avatar';
-import {InputSearch} from '../ui/Inputs';
+import { InputSearch } from '../ui/Inputs';
 import Logo from '../ui/Logo';
 import Notifications from './Notifications';
 import Link from 'next/link';
-import {getToken} from '@/lib/utils/tokens';
-import {Gem, MessageCircle} from 'lucide-react';
-import {fetchDataUser} from '@/lib/data/user';
-import {getUserNotifications} from '@/lib/data/notifications';
-import {fetchDataChambas} from '@/lib/data/chambas';
-import {getAuthUserChats} from '@/lib/data/chats';
-import Popover, {PopLink} from '@/components/ui/Popover';
+import { getToken } from '@/lib/utils/tokens';
+import { Gem, MessageCircle } from 'lucide-react';
+import { fetchDataUser } from '@/lib/data/user';
+import { getUserNotifications } from '@/lib/data/notifications';
+import { fetchDataChambas } from '@/lib/data/chambas';
+import { getAuthUserChats } from '@/lib/data/chats';
+import Popover, { PopLink } from '@/components/ui/Popover';
 import Each from '@/components/Each';
-import {ChatProps} from '@/lib/interfaces/interface';
+import { ChatProps } from '@/lib/interfaces/interface';
 
 export default async function Navbar() {
     const session = await getToken('session');
@@ -23,12 +23,14 @@ export default async function Navbar() {
     return (
         <header className="sticky z-40 top-0 bg-humo">
             <div className="flex justify-between items-center p-3 px-10 shadow-md">
-                <Logo size="small" variant="dark"/>
-                <InputSearch chambas={chambas || []}/>
+                <Logo size="small" variant="dark" />
+                <div className='hidden md:block'>
+                    <InputSearch chambas={chambas || []} />
+                </div>
                 <div className="flex gap-3 items-center">
                     {session && (
                         <>
-                            <Popover fallback={<MessageCircle size={28} className="text-gray-600"/>}>
+                            <Popover fallback={<MessageCircle size={28} className="text-gray-600" />}>
                                 <div className="min-w-80">
                                     {chats.message ? (
                                         <span>{chats.message}</span>
@@ -42,8 +44,8 @@ export default async function Navbar() {
                                                     <div className={'flex flex-col'}>
                                                         <span className="font-bold">{c.worker.name}</span>
                                                         <span className="text-gray-500 text-sm">
-																{c.request_chamba.chamba.title}
-															</span>
+                                                            {c.request_chamba.chamba.title}
+                                                        </span>
                                                     </div>
                                                 </PopLink>
                                             )}
@@ -53,13 +55,13 @@ export default async function Navbar() {
                             </Popover>
                             {user?.role === '0' && (
                                 <Link href={'/suscribirse'} className="text-gray-600">
-                                    <Gem size={28}/>
+                                    <Gem size={28} />
                                 </Link>
                             )}
-                            <Notifications notifications={notifications}/>
+                            <Notifications notifications={notifications} />
                         </>
                     )}
-                    <Avatar/>
+                    <Avatar />
                 </div>
             </div>
         </header>
