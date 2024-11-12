@@ -38,7 +38,6 @@ const dataFormatter = (number: number) =>
 export function BarChartHero({requested_chambas_count}: {
     requested_chambas_count: DashboardPropsChambas_most_requested_count[] | undefined
 }) {
-    console.log(requested_chambas_count);
     const data = requested_chambas_count || chartdata;
     return (
         <div className="w-2/4">

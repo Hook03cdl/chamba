@@ -21,7 +21,6 @@ export default function Page() {
         };
         fetch();
     }, [params.id]);
-    console.log(request);
 
     const handleStartChamba = async () => {
         if (request) {

@@ -15,12 +15,11 @@ export default function Page() {
 		const fetchData = async () => {
 			const chambas = await getWorkerChambas(String(params.slug));
 			setChambas(chambas);
-			console.log(chambas);
 		};
 		fetchData();
 	}, [params.slug]);
 	return (
-		<div>
+		<div className='w-full grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] place-content-center gap-10'>
 			{chambas && (
 				<Each
 					of={chambas}

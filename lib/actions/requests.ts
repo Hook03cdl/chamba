@@ -107,7 +107,6 @@ export async function fetchRequestById(requestId: string) {
             }
         });
         const data = await response.json();
-        console.log(data);
         return data;
     } catch (error) {
         console.error(error);
@@ -127,7 +126,6 @@ export async function startChamba($id: string, _prevState: ContentToastProps): P
         });
 
         const data = await response.json();
-        console.log(data);
 
         if (data.error) {
             return {
@@ -165,7 +163,6 @@ export async function endChamba($id: string, _prevState: ContentToastProps): Pro
         });
 
         const data = await response.json();
-        console.log(data);
 
         if (data.error) {
             return {

@@ -33,7 +33,6 @@ export async function SingupWithPasswordAndEmail(formdata: FormData) {
 		});
 		if (!res.ok) return;
 		const user = await res.json();
-		console.log(user);
 		await setToken('session', user.token);
 	} catch (error) {
 		console.log(error);

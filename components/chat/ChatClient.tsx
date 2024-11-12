@@ -64,7 +64,7 @@ export default function ChatClient({
 							}`}
 						>
 							<p>{m.body}</p>
-							<div className="flex justify-between *:text-xs">
+							<div className="flex justify-between *:text-xs gap-1">
 								{m.user_id !== userId && <p>{m.user.name}</p>}
 								<span>
 									<RelativeTime dateTime={m.created_at} />
