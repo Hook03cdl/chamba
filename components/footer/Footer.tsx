@@ -8,9 +8,9 @@ export default async function Footer() {
 	const jobs = await fetchDataJobs();
 	return (
 		<footer className="p-10 bg-niagara-500 text-white">
-			<div className="flex flex-row gap-6">
+			<div className="md:flex md:flex-row md:gap-6">
 				<Logo />
-				<p>
+				<p className='mt-3 md:mt-0'>
 					Este proyecto es una plataforma innovadora diseñada para conectar a
 					profesionales con oportunidades laborales en diversas industrias.
 					Nuestro objetivo es proporcionar una experiencia de usuario fluida y
@@ -23,16 +23,16 @@ export default async function Footer() {
 					descubre cómo podemos ayudarte a alcanzar tus metas profesionales.
 				</p>
 			</div>
-			<div className="mt-2">
-				<span className="font-bold">Trabajos</span>
-				<ul className="grid grid-cols-5 gap-2 mt-3">
+			<div className="mt-5">
+				<span className="block text-center md:inline md:text-start font-bold">Trabajos</span>
+				<ul className="grid grid-cols-2 p-3 md:grid-cols-5 gap-2 mt-3">
 					{jobs?.map((job) => (
 						<li key={job.id}>{job.name}</li>
 					))}
 				</ul>
 			</div>
 			<Separator className="w-full" />
-			<div className="flex flx-row gap-2">
+			<div className="flex justify-center md:justify-start flex-row gap-2">
 				<span className="font-bold uppercase">CHAMBA</span>
 				<span className="text-slate-200">© Copyright reserved 2024</span>
 			</div>
