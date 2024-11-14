@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { Children, useEffect, useRef, useState } from 'react';
 import ClickOut from './Clickout';
 import Link from 'next/link';
 
@@ -23,6 +23,10 @@ export default function Popover({
 }: PopoverProps) {
 	const [isOpen, setIsOpen] = useState(false);
 
+	const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+		setIsOpen(false);
+	};
+
 	useEffect(() => {
 		if (controlledIsOpen !== undefined) {
 			setIsOpen(controlledIsOpen);
@@ -36,8 +40,15 @@ export default function Popover({
 					{fallback}
 				</button>
 				{isOpen && (
-					<div className="absolute top-full right-0 mt-2 bg-humo border-2 border-gray-300 z-[+1] rounded-lg overflow-y-auto p-1">
-						{children}
+					<div
+						onClick={handleClick}
+						className="absolute top-full right-0 mt-2 bg-humo border-2 border-gray-300 z-[+1] rounded-lg overflow-y-auto p-1"
+					>
+						{Children.map(children, (child) => {
+							return React.cloneElement(child as React.ReactElement, {
+								onClick: handleClick,
+							});
+						})}
 					</div>
 				)}
 			</div>
@@ -52,12 +63,13 @@ export function PopButton({
 	children: React.ReactNode;
 	onClick: () => void;
 }) {
+	const handleClick = () => {
+		onClick();
+	};
 	return (
 		<button
 			className="flex gap-4 items-center hover:bg-gray-200 p-2 rounded-md"
-			onClick={() => {
-				onClick();
-			}}
+			onClick={handleClick}
 		>
 			{children}
 		</button>

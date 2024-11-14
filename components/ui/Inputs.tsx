@@ -7,6 +7,8 @@ import { ChambaProps } from '@/lib/interfaces/interface';
 import Fuse from 'fuse.js';
 import Popover, { PopLink } from './Popover';
 import Link from 'next/link';
+import { useFormStatus } from 'react-dom';
+import ClickOut from './Clickout';
 
 const variants = {
 	light: {
@@ -54,6 +56,7 @@ export function Input({
 }: InputProps) {
 	const [show, setShow] = useState(false);
 	const [isChange, setIsChange] = useState(false);
+	const { pending } = useFormStatus();
 
 	const getType = (type: string) => {
 		if (type == 'password') {
@@ -75,6 +78,7 @@ export function Input({
 					}  ${variants[variant].input}  ${className}`}
 					{...props}
 					onBlur={() => setIsChange(true)}
+					disabled={pending}
 				/>
 				{errorMsg && (
 					<span
@@ -169,58 +173,74 @@ export function Checkbox({
 }
 
 export function InputSearch({ chambas }: InputSearchProps) {
-	const [input, setInput] = useState('');
+	const [input, setInput] = useState<string>('');
 	const [suggestions, setSuggestions] = useState<ChambaProps[]>([]);
+	const [isFocus, setIsFocus] = useState<boolean>(false);
 
 	const fuse = new Fuse(chambas, {
 		keys: ['title', 'slug', 'job_name'],
 		threshold: 0.3,
 	});
 
-	const handleSearch = async (e: any) => {
+	const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const query = e.target.value;
+		setInput(query);
 		const result = fuse.search(query);
 		setSuggestions(result.map(({ item }) => item));
 	};
 
+	const handleReset = () => {
+		setInput('');
+		setIsFocus(false);
+	};
+
 	return (
-		<div className="flex w-fit relative">
-			<input
-				type="text"
-				className="rounded-l-full border-2 border-niagara-500 p-1 px-2 w-96"
-				placeholder="Buscar"
-				value={input}
-				onChange={(e) => {
-					setInput(e.target.value);
-					handleSearch(e);
-				}}
-			/>
-			<button className="bg-niagara-500 text-white rounded-r-full p-1 px-2 ">
-				<Search size={16} />
-			</button>
-			{suggestions.length > 0 && (
-				<div className="absolute top-full mt-3 left-0 w-full max-h-64 overflow-y-auto change-scroll bg-humo rounded-md border">
-					<Each
-						of={suggestions}
-						render={(chamba: ChambaProps, i) => (
-							<Link href={`/chamba/${chamba.slug}`} key={i}>
-								<div className="w-full hover:bg-gray-200 p-2 rounded-md">
-									<h1 className="font-bold">{chamba.title}</h1>
-									<div className="flex flex-row gap-2 *:text-slate-400">
-										<span className="font-normal text-sm">
-											{chamba.job_name}
-										</span>
-										<span className="font-bold text-sm">
-											{chamba.worker_name}
-										</span>
+		<ClickOut onClickout={() => setIsFocus(false)}>
+			<div className="flex w-fit relative">
+				<input
+					type="text"
+					className="rounded-l-full border-2 border-niagara-500 p-1 px-2 w-96"
+					placeholder="Buscar"
+					value={input}
+					onChange={handleSearch}
+					onFocus={() => setIsFocus(true)}
+				/>
+				<button className="bg-niagara-500 text-white rounded-r-full p-1 px-3">
+					<Search size={16} />
+				</button>
+				{input
+					? isFocus && (
+							<div className="absolute top-full mt-3 left-0 w-full max-h-64 overflow-y-auto change-scroll bg-humo rounded-md border">
+								{suggestions.length > 0 ? (
+									suggestions.map((chamba, i) => (
+										<Link
+											href={`/chamba/${chamba.slug}`}
+											key={i}
+											onClick={handleReset}
+										>
+											<div className="w-full hover:bg-gray-200 p-2 rounded-md">
+												<h1 className="font-bold">{chamba.title}</h1>
+												<div className="flex flex-row gap-2 *:text-slate-400">
+													<span className="font-normal text-sm">
+														{chamba.job_name}
+													</span>
+													<span className="font-bold text-sm">
+														{chamba.worker_name}
+													</span>
+												</div>
+											</div>
+										</Link>
+									))
+								) : (
+									<div className="w-full p-2 rounded-md">
+										No hay resultados...
 									</div>
-								</div>
-							</Link>
-						)}
-					/>
-				</div>
-			)}
-		</div>
+								)}
+							</div>
+					  )
+					: null}
+			</div>
+		</ClickOut>
 	);
 }
 

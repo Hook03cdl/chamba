@@ -17,12 +17,12 @@ export async function AuthWithPasswordAndEmail(formdata: FormData) {
 		const data = await res.json();
 		cookie.set('session', data.token);
 
-		// Devuelve true para indicar éxito
-		return { success: true };
+		// Devuelve true para indicar éxito		return { success: true };
 	} catch (error) {
 		console.error('Auth error:', error);
-		return { success: false, error: true };
+		return { error: true };
 	}
+	redirect('/');
 }
 
 export async function SingupWithPasswordAndEmail(formdata: FormData) {
@@ -56,9 +56,11 @@ export async function LogoutUser() {
 			headers: { Authorization: `Bearer ${session}` },
 		});
 		cookie.delete('session');
+
+		return { ok: true };
 	} catch (error) {
 		console.log(error);
-		return;
+		return { ok: false };
 	}
-	redirect('/');
+	// redirect('/');
 }

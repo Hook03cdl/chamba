@@ -5,8 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Button } from './button';
 import Separator from './Separator';
 import { closeModal, useModal } from '@/lib/hooks/useModal';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
-import Link from 'next/link';
+import { ChevronRight, X } from 'lucide-react';
 
 export default function Modal() {
 	const { isOpen, modal } = useModal();
@@ -21,31 +20,25 @@ export default function Modal() {
 		<>
 			{isOpen && (
 				<div
-					className="fixed inset-0 flex justify-center items-center bg-black/30 h-svh w-full px-24 py-12 overflow-y-auto transition-[height]"
+					className="fixed inset-0 flex justify-center items-center bg-black/30 h-svh w-full px-24 py-12 overflow-y-auto transition-[height] z-50"
 					onClick={handleCloseModal}
 				>
-					{modal.content?.body && (
+					{modal.isblank ? (
 						<div className="bg-humo p-5 w-full max-w-4xl rounded-lg">
-							<h3 className="text-3xl text-gray-400">{modal.content.header}</h3>
+							<h3 className="text-3xl text-gray-400">{modal.header}</h3>
 							<Separator />
-							<div>{modal.content.body}</div>
+							<div>{modal.body}</div>
 							<Separator />
 							<div className="flex justify-end gap-5">
-								{modal.content.addButton && modal.content.addButton}
+								{modal.addButton && modal.addButton}
 								{modal.actionButton}
 								<Button variant={'secondary'} onClick={closeModal}>
 									Cancelar
 								</Button>
 							</div>
 						</div>
-					)}
-
-					{modal?.image && (
-						<img
-							src={modal.image || '/images/notFound.png'}
-							alt="Imagen"
-							className="w-auto h-full object-cover object-center aspect-video"
-						/>
+					) : (
+						<>{modal.body}</>
 					)}
 				</div>
 			)}
@@ -53,7 +46,11 @@ export default function Modal() {
 	);
 }
 
-export function ModalIntercepting({ children }: { children?: React.ReactNode }) {
+export function ModalIntercepting({
+	children,
+}: {
+	children?: React.ReactNode;
+}) {
 	const route = useRouter();
 	return (
 		<div className="fixed h-svh w-full inset-0 bg-black/35 backdrop-blur grid place-content-center z-50">

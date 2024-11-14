@@ -20,8 +20,8 @@ export default function Logo({
 	size = 'default',
 }: LogoProps) {
 	return (
-		<div className={`relative uppercas max-w-max`}>
-			<Link href={'/'} className="max-w-max">
+		<div className={`relative uppercas max-w-max h-fit`}>
+			<Link href={'/'} className="max-w-max h-fit">
 				<span
 					className={`italic font-extralight ${variants[variant]} ${sizes[size].letters}`}
 				>

@@ -12,7 +12,7 @@ export default function Slide({
 }) {
 	const [isOpen, setIsOpen] = useState(false);
 	return (
-		<div className="flex items-center justify-between pr-20 gap-5">
+		<div className="flex items-center justify-between pr-5 lg:pr-20 gap-5">
 			<div
 				className={`px-10 overflow-x-auto change-horizontal-scroll pb-3 ${
 					isOpen ? 'translate-x-0' : '-translate-x-full'

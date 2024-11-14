@@ -36,8 +36,8 @@ export default async function Home({
 		<>
 			<Filter />
 			{renderData && renderData?.length > 0 ? (
-				<section className="p-5 px-20 min-h-3.5">
-					<div className="w-full grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] place-content-center gap-10">
+				<section className="p-5 lg:px-20 min-h-3.5">
+					<div className="w-full grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] place-items-center gap-10">
 						<Each
 							of={renderData}
 							render={(c: ChambaProps) => (

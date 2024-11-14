@@ -46,8 +46,13 @@ export default function RequestChamba({
 	return (
 		<div className="flex flex-col items-center w-full gap-4">
 			<form action={formAction} className="w-full">
-				<input hidden type="text" name="worker_id" value={chamba?.worker_id} />
-				<input hidden type="text" name="chamba_id" value={chamba?.id} />
+				<input
+					hidden
+					type="text"
+					name="worker_id"
+					defaultValue={chamba?.worker_id}
+				/>
+				<input hidden type="text" name="chamba_id" defaultValue={chamba?.id} />
 
 				<TextArea
 					variant="dark"
@@ -55,6 +60,7 @@ export default function RequestChamba({
 					name="message"
 					className="w-full"
 					placeholder={`Hola, ${worker}!, me interesa tu servicio ${chambaTitle}, ¿podrías ayudarme?`}
+					required
 				/>
 				<ButtonSubmit disabled={disabled} className="w-full">
 					Solicitar
