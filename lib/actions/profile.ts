@@ -194,3 +194,31 @@ export async function unfollowUser($userId: string) {
         console.error(error);
     }
 }
+
+export async function sendEmailVerification(
+    _prevState: ContentToastProps,
+): Promise<ContentToastProps> {
+    const session = await getToken('session');
+
+    try {
+        const response = await fetch('http://localhost:8000/api/email/verify-notification', {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${session}`,
+                'Accept': 'application/json',
+            },
+        });
+        return {
+            title: 'Correo enviado',
+            msg: 'Se ha enviado un correo de verificacion a tu cuenta',
+            type: 'success',
+        }
+    } catch (error) {
+        console.error(error);
+        return {
+            title: 'Error!',
+            msg: 'A ocurrido un problema al momento de intentar efectuar los cambios',
+            type: 'error',
+        }
+    }
+}

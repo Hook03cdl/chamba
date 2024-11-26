@@ -6,7 +6,7 @@ export default async function PageSuscripciones() {
 	const pricing = [
 		{
 			benefics: ['Beneficio 1', 'Beneficio 2', 'Beneficio 3', 'Beneficio 4'],
-			href: '/perfil',
+			href: '/suscribe',
 			price: '30',
 			title: 'Basic',
 		},
