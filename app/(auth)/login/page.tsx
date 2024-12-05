@@ -20,8 +20,8 @@ export default function Login() {
 	};
 
 	return (
-		<section className="flex *:flex-1 *:h-svh">
-			<article className="bg-humo flex justify-center items-center">
+		<section className="md:flex *:flex-1 *:h-svh">
+			<article className="hidden md:flex bg-humo justify-center items-center">
 				<Logo variant="dark" />
 			</article>
 			<article className="bg-shark flex justify-center items-center flex-col gap-5">
@@ -41,27 +41,28 @@ export default function Login() {
 							</p>
 						</div>
 					)}
+					<div className='md:hidden flex justify-center'>
+						<Logo variant='light'></Logo>
+					</div>
 					<div className="space-y-7">
 						<Input
 							label={'Correo electrónico'}
 							type="email"
 							id="email"
-							className={`w-full ${
-								error
-									? 'border-2 border-red-500'
-									: 'border-2 border-niagara-300'
-							}`}
+							className={`w-full ${error
+								? 'border-2 border-red-500'
+								: 'border-2 border-niagara-300'
+								}`}
 							required
 						/>
 						<Input
 							label={'Contraseña'}
 							type="password"
 							id="password"
-							className={`w-full ${
-								error
-									? 'border-2 border-red-500'
-									: 'border-2 border-niagara-300'
-							}`}
+							className={`w-full ${error
+								? 'border-2 border-red-500'
+								: 'border-2 border-niagara-300'
+								}`}
 							required
 						/>
 					</div>
