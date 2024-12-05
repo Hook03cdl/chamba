@@ -6,11 +6,14 @@ import Link from 'next/link';
 
 export default function Page() {
 	return (
-		<section className="flex *:flex-1 h-svh">
-			<div className="bg-humo flex justify-center items-center">
+		<section className="lg:flex *:flex-1 h-svh">
+			<div className="hidden lg:flex justify-center items-center bg-humo">
 				<Logo variant="dark" />
 			</div>
-			<article className="bg-shark flex justify-center items-center flex-col gap-5">
+			<article className="bg-shark flex justify-center items-center flex-col space-y-5 p-3 h-full">
+				<div className='lg:hidden'>
+					<Logo variant='light'></Logo>
+				</div>
 				<form
 					action={SingupWithPasswordAndEmail}
 					className="w-72 space-y-10"
